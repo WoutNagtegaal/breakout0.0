@@ -2,6 +2,7 @@ package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.tutorial.entities.Hanny;
 import com.github.hanyaeger.tutorial.entities.swordfish.Swordfish;
 
 public class GameLevel extends DynamicScene {
@@ -17,5 +18,9 @@ public class GameLevel extends DynamicScene {
             new Coordinate2D(400, 400)
                 );
         addEntity(swordfish);
+        var hanny = new Hanny(
+            new Coordinate2D(1, 1)
+        );
+        addEntity(hanny);
     }
 }
