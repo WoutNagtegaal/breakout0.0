@@ -13,38 +13,38 @@ import javafx.scene.text.FontWeight;
 
 public class TitleScene extends StaticScene {
 
-    private Waterworld waterworld;
+  private Waterworld waterworld;
 
-    public TitleScene(Waterworld waterworld) {
-        this.waterworld = waterworld;
-    }
+  public TitleScene(Waterworld waterworld) {
+    this.waterworld = waterworld;
+  }
 
-    @Override
-    public void setupScene() {
-        setBackgroundAudio("audio/ocean.mp3");
-        setBackgroundImage("backgrounds/background1.jpg");
-    }
+  @Override
+  public void setupScene() {
+    setBackgroundAudio("audio/ocean.mp3");
+    setBackgroundImage("backgrounds/background1.jpg");
+  }
 
-    @Override
-    public void setupEntities() {
-        var waterworldText = new TextEntity(
-            new Coordinate2D(getWidth() / 2, getHeight() / 2 - 50),
-            "Waterworld"
-        );
-        waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        waterworldText.setFill(Color.DARKBLUE);
-        waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-        addEntity(waterworldText);
-        var startButton = new StartButton(
-            new Coordinate2D(getWidth() / 2, getHeight() / 2 + 50),
-            this.waterworld
-        );
-        addEntity(startButton);
+  @Override
+  public void setupEntities() {
+    var waterworldText = new TextEntity(
+      new Coordinate2D(getWidth() / 2, getHeight() / 2 - 50),
+      "Waterworld"
+    );
+    waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+    waterworldText.setFill(Color.DARKBLUE);
+    waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+    addEntity(waterworldText);
+    var startButton = new StartButton(
+      new Coordinate2D(getWidth() / 2, getHeight() / 2 + 50),
+      this.waterworld
+    );
+    addEntity(startButton);
 
-        var quitbutton = new QuitButton(
-                new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100),
-                this.waterworld
-        );
-        addEntity(quitbutton);
-    }
+    var quitbutton = new QuitButton(
+      new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100),
+      this.waterworld
+    );
+    addEntity(quitbutton);
+  }
 }

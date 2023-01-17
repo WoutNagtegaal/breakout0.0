@@ -9,14 +9,14 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import java.util.Random;
 
 public class Swordfish extends DynamicSpriteEntity implements SceneBorderCrossingWatcher, Collider {
-    public Swordfish (Coordinate2D location) {
-        super("sprites/swordfish.png", location);
-        setMotion(2, 270d);
-    }
+  public Swordfish (Coordinate2D location) {
+    super("sprites/swordfish.png", location);
+    setMotion(2, 270d);
+  }
 
-    @Override
-    public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
-        setAnchorLocationX(getSceneWidth());
-        setAnchorLocationY(new Random().nextInt((int) getSceneHeight() - 81));
-    }
+  @Override
+  public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+    setAnchorLocationX(getSceneWidth());
+    setAnchorLocationY(new Random().nextInt((int) getSceneHeight() - 81));
+  }
 }

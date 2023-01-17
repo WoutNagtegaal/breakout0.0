@@ -9,37 +9,37 @@ import com.github.hanyaeger.tutorial.entities.text.HealthText;
 
 public class GameLevel extends DynamicScene {
 
-    private HealthText healthText;
-    private Waterworld waterworld;
+  private HealthText healthText;
+  private Waterworld waterworld;
 
-    public GameLevel(Waterworld waterworld) {
-        this.waterworld = waterworld;
-    }
+  public GameLevel(Waterworld waterworld) {
+    this.waterworld = waterworld;
+  }
 
-    @Override
-    public void setupScene() {
-        setBackgroundAudio("audio/waterworld.mp3");
-        setBackgroundImage("backgrounds/background2.jpg");
-        this.healthText = new HealthText(
-            new Coordinate2D(10, 10)
-        );
-    }
+  @Override
+  public void setupScene() {
+    setBackgroundAudio("audio/waterworld.mp3");
+    setBackgroundImage("backgrounds/background2.jpg");
+    this.healthText = new HealthText(
+      new Coordinate2D(10, 10)
+    );
+  }
 
-    @Override
-    public void setupEntities() {
-        var swordfish = new Swordfish(
-            new Coordinate2D(400, 400)
-                );
-        addEntity(swordfish);
+  @Override
+  public void setupEntities() {
+    var swordfish = new Swordfish(
+      new Coordinate2D(400, 400)
+    );
+    addEntity(swordfish);
 
-        var hanny = new Hanny(
-            new Coordinate2D(getWidth() / 2, getHeight() / 2),
-            healthText,
-            waterworld
-        );
-        addEntity(hanny);
+    var hanny = new Hanny(
+      new Coordinate2D(getWidth() / 2, getHeight() / 2),
+      healthText,
+      waterworld
+    );
+    addEntity(hanny);
 
-        addEntity(healthText);
+    addEntity(healthText);
 
-    }
+  }
 }

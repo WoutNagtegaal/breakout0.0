@@ -15,30 +15,30 @@ import javafx.scene.text.FontWeight;
 
 public class GameOverButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
-    private Waterworld waterworld;
+  private Waterworld waterworld;
 
-    public GameOverButton(Coordinate2D location, Waterworld waterworld) {
-        super(location, "Play again");
-        setFill(Color.PURPLE);
-        setFont(Font.font("Roboto", FontWeight.BOLD, 30));
-        setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        this.waterworld = waterworld;
-    }
+  public GameOverButton(Coordinate2D location, Waterworld waterworld) {
+    super(location, "Play again");
+    setFill(Color.PURPLE);
+    setFont(Font.font("Roboto", FontWeight.BOLD, 30));
+    setAnchorPoint(AnchorPoint.CENTER_CENTER);
+    this.waterworld = waterworld;
+  }
 
-    @Override
-    public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        waterworld.setActiveScene(0);
-    }
+  @Override
+  public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+    waterworld.setActiveScene(0);
+  }
 
-    @Override
-    public void onMouseEntered() {
-        setFill(Color.VIOLET);
-        setCursor(Cursor.HAND);
-    }
+  @Override
+  public void onMouseEntered() {
+    setFill(Color.VIOLET);
+    setCursor(Cursor.HAND);
+  }
 
-    @Override
-    public void onMouseExited() {
-        setFill(Color.PURPLE);
-        setCursor(Cursor.DEFAULT);
-    }
+  @Override
+  public void onMouseExited() {
+    setFill(Color.PURPLE);
+    setCursor(Cursor.DEFAULT);
+  }
 }

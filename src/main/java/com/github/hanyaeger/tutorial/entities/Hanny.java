@@ -18,66 +18,66 @@ import java.util.Set;
 
 public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
-    private HealthText healthText;
-    private int health = 3;
-    private Waterworld waterworld;
+  private HealthText healthText;
+  private int health = 3;
+  private Waterworld waterworld;
 
-    public Hanny(Coordinate2D location, HealthText healthText, Waterworld waterworld) {
-        super("sprites/hanny.png", location, new Size(20, 40), 1, 2);
-        setGravityConstant(0.005);
-        setFrictionConstant(0.04);
+  public Hanny(Coordinate2D location, HealthText healthText, Waterworld waterworld) {
+    super("sprites/hanny.png", location, new Size(20, 40), 1, 2);
+    setGravityConstant(0.005);
+    setFrictionConstant(0.04);
 
-        this.healthText = healthText;
-        this.waterworld = waterworld;
-        healthText.setHealthText(health);
+    this.healthText = healthText;
+    this.waterworld = waterworld;
+    healthText.setHealthText(health);
+  }
+
+  @Override
+  public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+    if(pressedKeys.contains(KeyCode.LEFT)) {
+      setMotion(3, 270d);
+      setCurrentFrameIndex(0);
+    } else if (pressedKeys.contains(KeyCode.RIGHT)) {
+      setMotion(3, 90);
+      setCurrentFrameIndex(1);
+    } else if (pressedKeys.contains(KeyCode.UP)) {
+      setMotion(3, 180);
+    } else if (pressedKeys.contains(KeyCode.DOWN)) {
+      setMotion(3, 0);
     }
+  }
 
-    @Override
-    public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-        if(pressedKeys.contains(KeyCode.LEFT)) {
-            setMotion(3, 270d);
-            setCurrentFrameIndex(0);
-        } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setMotion(3, 90);
-            setCurrentFrameIndex(1);
-        } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotion(3, 180);
-        } else if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotion(3, 0);
-        }
+  @Override
+  public void notifyBoundaryTouching(SceneBorder border) {
+    setSpeed(0);
+    switch (border) {
+      case TOP:
+        setAnchorLocationY(1);
+        break;
+      case BOTTOM:
+        setAnchorLocationY(getSceneHeight() - getHeight() - 1);
+        break;
+      case LEFT:
+        setAnchorLocationX(1);
+        break;
+      case RIGHT:
+        setAnchorLocationX(getSceneWidth() - getWidth() - 1);
     }
+  }
 
-    @Override
-    public void notifyBoundaryTouching(SceneBorder border) {
-        setSpeed(0);
-        switch (border) {
-            case TOP:
-                setAnchorLocationY(1);
-                break;
-            case BOTTOM:
-                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-                break;
-            case LEFT:
-                setAnchorLocationX(1);
-                break;
-            case RIGHT:
-                setAnchorLocationX(getSceneWidth() - getWidth() - 1);
-        }
+  @Override
+  public void onCollision(Collider collider) {
+    setAnchorLocation(
+      new Coordinate2D(
+        new Random().nextInt((int)(getSceneWidth() - getWidth())),
+        new Random().nextInt((int)(getSceneHeight() - getHeight()))
+      )
+    );
+
+    health--;
+    if(health <= 0) {
+      waterworld.setActiveScene(2);
     }
-
-    @Override
-    public void onCollision(Collider collider) {
-        setAnchorLocation(
-                new Coordinate2D(
-                        new Random().nextInt((int)(getSceneWidth() - getWidth())),
-                        new Random().nextInt((int)(getSceneHeight() - getHeight()))
-                )
-        );
-
-        health--;
-        if(health <= 0) {
-            waterworld.setActiveScene(2);
-        }
-        healthText.setHealthText(health);
-    }
+    healthText.setHealthText(health);
+  }
 }
