@@ -2,13 +2,19 @@ package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.Hanny;
 import com.github.hanyaeger.tutorial.entities.swordfish.Swordfish;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 
 public class GameLevel extends DynamicScene {
 
-    HealthText healthText;
+    private HealthText healthText;
+    private Waterworld waterworld;
+
+    public GameLevel(Waterworld waterworld) {
+        this.waterworld = waterworld;
+    }
 
     @Override
     public void setupScene() {
@@ -28,7 +34,8 @@ public class GameLevel extends DynamicScene {
 
         var hanny = new Hanny(
             new Coordinate2D(getWidth() / 2, getHeight() / 2),
-            healthText
+            healthText,
+            waterworld
         );
         addEntity(hanny);
 
