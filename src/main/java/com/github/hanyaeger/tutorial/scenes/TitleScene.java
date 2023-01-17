@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.entities.buttons.QuitButton;
 import com.github.hanyaeger.tutorial.entities.buttons.StartButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -39,5 +40,11 @@ public class TitleScene extends StaticScene {
             this.waterworld
         );
         addEntity(startButton);
+
+        var quitbutton = new QuitButton(
+                new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100),
+                this.waterworld
+        );
+        addEntity(quitbutton);
     }
 }
