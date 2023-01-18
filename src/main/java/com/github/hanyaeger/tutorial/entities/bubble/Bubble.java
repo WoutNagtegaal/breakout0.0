@@ -8,6 +8,7 @@ import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import com.github.hanyaeger.tutorial.entities.map.Coral;
 
 public class Bubble extends DynamicCircleEntity implements Collided, Collider,SceneBorderCrossingWatcher {
   public Bubble(Coordinate2D location, double speed) {
@@ -21,6 +22,9 @@ public class Bubble extends DynamicCircleEntity implements Collided, Collider,Sc
 
   @Override
   public void onCollision(Collider collider) {
+    if(collider instanceof Coral) {
+      return;
+    }
     var popSound = new SoundClip("audio/pop.mp3");
     popSound.play();
 

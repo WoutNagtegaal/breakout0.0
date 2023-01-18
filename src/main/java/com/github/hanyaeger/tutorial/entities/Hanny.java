@@ -11,6 +11,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.bubble.AirBubble;
+import com.github.hanyaeger.tutorial.entities.map.Coral;
 import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import javafx.scene.input.KeyCode;
@@ -80,6 +81,8 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBord
     if(collider instanceof AirBubble) {
       bubblesPopped++;
       bubblesPoppedText.setBubblesPoppedText(bubblesPopped);
+    } else if (collider instanceof Coral) {
+      setSpeed(0);
     } else {
       setAnchorLocation(
         new Coordinate2D(
