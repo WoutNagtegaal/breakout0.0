@@ -1,17 +1,22 @@
 package com.github.hanyaeger.tutorial.entities.swordfish;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import java.util.Random;
 
-public class Swordfish extends DynamicSpriteEntity implements SceneBorderCrossingWatcher, Collider {
-  public Swordfish (Coordinate2D location) {
-    super("sprites/swordfish.png", location);
+public class Swordfish extends DynamicCompositeEntity implements SceneBorderCrossingWatcher {
+  public Swordfish(Coordinate2D location) {
+    super(location);
     setMotion(2, 270d);
+  }
+
+  @Override
+  protected void setupEntities() {
+    addEntity(new SwordfishSprite(new Coordinate2D(0, 0)));
+    addEntity(new SwordfishHitbox(new Coordinate2D(0, 39)));
   }
 
   @Override
