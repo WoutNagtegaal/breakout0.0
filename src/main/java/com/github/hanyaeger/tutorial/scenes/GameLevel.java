@@ -7,6 +7,7 @@ import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.Hanny;
 import com.github.hanyaeger.tutorial.entities.Sharky;
 import com.github.hanyaeger.tutorial.entities.swordfish.Swordfish;
+import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.spawners.BubbleSpawner;
 
@@ -30,6 +31,10 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
       new Coordinate2D(10, 10)
     );
 
+    var bubblesPoppedText = new BubblesPoppedText(
+      new Coordinate2D(10, 50)
+    );
+
     var swordfish = new Swordfish(
       new Coordinate2D(400, 400)
     );
@@ -38,11 +43,13 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
     var hanny = new Hanny(
       new Coordinate2D(getWidth() / 2, getHeight() / 2),
       healthText,
+      bubblesPoppedText,
       waterworld
     );
     addEntity(hanny);
 
     addEntity(healthText);
+    addEntity(bubblesPoppedText);
 
     var sharky = new Sharky(
       new Coordinate2D(50, 100)
