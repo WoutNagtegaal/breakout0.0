@@ -13,7 +13,7 @@ public class Waterworld extends YaegerGame {
 
     @Override
     public void setupGame() {
-        setGameTitle("Waterworld");
+        setGameTitle("Konkey Dong");
         setSize(new Size(800, 600));
     }
 
