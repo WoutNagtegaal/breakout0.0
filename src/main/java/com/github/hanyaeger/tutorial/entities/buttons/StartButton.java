@@ -19,7 +19,7 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
 
   public StartButton(Coordinate2D initialLocation, BreakOutGame breakOutGame) {
     super(initialLocation, "Play game");
-    setFill(Color.PURPLE);
+    setFill(Color.RED);
     setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     setAnchorPoint(AnchorPoint.CENTER_CENTER);
     this.breakOutGame = breakOutGame;
@@ -38,7 +38,7 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
 
   @Override
   public void onMouseExited() {
-    setFill(Color.PURPLE);
+    setFill(Color.RED);
     setCursor(Cursor.DEFAULT);
   }
 }

@@ -19,7 +19,7 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
   public QuitButton(Coordinate2D initialLocation, BreakOutGame breakOutGame) {
     super(initialLocation, "Quit game");
-    setFill(Color.PURPLE);
+    setFill(Color.RED);
     setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     setAnchorPoint(AnchorPoint.CENTER_CENTER);
     this.breakOutGame = breakOutGame;
@@ -38,7 +38,7 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
   @Override
   public void onMouseExited() {
-    setFill(Color.PURPLE);
+    setFill(Color.RED);
     setCursor(Cursor.DEFAULT);
   }
 }

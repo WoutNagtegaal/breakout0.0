@@ -32,7 +32,7 @@ public class TitleScene extends StaticScene {
       "Break Out 0.0"
     );
     waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-    waterworldText.setFill(Color.DARKBLUE);
+    waterworldText.setFill(Color.WHITE);
     waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
     addEntity(waterworldText);
     var startButton = new StartButton(
