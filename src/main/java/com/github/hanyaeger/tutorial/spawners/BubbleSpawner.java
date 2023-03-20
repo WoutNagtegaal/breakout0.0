@@ -2,8 +2,6 @@ package com.github.hanyaeger.tutorial.spawners;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
-import com.github.hanyaeger.tutorial.entities.bubble.AirBubble;
-import com.github.hanyaeger.tutorial.entities.bubble.PoisonBubble;
 
 import java.util.Random;
 
@@ -21,9 +19,9 @@ public class BubbleSpawner extends EntitySpawner {
   @Override
   protected void spawnEntities() {
     if(new Random().nextInt(10) < 4) {
-      spawn(new PoisonBubble(randomLocation(), 2));
+      //spawn(new PoisonBubble(randomLocation(), 2));
     } else {
-      spawn(new AirBubble(randomLocation(), 2));
+      //spawn(new AirBubble(randomLocation(), 2));
     }
   }
 
