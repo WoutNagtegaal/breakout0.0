@@ -15,7 +15,7 @@ import javafx.scene.text.FontWeight;
 
 public class QuitButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
-  private BreakOutGame breakOutGame;
+  private final BreakOutGame breakOutGame;
 
   public QuitButton(Coordinate2D initialLocation, BreakOutGame breakOutGame) {
     super(initialLocation, "Quit game");

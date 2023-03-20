@@ -13,7 +13,7 @@ import javafx.scene.text.FontWeight;
 
 public class TitleScene extends StaticScene {
 
-  private BreakOutGame breakOutGame;
+  private final BreakOutGame breakOutGame;
 
   public TitleScene(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
