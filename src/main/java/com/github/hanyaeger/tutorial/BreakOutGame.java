@@ -6,14 +6,14 @@ import com.github.hanyaeger.tutorial.scenes.GameLevel;
 import com.github.hanyaeger.tutorial.scenes.GameOverScene;
 import com.github.hanyaeger.tutorial.scenes.TitleScene;
 
-public class Waterworld extends YaegerGame {
+public class BreakOutGame extends YaegerGame {
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void setupGame() {
-        setGameTitle("Konkey Dong");
+        setGameTitle("Break-Out 0.0");
         setSize(new Size(800, 600));
     }
 

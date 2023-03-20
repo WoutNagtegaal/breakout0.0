@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Hanny;
 import com.github.hanyaeger.tutorial.entities.Sharky;
 import com.github.hanyaeger.tutorial.entities.map.CoralTileMap;
@@ -15,10 +15,10 @@ import com.github.hanyaeger.tutorial.spawners.BubbleSpawner;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
-  private Waterworld waterworld;
+  private BreakOutGame breakOutGame;
 
-  public GameLevel(Waterworld waterworld) {
-    this.waterworld = waterworld;
+  public GameLevel(BreakOutGame breakOutGame) {
+    this.breakOutGame = breakOutGame;
   }
 
   @Override
@@ -46,7 +46,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
       new Coordinate2D(getWidth() / 2, getHeight() / 2),
       healthText,
       bubblesPoppedText,
-      waterworld
+            breakOutGame
     );
     addEntity(hanny);
 

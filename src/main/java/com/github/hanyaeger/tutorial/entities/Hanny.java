@@ -9,7 +9,7 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.bubble.AirBubble;
 import com.github.hanyaeger.tutorial.entities.map.Coral;
 import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
@@ -22,19 +22,19 @@ import java.util.Set;
 public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher,
   Newtonian, Collided, Collider {
 
-  private Waterworld waterworld;
+  private BreakOutGame breakOutGame;
   private HealthText healthText;
   private BubblesPoppedText bubblesPoppedText;
   private int health = 3;
   private int bubblesPopped = 0;
 
   public Hanny(Coordinate2D location, HealthText healthText,
-               BubblesPoppedText bubblesPoppedText, Waterworld waterworld) {
+               BubblesPoppedText bubblesPoppedText, BreakOutGame breakOutGame) {
     super("sprites/hanny.png", location, new Size(20, 40), 1, 2);
     setGravityConstant(0.005);
     setFrictionConstant(0.04);
 
-    this.waterworld = waterworld;
+    this.breakOutGame = breakOutGame;
 
     this.healthText = healthText;
     healthText.setHealthText(health);
@@ -93,7 +93,7 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBord
 
       health--;
       if (health <= 0) {
-        waterworld.setActiveScene(2);
+        breakOutGame.setActiveScene(2);
       }
       healthText.setHealthText(health);
     }

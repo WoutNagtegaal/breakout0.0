@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
-import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.buttons.GameOverButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -12,10 +12,10 @@ import javafx.scene.text.FontWeight;
 
 public class GameOverScene extends StaticScene {
 
-  private Waterworld waterworld;
+  private BreakOutGame breakOutGame;
 
-  public GameOverScene(Waterworld waterworld) {
-    this.waterworld = waterworld;
+  public GameOverScene(BreakOutGame breakOutGame) {
+    this.breakOutGame = breakOutGame;
   }
 
   @Override
@@ -37,7 +37,7 @@ public class GameOverScene extends StaticScene {
 
     var restartButton = new GameOverButton(
       new Coordinate2D(getWidth() / 2, getHeight() / 2 + 50),
-      this.waterworld
+      this.breakOutGame
     );
     addEntity(restartButton);
   }
