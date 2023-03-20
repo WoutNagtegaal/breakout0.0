@@ -29,7 +29,7 @@ public class TitleScene extends StaticScene {
   public void setupEntities() {
     var waterworldText = new TextEntity(
       new Coordinate2D(getWidth() / 2, getHeight() / 2 - 50),
-      "Waterworld"
+      "Break Out 0.0"
     );
     waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
     waterworldText.setFill(Color.DARKBLUE);
