@@ -13,7 +13,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderCrossingWatch
 
     public Bal(BreakOutGame breakOutGame) {
 //        super("sprites/ufobalk.png", location, new Size(800, 40));
-        super("sprites/bal.png", new Coordinate2D(400, 400), new Size(10, 10));
+        super("sprites/bal.png", new Coordinate2D(400, 400), new Size(50, 50));
         int location = 1;
 
         this.breakOutGame = breakOutGame;

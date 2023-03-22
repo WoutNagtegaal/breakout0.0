@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
@@ -23,11 +24,15 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
   @Override
   public void setupEntities() {
-      var hanny = new SpelerBalk(
+    var spelerBalk = new SpelerBalk(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
             breakOutGame
     );
-    addEntity(hanny);
+    addEntity(spelerBalk);
+
+    Bal bal = new Bal(breakOutGame);
+
+    addEntity(bal);
   }
 
   @Override
