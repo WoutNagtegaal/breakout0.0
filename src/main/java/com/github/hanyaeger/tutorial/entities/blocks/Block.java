@@ -1,4 +1,4 @@
-package com.github.hanyaeger.tutorial.entities.blokken;
+package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -14,7 +14,7 @@ public class Block extends DynamicSpriteEntity {
     public Coordinate2D position;
 
     public Block(BreakOutGame breakOutGame, Coordinate2D position, int color) {
-        super("sprites/swordfish.png", position, new Size(BLOCK_WIDTH, BLOCK_HEIGHT));
+        super("sprites/enemy_1.png", position, new Size(BLOCK_WIDTH, BLOCK_HEIGHT));
         this.breakOutGame = breakOutGame;
         this.color = color;
     }

@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.entities.blokken.Block;
+import com.github.hanyaeger.tutorial.entities.blocks.Block;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
