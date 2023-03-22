@@ -81,5 +81,13 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public void stuiter(double hoek) {
         setDirection(hoek);
     }
+
+    public void bepaalStuiter() {
+        if(gaatNaarLinks()) {
+            stuiter(135);
+        } else {
+            stuiter(225);
+        }
+    }
 }
 
