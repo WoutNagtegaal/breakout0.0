@@ -54,6 +54,13 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
         setAnchorLocationX(getSceneWidth() - getWidth() - 1);
     }
   }
+  public double getHeight() {
+    return getHeight();
+  }
+
+  public Coordinate2D getYlocation() {
+    return getLocationInScene();
+  }
 
   @Override
   public void onCollision(Collider collider) {

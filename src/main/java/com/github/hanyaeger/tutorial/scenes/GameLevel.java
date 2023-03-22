@@ -23,7 +23,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
   @Override
   public void setupEntities() {
-        var hanny = new SpelerBalk(
+      var hanny = new SpelerBalk(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
             breakOutGame
     );
