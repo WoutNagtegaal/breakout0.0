@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 
-public class Block extends DynamicSpriteEntity implements Collided {
+public class Block extends DynamicSpriteEntity implements Collided, Collider {
     private final BreakOutGame breakOutGame;
     private static final int BLOCK_WIDTH = 200;
     private static int BLOCK_HEIGHT = 100;

@@ -9,8 +9,9 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.entities.blocks.Block;
 
-public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider {
+public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
     private final BreakOutGame breakOutGame;
     private int grootte = 10;
 
@@ -82,11 +83,18 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         setDirection(hoek);
     }
 
-    public void bepaalStuiter() {
-        if(gaatNaarLinks()) {
-            stuiter(135);
-        } else {
-            stuiter(225);
+
+    @Override
+    public void onCollision(Collider collider) {
+        if(collider instanceof SpelerBalk) {
+            if(gaatNaarLinks()) {
+                stuiter(135);
+            } else {
+                stuiter(225);
+            }
+        }
+        if(collider instanceof Block) {
+            stuiter(0);
         }
     }
 }
