@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.entities.blokken.Block;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
@@ -31,8 +32,10 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     addEntity(spelerBalk);
 
     Bal bal = new Bal(breakOutGame);
-
     addEntity(bal);
+
+    Block block = new Block(breakOutGame, new Coordinate2D(15, 100), 111111);
+    addEntity(block);
   }
 
   @Override
