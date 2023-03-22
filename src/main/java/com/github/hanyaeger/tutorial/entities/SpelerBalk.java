@@ -55,7 +55,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
     }
   }
   public double getHeight() {
-    return getHeight();
+    return super.getHeight();
   }
 
   public Coordinate2D getYlocation() {
