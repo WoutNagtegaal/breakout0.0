@@ -5,10 +5,10 @@ import com.github.hanyaeger.api.scenes.TileMap;
 public class CoralTileMap extends TileMap {
   @Override
   public void setupEntities() {
-    addEntity(1, Coral.class, "sprites/coral1.png");
-    addEntity(2, Coral.class, "sprites/coral2.png");
-    addEntity(3, Coral.class, "sprites/coral3.png");
-    addEntity(4, Coral.class, "sprites/coral4.png");
+    addEntity(1, Coral.class, "sprites/enemy_2.png");
+    addEntity(2, Coral.class, "sprites/enemy_3.png");
+    addEntity(3, Coral.class, "sprites/enemy_4.png");
+    addEntity(4, Coral.class, "sprites/enemy_5.png");
   }
 
   @Override
