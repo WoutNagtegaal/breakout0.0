@@ -35,7 +35,12 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     addEntity(bal);
 
     Block block = new Block(breakOutGame, new Coordinate2D(15, 100));
-    addEntity(block);
+    //addEntity(block);
+    for(int i = 0; i < 10; i++) {
+      for(int j = 0; j < 3; j++){
+        addEntity(new Block(breakOutGame, new Coordinate2D(15 + 100 * i, 15 + 125 * j)));
+      }
+    }
   }
 
   @Override
