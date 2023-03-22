@@ -29,9 +29,9 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   @Override
   public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
     if(pressedKeys.contains(KeyCode.LEFT)) {
-      setMotion(3, 270d);
+      setMotion(5, 270d);
     } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-      setMotion(3, 90);
+      setMotion(5, 90);
     } else {
       setSpeed(0);
     }
@@ -65,4 +65,5 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   @Override
   public void onCollision(Collider collider) {
   }
+
 }
