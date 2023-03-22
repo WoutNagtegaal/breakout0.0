@@ -2,11 +2,12 @@ package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 
-public class Block extends DynamicSpriteEntity {
+public class Block extends DynamicSpriteEntity implements Collided {
     private final BreakOutGame breakOutGame;
     private static final int BLOCK_WIDTH = 500;
     private static int BLOCK_HEIGHT = 200;
@@ -19,6 +20,8 @@ public class Block extends DynamicSpriteEntity {
         this.color = color;
     }
 
+    @Override
     public void onCollision(Collider collider) {
+        remove();
     }
 }
