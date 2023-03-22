@@ -65,7 +65,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   @Override
   public void onCollision(Collider collider) {
     if(collider instanceof Bal) {
-      //((Bal)collider).stuiter(180);
+      ((Bal)collider).stuiter(135);
     }
   }
 
