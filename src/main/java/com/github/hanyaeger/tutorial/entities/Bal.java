@@ -51,6 +51,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 setAnchorLocationY(getSceneHeight() - getHeight() - 1);
                 */
                  resetBal();
+                 //breakOutGame.setActiveScene(2);
             }
             case LEFT -> {
                 if(gaatNaarBoven()) {
@@ -94,8 +95,15 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             }
         }
         if(collider instanceof Block) {
-            stuiter(0);
+            getAnchorLocation().getX();
+            if(gaatNaarLinks()) {
+                stuiter(45);
+            } else {
+                stuiter(315);
+            }
+
         }
+        getAnchorLocation().getX();
     }
 }
 
