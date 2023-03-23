@@ -10,8 +10,8 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 
 public class Block extends DynamicSpriteEntity implements Collided, Collider {
     private final BreakOutGame breakOutGame;
-    private static final int BLOCK_WIDTH = 200;
-    private static int BLOCK_HEIGHT = 100;
+    private static final int BLOCK_WIDTH = 42;
+    private static int BLOCK_HEIGHT = 37;
     public Coordinate2D position;
     SoundClip explosion = new SoundClip("audio/explosion.mp3");
 
