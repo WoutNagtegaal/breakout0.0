@@ -90,8 +90,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     @Override
     public void onCollision(Collider collider) {
         if(collider instanceof SpelerBalk) {
-            System.out.println(spelerBalk.getWidth() + " " + spelerBalk.getX() + " " + getX());
-
             if(getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
                 stuiter(135);
             } else {
