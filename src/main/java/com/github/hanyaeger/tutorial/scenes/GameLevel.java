@@ -31,7 +31,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     );
     addEntity(spelerBalk);
 
-    Bal bal = new Bal(breakOutGame);
+    Bal bal = new Bal(breakOutGame, spelerBalk);
     addEntity(bal);
 
     Block block = new Block(breakOutGame, new Coordinate2D(15, 100));

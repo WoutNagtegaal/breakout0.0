@@ -35,6 +35,8 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
     } else {
       setSpeed(0);
     }
+    //System.out.println(getX());
+
   }
 
   @Override
@@ -66,4 +68,9 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   public void onCollision(Collider collider) {
 
   }
+
+  public double getX() {
+    return getAnchorLocation().getX();
+  }
+
 }

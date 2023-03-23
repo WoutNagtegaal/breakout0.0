@@ -14,13 +14,15 @@ import com.github.hanyaeger.tutorial.entities.blocks.Block;
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
     private final BreakOutGame breakOutGame;
     private int grootte = 10;
+    private SpelerBalk spelerBalk;
 
-    public Bal(BreakOutGame breakOutGame) {
+    public Bal(BreakOutGame breakOutGame, SpelerBalk balk) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(400, 400), new Size(50, 50));
         setMotion(5, 45);
 
         this.breakOutGame = breakOutGame;
+        this.spelerBalk = balk;
     }
 
     public void resetBal() {
@@ -88,11 +90,21 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     @Override
     public void onCollision(Collider collider) {
         if(collider instanceof SpelerBalk) {
+            System.out.println(spelerBalk.getWidth() + " " + spelerBalk.getX() + " " + getX());
+
+            if(getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
+                stuiter(135);
+            } else {
+                stuiter(225);
+            }
+            /*
             if(gaatNaarLinks()) {
                 stuiter(135);
             } else {
                 stuiter(225);
             }
+
+             */
         }
         if(collider instanceof Block) {
             getAnchorLocation().getX();
@@ -101,9 +113,11 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             } else {
                 stuiter(315);
             }
-
         }
-        getAnchorLocation().getX();
+    }
+
+    public double getX() {
+        return getAnchorLocation().getX();
     }
 }
 
