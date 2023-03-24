@@ -20,7 +20,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
   @Override
   public void setupScene() {
-//    setBackgroundAudio("audio/gamemusic.mp3");
+    setBackgroundAudio("audio/gamemusic.mp3");
     setBackgroundImage("backgrounds/game_background.jpg");
   }
 
@@ -35,10 +35,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     Bal bal = new Bal(breakOutGame, spelerBalk);
     addEntity(bal);
 
-//    Block block = new Block(breakOutGame, new Coordinate2D(15, 100));
-//    addEntity(block);
     for(int i = 0; i < 10; i++) {
-      for(int j = 0; j < 3; j++){
+      for(int j = 0; j < 3; j++) {
         addEntity(new Block(breakOutGame, new Coordinate2D(15 + 100 * i, 15 + 125 * j)));
       }
     }
@@ -51,6 +49,6 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
   @Override
   public void setupTileMaps() {
-//    addTileMap(new FirstLevelMap());
+    //addTileMap(new FirstLevelMap());
   }
 }

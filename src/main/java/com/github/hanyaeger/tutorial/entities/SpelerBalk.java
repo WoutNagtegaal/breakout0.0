@@ -73,4 +73,8 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
     return getAnchorLocation().getX();
   }
 
+  public double getY() {
+    return getAnchorLocation().getY();
+  }
+
 }

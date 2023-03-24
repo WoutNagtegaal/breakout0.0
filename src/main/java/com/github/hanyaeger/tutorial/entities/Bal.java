@@ -4,7 +4,6 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
@@ -13,16 +12,21 @@ import com.github.hanyaeger.tutorial.entities.blocks.Block;
 
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
     private final BreakOutGame breakOutGame;
-    private int grootte = 10;
-    private SpelerBalk spelerBalk;
+    private final int GROOTTE = 50;
+    private final SpelerBalk spelerBalk;
+    private boolean isVastgehouden;
 
     public Bal(BreakOutGame breakOutGame, SpelerBalk balk) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(400, 400), new Size(50, 50));
+
         setMotion(5, 45);
 
         this.breakOutGame = breakOutGame;
         this.spelerBalk = balk;
+        this.isVastgehouden = true;
+
+
     }
 
     public void resetBal() {
@@ -44,14 +48,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 setAnchorLocationY(1);
             }
             case BOTTOM -> {
-                /*
-                if(gaatNaarLinks()) {
-                    stuiter(135);
-                } else {
-                    stuiter(225);
-                }
-                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-                */
                  resetBal();
                  //breakOutGame.setActiveScene(2);
             }
@@ -86,25 +82,15 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         setDirection(hoek);
     }
 
-
     @Override
     public void onCollision(Collider collider) {
         if(collider instanceof SpelerBalk) {
-            if(getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
+            if (getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
                 stuiter(135);
             } else {
                 stuiter(225);
             }
-            /*
-            if(gaatNaarLinks()) {
-                stuiter(135);
-            } else {
-                stuiter(225);
-            }
-
-             */
-        }
-        if(collider instanceof Block) {
+        }else if(collider instanceof Block) {
             getAnchorLocation().getX();
             if(gaatNaarLinks()) {
                 stuiter(45);
@@ -114,8 +100,12 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         }
     }
 
+
     public double getX() {
         return getAnchorLocation().getX();
     }
-}
 
+    public double getY() {
+        return getAnchorLocation().getY();
+    }
+}

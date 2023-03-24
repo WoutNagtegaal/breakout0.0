@@ -28,4 +28,8 @@ public class Block extends DynamicSpriteEntity implements Collided, Collider {
     public double getX() {
         return getAnchorLocation().getX();
     }
+
+    public double getY() {
+        return getAnchorLocation().getY();
+    }
 }
