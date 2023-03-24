@@ -15,35 +15,44 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     private final int GROOTTE = 50;
     private final SpelerBalk spelerBalk;
     private boolean isVastgehouden;
+    public final double SPEED = 5;
+
+    public final static double NORTH = 180;
+    public final static double SOUTH = 0;
+    public final static double EAST = 90;
+    public final static double WEST = 270;
+    public final static double NORTH_EAST = 135;
+    public final static double SOUTH_EAST = 45;
+    public final static double NORTH_WEST = 225;
+    public final static double SOUTH_WEST = 315;
+    public double startDirection = SOUTH_WEST;
 
     public Bal(BreakOutGame breakOutGame, SpelerBalk balk) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(400, 400), new Size(50, 50));
 
-        setMotion(5, 45);
+        setMotion(SPEED, startDirection);
 
         this.breakOutGame = breakOutGame;
         this.spelerBalk = balk;
         this.isVastgehouden = true;
-
-
     }
 
     public void resetBal() {
         setAnchorLocationX(400);
         setAnchorLocationY(400);
-        setDirection(45);
+        setDirection(startDirection);
     }
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-
+        //Controleerd tegen welke rand is gebosts en stuitert de bal
         switch (sceneBorder) {
             case TOP -> {
-                if(gaatNaarLinks()) {
-                    stuiter(45);
+                if(gaatNaarRechts()) {
+                    stuiter(SOUTH_EAST);
                 } else {
-                    stuiter(315);
+                    stuiter(SOUTH_WEST);
                 }
                 setAnchorLocationY(1);
             }
@@ -53,29 +62,29 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             }
             case LEFT -> {
                 if(gaatNaarBoven()) {
-                    stuiter(135);
+                    stuiter(NORTH_EAST);
                 } else {
-                    stuiter(45);
+                    stuiter(SOUTH_EAST);
                 }
                 setAnchorLocationX(1);
             }
             case RIGHT -> {
                 if(gaatNaarBoven()) {
-                    stuiter(225);
+                    stuiter(NORTH_WEST);
                 } else {
-                    stuiter(315);
+                    stuiter(SOUTH_WEST);
                 }
                 setAnchorLocationX(getSceneWidth() - getWidth() - 1);
             }
         }
     }
 
-    boolean gaatNaarLinks() {
-        return getDirection() > 0 && getDirection() < 180;
+    boolean gaatNaarRechts() {
+        return getDirection() > NORTH && getDirection() < SOUTH;
     }
 
     boolean gaatNaarBoven() {
-        return getDirection() > 90 && getDirection() < 270;
+        return getDirection() > EAST && getDirection() < WEST;
     }
 
     public void stuiter(double hoek) {
@@ -84,18 +93,22 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
     @Override
     public void onCollision(Collider collider) {
+        //Bij de balk stuitert de bal naar linksboven wanneer de bal de balk links raakt en naar
+        //rechts wanneer de bal de balk rechts raakt
         if(collider instanceof SpelerBalk) {
             if (getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
-                stuiter(135);
+                stuiter(NORTH_EAST);
             } else {
-                stuiter(225);
+                stuiter(NORTH_WEST);
             }
-        }else if(collider instanceof Block) {
+        }
+        //Bij een blok moet de bal van de zijkant af stuiteren. Dit is nog een tijdelijke versie
+        else if(collider instanceof Block) {
             getAnchorLocation().getX();
-            if(gaatNaarLinks()) {
-                stuiter(45);
+            if(gaatNaarRechts()) {
+                stuiter(SOUTH_EAST);
             } else {
-                stuiter(315);
+                stuiter(SOUTH_WEST);
             }
         }
     }
