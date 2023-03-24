@@ -153,7 +153,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         }
     }
 
-
     public double getX() {
         return getAnchorLocation().getX();
     }
