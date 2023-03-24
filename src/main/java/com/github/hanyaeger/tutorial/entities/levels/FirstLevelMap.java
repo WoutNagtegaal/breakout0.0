@@ -6,11 +6,11 @@ import com.github.hanyaeger.tutorial.entities.blocks.Block;
 public class FirstLevelMap extends TileMap {
     @Override
     public void setupEntities() {
-        addEntity(1, Block.class, "sprites/enemy_1.png");
-        addEntity(2, Block.class, "sprites/enemy_2.png");
-        addEntity(3, Block.class, "sprites/enemy_3.png");
-        addEntity(4, Block.class, "sprites/enemy_4.png");
-        addEntity(5, Block.class, "sprites/enemy_5.png");
+        addEntity(1, Block.class);
+        addEntity(2, Block.class);
+        addEntity(3, Block.class);
+        addEntity(4, Block.class);
+        addEntity(5, Block.class);
     }
 
     @Override
