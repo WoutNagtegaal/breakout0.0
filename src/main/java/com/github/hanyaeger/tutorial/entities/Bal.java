@@ -104,12 +104,17 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         }
         //Bij een blok moet de bal van de zijkant af stuiteren. Beetje rommelige manier, zal nog wel netter kunnen
         else if(collider instanceof Block) {
-            double marge = 10;
+            double marge = 6; //snelheid van bal + 1 deze is nodig omdat de bal 5 pixels in een seconde beweegt en
+            //zonder deze marge kan niet altijd bepaald worden aan welke kant de bal naar binnen is gegaan omdat de bal
+            //al te ver het blok in is gegaan
+
+            //eigenschappen van het blok uitlezen
             double blockX = ((Block) collider).getX();
             double blockY = ((Block) collider).getY();
             double blockWidth = collider.getWidth();
             double blockHeight = collider.getHeight();
 
+            //de linkerkant van het blok
             if(blockX + marge > getX() + getWidth()) {
                 System.out.println("links");
                 if(gaatNaarBoven()) {
@@ -117,6 +122,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 } else {
                     stuiter(SOUTH_WEST);
                 }
+            //de rechterkant van het blok
             } else if(blockX + blockWidth < getX() + marge) {
                 System.out.println("rechts");
                 if(gaatNaarBoven()) {
@@ -124,6 +130,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 } else {
                     stuiter(SOUTH_EAST);
                 }
+            //de bovenkant van het blok
             } else if(blockY + marge > getY() + getHeight()) {
                 System.out.println("boven");
                 if(gaatNaarRechts()) {
@@ -131,6 +138,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 } else {
                     stuiter(NORTH_WEST);
                 }
+            //de onderkant van het block
             } else if(blockY + blockHeight < getY() + marge) {
                 System.out.println("onder");
                 if(gaatNaarRechts()) {
@@ -138,6 +146,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 } else {
                     stuiter(SOUTH_WEST);
                 }
+            //voor het geval ik ergens een domme fout in mijn prachtige berekeningen heb gemaakt
             } else {
                 System.out.println("onbekend");
             }
