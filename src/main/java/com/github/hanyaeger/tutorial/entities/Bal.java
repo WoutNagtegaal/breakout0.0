@@ -15,7 +15,8 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     private final int GROOTTE = 50;
     private final SpelerBalk spelerBalk;
     private boolean isVastgehouden;
-    public final double SPEED = 5;
+    private final double SPEED = 5;
+    private int levens;
 
     public final static double NORTH = 180;
     public final static double SOUTH = 0;
@@ -36,6 +37,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         this.breakOutGame = breakOutGame;
         this.spelerBalk = balk;
         this.isVastgehouden = true;
+        this.levens = 3;
     }
 
     public void resetBal() {
@@ -58,7 +60,10 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             }
             case BOTTOM -> {
                  resetBal();
-                 //breakOutGame.setActiveScene(2);
+                 levens--;
+                 if(levens <= 0) {
+                     breakOutGame.setActiveScene(0);
+                 }
             }
             case LEFT -> {
                 if(gaatNaarBoven()) {

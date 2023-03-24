@@ -27,8 +27,8 @@ public class GameOverScene extends StaticScene {
   @Override
   public void setupEntities() {
     var gameOver = new TextEntity(
-      new Coordinate2D(getWidth() / 2, getHeight() / 2 - 50),
-      "Game Over"
+            new Coordinate2D(getWidth() / 2, getHeight() / 2 - 50),
+            "Game Over"
     );
     gameOver.setAnchorPoint(AnchorPoint.CENTER_CENTER);
     gameOver.setFill(Color.DARKBLUE);
@@ -36,8 +36,8 @@ public class GameOverScene extends StaticScene {
     addEntity(gameOver);
 
     var restartButton = new GameOverButton(
-      new Coordinate2D(getWidth() / 2, getHeight() / 2 + 50),
-      this.breakOutGame
+            new Coordinate2D(getWidth() / 2, getHeight() / 2 + 50),
+            this.breakOutGame
     );
     addEntity(restartButton);
   }

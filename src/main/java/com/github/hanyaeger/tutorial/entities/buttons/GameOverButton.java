@@ -6,8 +6,6 @@ import javafx.scene.input.MouseButton;
 
 public class GameOverButton extends Button {
 
-  private BreakOutGame breakOutGame;
-
   public GameOverButton(Coordinate2D location, BreakOutGame breakOutGame) {
     super(location, breakOutGame, "Play again");
   }
