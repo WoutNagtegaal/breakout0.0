@@ -102,13 +102,44 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 stuiter(NORTH_WEST);
             }
         }
-        //Bij een blok moet de bal van de zijkant af stuiteren. Dit is nog een tijdelijke versie
+        //Bij een blok moet de bal van de zijkant af stuiteren. Beetje rommelige manier, zal nog wel netter kunnen
         else if(collider instanceof Block) {
-            getAnchorLocation().getX();
-            if(gaatNaarRechts()) {
-                stuiter(SOUTH_EAST);
+            double marge = 10;
+            double blockX = ((Block) collider).getX();
+            double blockY = ((Block) collider).getY();
+            double blockWidth = collider.getWidth();
+            double blockHeight = collider.getHeight();
+
+            if(blockX + marge > getX() + getWidth()) {
+                System.out.println("links");
+                if(gaatNaarBoven()) {
+                    stuiter(NORTH_WEST);
+                } else {
+                    stuiter(SOUTH_WEST);
+                }
+            } else if(blockX + blockWidth < getX() + marge) {
+                System.out.println("rechts");
+                if(gaatNaarBoven()) {
+                    stuiter(NORTH_EAST);
+                } else {
+                    stuiter(SOUTH_EAST);
+                }
+            } else if(blockY + marge > getY() + getHeight()) {
+                System.out.println("boven");
+                if(gaatNaarRechts()) {
+                    stuiter(NORTH_EAST);
+                } else {
+                    stuiter(NORTH_WEST);
+                }
+            } else if(blockY + blockHeight < getY() + marge) {
+                System.out.println("onder");
+                if(gaatNaarRechts()) {
+                    stuiter(SOUTH_EAST);
+                } else {
+                    stuiter(SOUTH_WEST);
+                }
             } else {
-                stuiter(SOUTH_WEST);
+                System.out.println("onbekend");
             }
         }
     }
