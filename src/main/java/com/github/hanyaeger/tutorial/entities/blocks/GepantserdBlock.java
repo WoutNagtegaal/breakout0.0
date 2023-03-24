@@ -15,8 +15,7 @@ public class GepantserdBlock extends Block {
     public void onCollision(Collider collider) {
         health--;
         if(health <= 0) {
-            explosion.play();
-            remove();
+            ontplof();
         }
     }
 }

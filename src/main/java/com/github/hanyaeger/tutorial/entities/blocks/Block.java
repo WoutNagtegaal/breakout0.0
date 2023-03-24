@@ -21,6 +21,10 @@ public class Block extends DynamicSpriteEntity implements Collided, Collider {
 
     @Override
     public void onCollision(Collider collider) {
+        ontplof();
+    }
+
+    protected void ontplof() {
         explosion.play();
         remove();
     }
