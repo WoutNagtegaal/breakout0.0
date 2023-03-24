@@ -8,6 +8,7 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.blocks.Block;
+import com.github.hanyaeger.tutorial.entities.levels.FirstLevelMap;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
@@ -19,7 +20,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
   @Override
   public void setupScene() {
-    setBackgroundAudio("audio/gamemusic.mp3");
+//    setBackgroundAudio("audio/gamemusic.mp3");
     setBackgroundImage("backgrounds/game_background.jpg");
   }
 
@@ -34,8 +35,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     Bal bal = new Bal(breakOutGame, spelerBalk);
     addEntity(bal);
 
-    Block block = new Block(breakOutGame, new Coordinate2D(15, 100));
-    //addEntity(block);
+//    Block block = new Block(breakOutGame, new Coordinate2D(15, 100));
+//    addEntity(block);
     for(int i = 0; i < 10; i++) {
       for(int j = 0; j < 3; j++){
         addEntity(new Block(breakOutGame, new Coordinate2D(15 + 100 * i, 15 + 125 * j)));
@@ -50,6 +51,6 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
   @Override
   public void setupTileMaps() {
-    //addTileMap(new CoralTileMap());
+//    addTileMap(new FirstLevelMap());
   }
 }
