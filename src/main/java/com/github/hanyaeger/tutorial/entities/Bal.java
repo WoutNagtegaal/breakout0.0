@@ -80,7 +80,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     }
 
     boolean gaatNaarRechts() {
-        return getDirection() > NORTH && getDirection() < SOUTH;
+        return getDirection() > SOUTH && getDirection() < NORTH;
     }
 
     boolean gaatNaarBoven() {
