@@ -7,21 +7,22 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.entities.Bal;
 
 public class Block extends DynamicSpriteEntity implements Collided, Collider {
-    private final BreakOutGame breakOutGame;
     private static final int BLOCK_WIDTH = 200;
     private static final int BLOCK_HEIGHT = 100;
     SoundClip explosion = new SoundClip("audio/explosion.mp3");
 
-    public Block(BreakOutGame breakOutGame, Coordinate2D position) {
-        super("sprites/enemy_1.png", position, new Size(BLOCK_WIDTH, BLOCK_HEIGHT));
-        this.breakOutGame = breakOutGame;
+    public Block(Coordinate2D position, Size size, String resource) {
+        super(resource, position, size);
     }
 
     @Override
     public void onCollision(Collider collider) {
-        ontplof();
+        if(collider instanceof Bal) {
+            ontplof();
+        }
     }
 
     protected void ontplof() {

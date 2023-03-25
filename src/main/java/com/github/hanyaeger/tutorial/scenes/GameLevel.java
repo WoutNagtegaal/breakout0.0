@@ -1,17 +1,14 @@
 package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.entities.blocks.Block;
-import com.github.hanyaeger.tutorial.entities.blocks.GepantserdBlock;
-import com.github.hanyaeger.tutorial.entities.levels.FirstLevelMap;
+import com.github.hanyaeger.tutorial.entities.blocks.FirstLevelMap;
 
-public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
+public class GameLevel extends DynamicScene implements TileMapContainer {
 
   private final BreakOutGame breakOutGame;
 
@@ -38,18 +35,13 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
     for(int i = 0; i < 15; i++) {
       for(int j = 0; j < 3; j++) {
-        addEntity(new GepantserdBlock(breakOutGame, new Coordinate2D(15 + 100 * i, 15 + 125 * j), 2));
+        //addEntity(new GepantserdBlock(breakOutGame, new Coordinate2D(15 + 100 * i, 15 + 125 * j), 2));
       }
     }
   }
 
   @Override
-  public void setupEntitySpawners() {
-    //addEntitySpawner(new BubbleSpawner(100, getWidth(), getHeight()));
-  }
-
-  @Override
   public void setupTileMaps() {
-    //addTileMap(new FirstLevelMap());
+    addTileMap(new FirstLevelMap());
   }
 }
