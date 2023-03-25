@@ -26,11 +26,11 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public final static double SOUTH_EAST = 45;
     public final static double NORTH_WEST = 225;
     public final static double SOUTH_WEST = 315;
-    public double startDirection = SOUTH_WEST;
+    public double startDirection = SOUTH;
 
-    public Bal(BreakOutGame breakOutGame, SpelerBalk balk) {
+    public Bal(BreakOutGame breakOutGame, SpelerBalk balk, double x, double y) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
-        super("sprites/bal.png", new Coordinate2D(400, 400), new Size(50, 50));
+        super("sprites/bal.png", new Coordinate2D(x, y), new Size(50, 50));
 
         setMotion(SPEED, startDirection);
 
@@ -38,11 +38,12 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         this.spelerBalk = balk;
         this.isVastgehouden = true;
         this.levens = 3;
+
     }
 
     public void resetBal() {
-        setAnchorLocationX(400);
-        setAnchorLocationY(400);
+        setAnchorLocationX(getSceneWidth() / 2);
+        setAnchorLocationY(getSceneHeight() / 2);
         setDirection(startDirection);
     }
 

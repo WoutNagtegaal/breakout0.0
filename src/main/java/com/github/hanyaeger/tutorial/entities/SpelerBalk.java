@@ -17,8 +17,9 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   Collided, Collider {
 
   private final BreakOutGame breakOutGame;
-
-
+  private final double SPEED = 8;
+  private final double LEFT = 270d;
+  private final double RIGHT = 90;
   public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame) {
     super("sprites/ufobalk.png", location, new Size(800, 40));
 
@@ -29,9 +30,9 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   @Override
   public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
     if(pressedKeys.contains(KeyCode.LEFT)) {
-      setMotion(5, 270d);
+      setMotion(SPEED, LEFT);
     } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-      setMotion(5, 90);
+      setMotion(SPEED, RIGHT);
     } else {
       setSpeed(0);
     }
