@@ -38,6 +38,6 @@ public class GameLevel extends DynamicScene implements TileMapContainer {
 
   @Override
   public void setupTileMaps() {
-    addTileMap(new Level2());
+    addTileMap(new Level1());
   }
 }
