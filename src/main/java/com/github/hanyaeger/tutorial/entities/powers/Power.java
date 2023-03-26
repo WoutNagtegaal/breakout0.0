@@ -10,4 +10,8 @@ public abstract class Power extends DynamicSpriteEntity {
     }
 
     abstract void doePowerActie();
+
+    public void dropPower() {
+
+    }
 }
