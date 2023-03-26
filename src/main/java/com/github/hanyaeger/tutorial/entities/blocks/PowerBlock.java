@@ -20,12 +20,15 @@ public class PowerBlock extends Block {
             int power = getRandomPower();
             switch (power) {
                 case 1:
+                    // voeg de nieuwe power-up toe aan het spel
                     System.out.println("Power-up: Extra bal");
                     break;
                 case 2:
+                    // voeg de nieuwe power-up toe aan het spel
                     System.out.println("Power-up: Balk extra breed");
                     break;
                 case 3:
+                    // voeg de nieuwe power-down toe aan het spel
                     System.out.println("Power-down: Balk extra smal");
                     break;
             }

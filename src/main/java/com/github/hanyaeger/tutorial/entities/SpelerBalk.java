@@ -17,11 +17,14 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   Collided, Collider {
 
   private final BreakOutGame breakOutGame;
+  private double breedte = 800;
+  private double hoogte = 40;
   private final double SPEED = 8;
   private final double LEFT = 270d;
   private final double RIGHT = 90;
   public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame) {
-    super("sprites/ufobalk.png", location, new Size(800, 40));
+    super("sprites/ufobalk.png", location, new Size(800, 400));
+    // verander de waardes in new Size() naar de variabelen erboven
 
     this.breakOutGame = breakOutGame;
 
@@ -74,6 +77,14 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   public double getY() {
     return getAnchorLocation().getY();
+  }
+
+  public void setBreedte(double breedte) {
+    this.breedte = breedte;
+  }
+
+  public double getBreedte() {
+    return breedte;
   }
 
 }
