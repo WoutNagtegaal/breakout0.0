@@ -23,7 +23,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   private final double LEFT = 270d;
   private final double RIGHT = 90;
   public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame) {
-    super("sprites/ufobalk.png", location, new Size(800, 400));
+    super("sprites/ufobalk.png", location, new Size(800, 40));
     // verander de waardes in new Size() naar de variabelen erboven
 
     this.breakOutGame = breakOutGame;
