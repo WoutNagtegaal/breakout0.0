@@ -32,9 +32,9 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   @Override
   public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-    if(pressedKeys.contains(KeyCode.LEFT)) {
+    if(pressedKeys.contains(KeyCode.LEFT) || pressedKeys.contains(KeyCode.A)) {
       setMotion(snelheid, LEFT);
-    } else if (pressedKeys.contains(KeyCode.RIGHT)) {
+    } else if (pressedKeys.contains(KeyCode.RIGHT) || pressedKeys.contains(KeyCode.D)) {
       setMotion(snelheid, RIGHT);
     } else {
       setSpeed(0);
