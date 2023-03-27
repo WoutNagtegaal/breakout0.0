@@ -25,6 +25,9 @@ public class Block extends DynamicSpriteEntity implements Collided, Collider {
 
     @Override
     public void onCollision(Collider collider) {
+        if(!(collider instanceof Block)) {
+            System.out.println("brrrr");
+        }
         if(collider instanceof Bal) {
             ontplof();
         }

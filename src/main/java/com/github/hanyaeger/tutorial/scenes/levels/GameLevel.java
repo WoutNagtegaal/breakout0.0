@@ -23,13 +23,15 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
-    this.levens = 3;
   }
 
   @Override
   public void setupScene() {
     setBackgroundAudio("audio/gamemusic.mp3");
     setBackgroundImage("backgrounds/game_background.jpg");
+
+    this.levens = 3;
+    this.aantalBallen = 0;
   }
 
   @Override

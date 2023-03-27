@@ -20,7 +20,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     private final GameLevel level;
     private boolean isVastgehouden;
     private final double SPEED = 5;
-    private int levens;
 
     public final static double NORTH = 180;
     public final static double SOUTH = 0;
@@ -43,7 +42,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         this.breakOutGame = breakOutGame;
         this.spelerBalk = balk;
         this.isVastgehouden = true;
-        this.levens = 3;
         this.level = level;
 
     }
@@ -126,7 +124,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
             //de linkerkant van het blok
             if(blockX + marge > getX() + getWidth()) {
-                System.out.println("links");
                 if(gaatNaarBoven()) {
                     stuiter(NORTH_WEST);
                 } else {
@@ -134,7 +131,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 }
             //de rechterkant van het blok
             } else if(blockX + blockWidth < getX() + marge) {
-                System.out.println("rechts");
                 if(gaatNaarBoven()) {
                     stuiter(NORTH_EAST);
                 } else {
@@ -142,7 +138,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 }
             //de bovenkant van het blok
             } else if(blockY + marge > getY() + getHeight()) {
-                System.out.println("boven");
                 if(gaatNaarRechts()) {
                     stuiter(NORTH_EAST);
                 } else {
@@ -150,15 +145,11 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 }
             //de onderkant van het block
             } else if(blockY + blockHeight < getY() + marge) {
-                System.out.println("onder");
                 if(gaatNaarRechts()) {
                     stuiter(SOUTH_EAST);
                 } else {
                     stuiter(SOUTH_WEST);
                 }
-            //voor het geval ik ergens een domme fout in mijn prachtige berekeningen heb gemaakt
-            } else {
-                System.out.println("onbekend");
             }
         }
     }
