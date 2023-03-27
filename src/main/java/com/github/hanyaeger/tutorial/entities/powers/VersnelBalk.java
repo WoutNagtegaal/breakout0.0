@@ -10,7 +10,7 @@ public class VersnelBalk extends Power {
 
     private final BreakOutGame breakOutGame;
     private final SpelerBalk spelerBalk;
-    private final int VERSNELLING = 100;
+    private final int VERSNELLING = 2;
 
     public VersnelBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
         super(position, size, "Sprites/versnel_balk.png");

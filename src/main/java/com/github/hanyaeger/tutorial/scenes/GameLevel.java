@@ -8,6 +8,11 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.levels.Level3;
+import com.github.hanyaeger.tutorial.entities.powers.InvertControls;
+import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
+import com.github.hanyaeger.tutorial.entities.powers.VerbreedBalk;
+import com.github.hanyaeger.tutorial.entities.powers.VersmalBalk;
+import com.github.hanyaeger.tutorial.entities.powers.VersnelBalk;
 import javafx.scene.input.MouseButton;
 
 public class GameLevel extends DynamicScene implements TileMapContainer, MouseButtonPressedListener {
@@ -36,6 +41,30 @@ public class GameLevel extends DynamicScene implements TileMapContainer, MouseBu
 
     Bal bal = new Bal(breakOutGame, spelerBalk, getWidth() / 2, (getHeight() / 4) * 3);
     addEntity(bal);
+  }
+
+  public void addInvertedControls(InvertControls invertControls) {
+    addEntity(invertControls);
+  }
+
+  public void addExtraBal(ExtraBal extraBal) {
+    addEntity(extraBal);
+  }
+
+  public void addBal(Bal bal) {
+    addEntity(bal);
+  }
+
+  public void addVerbreedBalk(VerbreedBalk verbreedBalk) {
+    addEntity(verbreedBalk);
+  }
+
+  public void addVersmalBalk(VersmalBalk versmalBalk) {
+    addEntity(versmalBalk);
+  }
+
+  public void addVersnelBalk(VersnelBalk versnelBalk) {
+    addEntity(versnelBalk);
   }
 
   @Override
