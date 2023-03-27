@@ -13,12 +13,10 @@ public class GepantserdBlock extends Block {
     }
 
     @Override
-    public void onCollision(Collider collider) {
-        if(collider instanceof Bal) {
-            health--;
-            if (health <= 0) {
-                ontplof();
-            }
+    public void doeHitActie() {
+        health--;
+        if (health <= 0) {
+            ontplof();
         }
     }
 }

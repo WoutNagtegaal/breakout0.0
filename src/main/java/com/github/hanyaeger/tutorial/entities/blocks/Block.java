@@ -29,8 +29,12 @@ public class Block extends DynamicSpriteEntity implements Collided, Collider {
             System.out.println("brrrr");
         }
         if(collider instanceof Bal) {
-            ontplof();
+            doeHitActie();
         }
+    }
+
+    public void doeHitActie() {
+        ontplof();
     }
 
     protected void ontplof() {
