@@ -2,28 +2,28 @@ package com.github.hanyaeger.tutorial.entities.powers;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
-public class ExtraBal extends Power implements Collider{
+public class VergrootBal extends Power {
 
     private final BreakOutGame breakOutGame;
     private final SpelerBalk spelerBalk;
-    private final GameLevel level;
+    private final int VERGROTING = 10;
+    private final Bal bal;
 
-    public ExtraBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
-        super(position, size, "Sprites/extra_bal.png");
+    public VergrootBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level, Bal bal) {
+        super(position, size, "Sprites/vergroot_bal.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
-        this.level = level;
+        this.bal = bal;
     }
 
     void doePowerActie() {
-        level.voegBalToe(getWidth() / 2, (getHeight() / 4) * 2);
+        int huidige_grootte = bal.getGrootte();
+        bal.setGrootte(huidige_grootte + VERGROTING);
+        System.out.println(spelerBalk.getBreedte());
     }
-
 }

@@ -15,7 +15,7 @@ import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
     private final BreakOutGame breakOutGame;
-    private final int GROOTTE = 50;
+    private int grootte = 50;
     private final SpelerBalk spelerBalk;
     private final GameLevel level;
     private boolean isVastgehouden;
@@ -53,7 +53,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-        //Controleerd tegen welke rand is gebosts en stuitert de bal
+        //Controleerd tegen welke rand is gebotst en stuitert de bal
         switch (sceneBorder) {
             case TOP -> {
                 if(gaatNaarRechts()) {
@@ -164,5 +164,13 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
     public double getY() {
         return getAnchorLocation().getY();
+    }
+
+    public int getGrootte() {
+        return grootte;
+    }
+
+    public void setGrootte(int grootte) {
+        this.grootte = grootte;
     }
 }

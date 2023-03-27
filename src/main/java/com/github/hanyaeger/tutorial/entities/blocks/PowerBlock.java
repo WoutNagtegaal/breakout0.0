@@ -2,13 +2,8 @@ package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.entities.Bal;
-import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
-import com.github.hanyaeger.tutorial.entities.powers.InvertControls;
-import com.github.hanyaeger.tutorial.entities.powers.VerbreedBalk;
-import com.github.hanyaeger.tutorial.entities.powers.VersmalBalk;
-import com.github.hanyaeger.tutorial.entities.powers.VersnelBalk;
+import com.github.hanyaeger.tutorial.entities.powers.*;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
@@ -43,14 +38,14 @@ public class PowerBlock extends Block {
                 break;
             case 2:
                 // voeg de nieuwe power-up toe aan het spel
-                VerbreedBalk verbreedBalk = new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
+                VerbreedBalk verbreedBalk = new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
                 level.addVerbreedBalk(verbreedBalk);
                 verbreedBalk.dropPower();
                 System.out.println("Power-up: Balk extra breed");
                 break;
             case 3:
                 // voeg de nieuwe power-down toe aan het spel
-                VersmalBalk versmalBalk = new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
+                VersmalBalk versmalBalk = new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
                 level.addVersmalBalk(versmalBalk);
                 versmalBalk.dropPower();
                 System.out.println("Power-down: Balk extra smal");
@@ -69,8 +64,14 @@ public class PowerBlock extends Block {
                 invertControls.dropPower();
                 System.out.println("Power-down: Inverted controls");
                 break;
+            case 6:
+                // voeg de nieuwe power_up toe aan het spel
+//                VergrootBal vergrootBal = new VergrootBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level, bal);
+//                level.addVergrootBal(vergrootBal);
+//                vergrootBal.dropPower();
+//                System.out.println("Power-up: Vergroot bal");
+//                break;
         }
-//            System.out.println(power);
         ontplof();
     }
 

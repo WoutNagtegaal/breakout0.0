@@ -13,6 +13,8 @@ import com.github.hanyaeger.tutorial.entities.powers.InvertControls;
 import com.github.hanyaeger.tutorial.entities.powers.VerbreedBalk;
 import com.github.hanyaeger.tutorial.entities.powers.VersmalBalk;
 import com.github.hanyaeger.tutorial.entities.powers.VersnelBalk;
+import com.github.hanyaeger.tutorial.entities.powers.VergrootBal;
+//import com.github.hanyaeger.tutorial.entities.powers.VerkleinBal;
 import com.github.hanyaeger.tutorial.entities.text.LevensText;
 
 public abstract class GameLevel extends DynamicScene implements TileMapContainer {
@@ -31,7 +33,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   @Override
   public void setupScene() {
-    setBackgroundAudio("audio/gamemusic.mp3");
+//    setBackgroundAudio("audio/gamemusic.mp3");
     setBackgroundImage("backgrounds/game_background.jpg");
 
     this.levens = 3;
@@ -40,9 +42,10 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   @Override
   public void setupEntities() {
+    double STARTBREEDTE = 800;
     spelerBalk = new SpelerBalk(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
-            breakOutGame
+            breakOutGame, STARTBREEDTE
     );
     addEntity(spelerBalk);
     voegBalToe(getWidth() / 2, (getHeight() / 4) * 3);
@@ -108,6 +111,10 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   public void addVersnelBalk(VersnelBalk versnelBalk) {
     addEntity(versnelBalk);
+  }
+
+  public void addVergrootBal(VergrootBal vergrootBal) {
+    addEntity(vergrootBal);
   }
 
   public void verwijderBlock() {

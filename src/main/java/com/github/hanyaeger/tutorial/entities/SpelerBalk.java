@@ -17,14 +17,16 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   Collided, Collider {
 
   private final BreakOutGame breakOutGame;
-  private double breedte = 800;
-  private double hoogte = 40;
   private double snelheid = 8;
+  public double breedte = 800;
+  public double hoogte = 40;
+  private final double MAX_BREEDTE = 1000;
+  private final double MIN_BREEDTE = 500;
   private final double LEFT = 270d;
   private final double RIGHT = 90;
   private boolean inverted_controls = false;
-  public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame) {
-    super("sprites/ufobalk.png", location, new Size(800, 40));
+  public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame, double breedte) {
+    super("sprites/ufobalk.png", location, new Size(breedte, 40));
     // verander de waardes in new Size() naar de variabelen erboven
 
     this.breakOutGame = breakOutGame;
@@ -89,11 +91,27 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   }
 
   public void setBreedte(double breedte) {
-    this.breedte = breedte;
+    if (breedte > MAX_BREEDTE) {
+      System.out.println("Maximale breedte bereikt");
+      this.breedte = MAX_BREEDTE;
+    } else if (breedte < MIN_BREEDTE) {
+      System.out.println("Minimale breedte bereikt");
+      this.breedte = MIN_BREEDTE;
+    } else {
+      this.breedte = breedte;
+    }
   }
 
   public double getBreedte() {
     return breedte;
+  }
+
+  public void setHoogte(double hoogte) {
+    this.hoogte = hoogte;
+  }
+
+  public double getHoogte() {
+    return hoogte;
   }
 
   public void setSnelheid(double snelheid) {
