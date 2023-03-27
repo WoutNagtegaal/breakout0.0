@@ -64,6 +64,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             case BOTTOM -> {
                  resetBal();
                  levens--;
+                 System.out.println(levens);
                  if(levens <= 0) {
                      breakOutGame.setActiveScene(0);
                  }

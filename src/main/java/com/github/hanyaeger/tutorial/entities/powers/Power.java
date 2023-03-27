@@ -41,6 +41,8 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
     public void notifyBoundaryTouching(SceneBorder border) {
         if (border == SceneBorder.BOTTOM) {
             remove();
+        } else {
+            System.out.println("Power-Up/Down is wannabe mongool");
         }
     }
 }
