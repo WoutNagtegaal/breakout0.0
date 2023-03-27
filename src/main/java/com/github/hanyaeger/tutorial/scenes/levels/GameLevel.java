@@ -6,6 +6,11 @@ import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
+import com.github.hanyaeger.tutorial.entities.powers.InvertControls;
+import com.github.hanyaeger.tutorial.entities.powers.VerbreedBalk;
+import com.github.hanyaeger.tutorial.entities.powers.VersmalBalk;
+import com.github.hanyaeger.tutorial.entities.powers.VersnelBalk;
 
 public abstract class GameLevel extends DynamicScene implements TileMapContainer {
 
@@ -46,6 +51,30 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
       }
     }
     return aantalRuimteschepen;
+  }
+
+  public void addExtraBal(ExtraBal extraBal) {
+    addEntity(extraBal);
+  }
+
+  public void addBal(Bal bal) {
+    addEntity(bal);
+  }
+
+  public void addInvertControls(InvertControls invertControls) {
+    addEntity(invertControls);
+  }
+
+  public void addVerbreedBalk(VerbreedBalk verbreedBalk) {
+    addEntity(verbreedBalk);
+  }
+
+  public void addVersmalBalk(VersmalBalk versmalBalk) {
+    addEntity(versmalBalk);
+  }
+
+  public void addVersnelBalk(VersnelBalk versnelBalk) {
+    addEntity(versnelBalk);
   }
 
   public void verwijderBlock() {

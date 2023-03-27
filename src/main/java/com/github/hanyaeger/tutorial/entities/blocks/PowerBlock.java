@@ -11,7 +11,7 @@ import com.github.hanyaeger.tutorial.entities.powers.VersmalBalk;
 import com.github.hanyaeger.tutorial.entities.powers.VersnelBalk;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.scenes.GameLevel;
+import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 import java.util.Random;
 
@@ -67,7 +67,7 @@ public class PowerBlock extends Block {
                 case 5:
                     // voeg de nieuwe power-down toe aan het spel
                     InvertControls invertControls = new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
-                    level.addInvertedControls(invertControls);
+                    level.addInvertControls(invertControls);
                     invertControls.dropPower();
                     System.out.println("Power-down: Inverted controls");
                     break;
