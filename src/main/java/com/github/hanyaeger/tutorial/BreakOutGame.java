@@ -20,8 +20,8 @@ public class BreakOutGame extends YaegerGame {
 
     @Override
     public void setupScenes() {
-        addScene(0, new TitleScene(this));
-        addScene(1, new Level1(this));
-        addScene(2, new GameOverScene(this));
+        addScene(Constants.MAIN_MENU, new TitleScene(this));
+        addScene(Constants.LEVEL_1, new Level1(this));
+        addScene(Constants.DEATH_SCREEN, new GameOverScene(this));
     }
 }
