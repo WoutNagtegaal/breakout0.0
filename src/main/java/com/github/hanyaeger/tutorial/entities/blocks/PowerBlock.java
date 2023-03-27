@@ -31,6 +31,10 @@ public class PowerBlock extends Block {
                     // voeg de nieuwe power-down toe aan het spel
                     System.out.println("Power-down: Balk extra smal");
                     break;
+                case 4:
+                    // voeg de nieuwe power-up toe aan het spel
+                    System.out.println("Power-up: Balk extra snel");
+                    break;
             }
             System.out.println(power);
             ontplof();
@@ -39,7 +43,7 @@ public class PowerBlock extends Block {
 
     public int getRandomPower() {
         final int MIN_VALUE = 1;
-        final int MAX_VALUE = 3;
+        final int MAX_VALUE = 4;
 
         Random random = new Random();
         int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;
