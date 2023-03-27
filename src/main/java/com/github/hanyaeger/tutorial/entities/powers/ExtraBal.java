@@ -23,4 +23,5 @@ public class ExtraBal extends Power {
         Bal extraBal = new Bal(breakOutGame, spelerBalk, getWidth() / 2, (getHeight() / 4) * 3);
         // voeg de bal toe aan de scene
     }
+
 }

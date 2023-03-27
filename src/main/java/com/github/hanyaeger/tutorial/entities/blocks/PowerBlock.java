@@ -5,13 +5,19 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
-
+//import com.github.hanyaeger.tutorial.BreakOutGame;
+//import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import java.util.Random;
 
 public class PowerBlock extends Block {
 
+//    private final BreakOutGame breakOutGame;
+//    private final SpelerBalk spelerBalk;
+
     public PowerBlock(Coordinate2D position, Size size, String resource) {
         super(position, size, resource);
+//        this.breakOutGame = breakOutGame;
+//        this.spelerBalk = spelerBalk;
     }
 
     @Override
@@ -36,7 +42,7 @@ public class PowerBlock extends Block {
                     System.out.println("Power-up: Balk extra snel");
                     break;
             }
-            System.out.println(power);
+//            System.out.println(power);
             ontplof();
         }
     }
