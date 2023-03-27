@@ -6,15 +6,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class HealthText extends TextEntity {
-    public HealthText(Coordinate2D location) {
+public class LevensText extends TextEntity {
+    public LevensText(Coordinate2D location) {
         super(location);
 
         setFont(Font.font("Roboto", FontWeight.NORMAL, 30));
-        setFill(Color.DARKBLUE);
+        setFill(Color.WHITE);
     }
 
-    public void setHealthText(int health) {
-        setText("Health: " + health);
+    public void setLevensText(int levensText) {
+        setText("Health: " + levensText);
     }
 }

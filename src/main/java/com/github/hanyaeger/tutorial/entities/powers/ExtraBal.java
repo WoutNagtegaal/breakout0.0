@@ -9,7 +9,7 @@ import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
-public class ExtraBal extends Power {
+public class ExtraBal extends Power implements Collider{
 
     private final BreakOutGame breakOutGame;
     private final SpelerBalk spelerBalk;

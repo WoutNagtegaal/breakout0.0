@@ -13,6 +13,7 @@ import com.github.hanyaeger.tutorial.entities.powers.InvertControls;
 import com.github.hanyaeger.tutorial.entities.powers.VerbreedBalk;
 import com.github.hanyaeger.tutorial.entities.powers.VersmalBalk;
 import com.github.hanyaeger.tutorial.entities.powers.VersnelBalk;
+import com.github.hanyaeger.tutorial.entities.text.LevensText;
 
 public abstract class GameLevel extends DynamicScene implements TileMapContainer {
 
@@ -21,6 +22,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   int aantalBlokken;
   int aantalBallen;
   int levens;
+  LevensText text;
   SoundClip death = new SoundClip("audio/death.mp3");
 
   public GameLevel(BreakOutGame breakOutGame) {
@@ -44,6 +46,10 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     );
     addEntity(spelerBalk);
     voegBalToe();
+
+    text = new LevensText(new Coordinate2D(100, getWidth() - 100));
+    addEntity(text);
+    text.setLevensText(levens);
   }
 
   public void voegBalToe() {
@@ -57,6 +63,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     System.out.println(aantalBallen);
     if(aantalBallen <= 0) {
       levens--;
+      text.setLevensText(levens);
       if(levens <= 0) {
         death.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
