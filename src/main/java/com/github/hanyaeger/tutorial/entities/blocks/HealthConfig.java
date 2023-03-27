@@ -1,16 +1,15 @@
 package com.github.hanyaeger.tutorial.entities.blocks;
 
-public class HealthConfig {
-    private String resource;
+import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.scenes.GameLevel;
+
+public class HealthConfig extends BlockConfig {
     private int health;
 
-    public HealthConfig(String resource, int health) {
-        this.resource = resource;
+    public HealthConfig(GameLevel level, BreakOutGame breakOutGame, SpelerBalk balk, String resource, int health) {
+        super(level, breakOutGame, balk, resource);
         this.health = health;
-    }
-
-    public String getResource() {
-        return resource;
     }
 
     public int getHealth() {
