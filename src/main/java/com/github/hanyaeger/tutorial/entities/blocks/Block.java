@@ -10,7 +10,7 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
-public class Block extends DynamicSpriteEntity implements Collided, Collider {
+public class Block extends DynamicSpriteEntity implements Collider {
     private static final int BLOCK_WIDTH = 200;
     private static final int BLOCK_HEIGHT = 100;
     SoundClip explosion = new SoundClip("audio/explosion.mp3");
@@ -21,16 +21,6 @@ public class Block extends DynamicSpriteEntity implements Collided, Collider {
         super(c.getResource(), position, size);
         this.level = c.getLevel();
         this.breakOutGame = c.getBreakOutGame();
-    }
-
-    @Override
-    public void onCollision(Collider collider) {
-        if(!(collider instanceof Block)) {
-            System.out.println("brrrr");
-        }
-        if(collider instanceof Bal) {
-            doeHitActie();
-        }
     }
 
     public void doeHitActie() {

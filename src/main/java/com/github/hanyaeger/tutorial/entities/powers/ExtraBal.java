@@ -28,7 +28,7 @@ public class ExtraBal extends Power implements Collider{
         level.addBal(extraBal);
 
          */
-        level.voegBalToe();
+        level.voegBalToe(getWidth() / 2, (getHeight() / 4) * 2);
     }
 
 }

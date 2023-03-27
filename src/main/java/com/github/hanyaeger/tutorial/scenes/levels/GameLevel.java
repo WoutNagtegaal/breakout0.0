@@ -45,15 +45,15 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
             breakOutGame
     );
     addEntity(spelerBalk);
-    voegBalToe();
+    voegBalToe(getWidth() / 2, (getHeight() / 4) * 3);
 
     text = new LevensText(new Coordinate2D(100, getWidth() - 100));
     addEntity(text);
     text.setLevensText(levens);
   }
 
-  public void voegBalToe() {
-    Bal bal = new Bal(breakOutGame, this, spelerBalk,getWidth() / 2, (getHeight() / 4) * 3);
+  public void voegBalToe(double x, double y) {
+    Bal bal = new Bal(breakOutGame, this, spelerBalk,x, y);
     addEntity(bal);
     aantalBallen++;
   }
@@ -68,7 +68,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
         death.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
       }
-      voegBalToe();
+      voegBalToe(getWidth() / 2, (getHeight() / 4) * 3);
     }
   }
 

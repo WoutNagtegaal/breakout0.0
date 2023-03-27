@@ -111,44 +111,49 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         }
         //Bij een blok moet de bal van de zijkant af stuiteren. Beetje rommelige manier, zal nog wel netter kunnen
         else if(collider instanceof Block) {
-            double marge = 6; //snelheid van bal + 1 deze is nodig omdat de bal 5 pixels in een seconde beweegt en
-            //zonder deze marge kan niet altijd bepaald worden aan welke kant de bal naar binnen is gegaan omdat de bal
-            //al te ver het blok in is gegaan
+            bepaalStuiterRichting(((Block) collider));
+            ((Block)collider).doeHitActie();
+        }
+    }
 
-            //eigenschappen van het blok uitlezen
-            double blockX = ((Block) collider).getX();
-            double blockY = ((Block) collider).getY();
-            double blockWidth = collider.getWidth();
-            double blockHeight = collider.getHeight();
+    private void bepaalStuiterRichting(Block block) {
+        double marge = 6; //snelheid van bal + 1 deze is nodig omdat de bal 5 pixels in een seconde beweegt en
+        //zonder deze marge kan niet altijd bepaald worden aan welke kant de bal naar binnen is gegaan omdat de bal
+        //al te ver het blok in is gegaan
 
-            //de linkerkant van het blok
-            if(blockX + marge > getX() + getWidth()) {
-                if(gaatNaarBoven()) {
-                    stuiter(NORTH_WEST);
-                } else {
-                    stuiter(SOUTH_WEST);
-                }
+        //eigenschappen van het blok uitlezen
+        double blockX = block.getX();
+        double blockY = block.getY();
+        double blockWidth = block.getWidth();
+        double blockHeight = block.getHeight();
+
+        //de linkerkant van het blok
+        if(blockX + marge > getX() + getWidth()) {
+            if(gaatNaarBoven()) {
+                stuiter(NORTH_WEST);
+            } else {
+                stuiter(SOUTH_WEST);
+            }
             //de rechterkant van het blok
-            } else if(blockX + blockWidth < getX() + marge) {
-                if(gaatNaarBoven()) {
-                    stuiter(NORTH_EAST);
-                } else {
-                    stuiter(SOUTH_EAST);
-                }
+        } else if(blockX + blockWidth < getX() + marge) {
+            if(gaatNaarBoven()) {
+                stuiter(NORTH_EAST);
+            } else {
+                stuiter(SOUTH_EAST);
+            }
             //de bovenkant van het blok
-            } else if(blockY + marge > getY() + getHeight()) {
-                if(gaatNaarRechts()) {
-                    stuiter(NORTH_EAST);
-                } else {
-                    stuiter(NORTH_WEST);
-                }
+        } else if(blockY + marge > getY() + getHeight()) {
+            if(gaatNaarRechts()) {
+                stuiter(NORTH_EAST);
+            } else {
+                stuiter(NORTH_WEST);
+            }
             //de onderkant van het block
-            } else if(blockY + blockHeight < getY() + marge) {
-                if(gaatNaarRechts()) {
-                    stuiter(SOUTH_EAST);
-                } else {
-                    stuiter(SOUTH_WEST);
-                }
+        } else if(blockY + blockHeight < getY() + marge) {
+            if(gaatNaarRechts()) {
+                stuiter(SOUTH_EAST);
+            } else {
+                stuiter(SOUTH_WEST);
             }
         }
     }
