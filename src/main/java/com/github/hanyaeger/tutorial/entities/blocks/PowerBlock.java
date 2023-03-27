@@ -14,8 +14,8 @@ public class PowerBlock extends Block {
 //    private final BreakOutGame breakOutGame;
 //    private final SpelerBalk spelerBalk;
 
-    public PowerBlock(Coordinate2D position, Size size, String resource) {
-        super(position, size, resource);
+    public PowerBlock(Coordinate2D position, Size size, BlockConfig c) {
+        super(position, size, c);
 //        this.breakOutGame = breakOutGame;
 //        this.spelerBalk = spelerBalk;
     }

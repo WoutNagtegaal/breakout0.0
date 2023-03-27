@@ -14,8 +14,8 @@ public class Block extends DynamicSpriteEntity implements Collided, Collider {
     private static final int BLOCK_HEIGHT = 100;
     SoundClip explosion = new SoundClip("audio/explosion.mp3");
 
-    public Block(Coordinate2D position, Size size, String resource) {
-        super(resource, position, size);
+    public Block(Coordinate2D position, Size size, BlockConfig c) {
+        super(c.getResource(), position, size);
     }
 
     @Override
