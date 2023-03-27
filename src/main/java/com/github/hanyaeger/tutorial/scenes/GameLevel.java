@@ -18,6 +18,7 @@ import javafx.scene.input.MouseButton;
 public class GameLevel extends DynamicScene implements TileMapContainer, MouseButtonPressedListener {
 
   private final BreakOutGame breakOutGame;
+  SpelerBalk spelerBalk;
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -31,7 +32,7 @@ public class GameLevel extends DynamicScene implements TileMapContainer, MouseBu
 
   @Override
   public void setupEntities() {
-    var spelerBalk = new SpelerBalk(
+    spelerBalk = new SpelerBalk(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
             breakOutGame
     );
@@ -43,7 +44,7 @@ public class GameLevel extends DynamicScene implements TileMapContainer, MouseBu
 
   @Override
   public void setupTileMaps() {
-    addTileMap(new Level3());
+    addTileMap(new Level3(this, breakOutGame, spelerBalk));
   }
 
   public int berekenAantalRuimteschepen() {
