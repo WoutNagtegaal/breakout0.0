@@ -8,13 +8,8 @@ import com.github.hanyaeger.tutorial.entities.Bal;
 public class GepantserdBlock extends Block {
     private int health;
     public GepantserdBlock(Coordinate2D position, Size size, HealthConfig c) {
-        super(position, size, c.getResource());
+        super(position, size, c);
         this.health = c.getHealth();
-    }
-
-    public GepantserdBlock(Coordinate2D position, Size size, String resource) {
-        super(position, size, resource);
-        this.health = 2;
     }
 
     @Override

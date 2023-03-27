@@ -1,17 +1,12 @@
 package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.entities.blocks.BlockMap;
-import com.github.hanyaeger.tutorial.entities.levels.Level1;
-import com.github.hanyaeger.tutorial.entities.levels.Level2;
 import com.github.hanyaeger.tutorial.entities.levels.Level3;
 import javafx.scene.input.MouseButton;
 
@@ -19,6 +14,7 @@ public class GameLevel extends DynamicScene implements TileMapContainer, MouseBu
 
   private final BreakOutGame breakOutGame;
   SpelerBalk spelerBalk;
+  int aantalBlokken;
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -45,24 +41,32 @@ public class GameLevel extends DynamicScene implements TileMapContainer, MouseBu
   @Override
   public void setupTileMaps() {
     addTileMap(new Level3(this, breakOutGame, spelerBalk));
+    aantalBlokken = berekenAantalRuimteschepen();
   }
 
   public int berekenAantalRuimteschepen() {
     int[][] t = getTileMaps().get(0).defineMap();
-    int a = 0;
-    for(int[] i: t) {
-      for(int j : i) {
-        if(j > 0) {
-          a++;
+    int aantalRuimteschepen = 0;
+    for(int[] rij: t) {
+      for(int kolom : rij) {
+        if(kolom > 0) {
+          aantalRuimteschepen++;
         }
       }
     }
-    return a;
+    return aantalRuimteschepen;
+  }
+
+  public void verwijderBlock() {
+    aantalBlokken--;
+  }
+
+  public int getAantalBlokken() {
+    return aantalBlokken;
   }
 
   @Override
   public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-
     System.out.println(berekenAantalRuimteschepen());
    }
 }
