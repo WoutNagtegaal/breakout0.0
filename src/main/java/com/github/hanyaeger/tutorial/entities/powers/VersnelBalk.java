@@ -6,20 +6,20 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 
-public class VerbreedtBalk extends Power {
+public class VersnelBalk extends Power {
 
     private final BreakOutGame breakOutGame;
     private final SpelerBalk spelerBalk;
-    private final int VERGROTING = 100;
+    private final int VERSNELLING = 100;
 
-    public VerbreedtBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
-        super(position, size, "Sprites/extra_bal.png");
+    public VersnelBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
+        super(position, size, "Sprites/versnel_balk.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
     }
 
     void doePowerActie() {
-        final double HUIDIGE_BREEDTE = spelerBalk.getBreedte();
-        spelerBalk.setBreedte(HUIDIGE_BREEDTE - VERGROTING);
+        final double HUIDIGE_SNELHEID = spelerBalk.getSnelheid();
+        spelerBalk.setSnelheid(HUIDIGE_SNELHEID + VERSNELLING);
     }
 }

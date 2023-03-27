@@ -19,7 +19,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   private final BreakOutGame breakOutGame;
   private double breedte = 800;
   private double hoogte = 40;
-  private final double SPEED = 8;
+  private double snelheid = 8;
   private final double LEFT = 270d;
   private final double RIGHT = 90;
   public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame) {
@@ -33,9 +33,9 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   @Override
   public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
     if(pressedKeys.contains(KeyCode.LEFT)) {
-      setMotion(SPEED, LEFT);
+      setMotion(snelheid, LEFT);
     } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-      setMotion(SPEED, RIGHT);
+      setMotion(snelheid, RIGHT);
     } else {
       setSpeed(0);
     }
@@ -85,6 +85,14 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   public double getBreedte() {
     return breedte;
+  }
+
+  public void setSnelheid(double snelheid) {
+    this.snelheid = snelheid;
+  }
+
+  public double getSnelheid() {
+    return snelheid;
   }
 
 }
