@@ -5,19 +5,23 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
-//import com.github.hanyaeger.tutorial.BreakOutGame;
-//import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.entities.powers.InvertControls;
+import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import java.util.Random;
 
 public class PowerBlock extends Block {
 
-//    private final BreakOutGame breakOutGame;
-//    private final SpelerBalk spelerBalk;
+    private final BreakOutGame breakOutGame;
+    private final SpelerBalk spelerBalk;
 
-    public PowerBlock(Coordinate2D position, Size size, String resource) {
-        super(position, size, resource);
-//        this.breakOutGame = breakOutGame;
-//        this.spelerBalk = spelerBalk;
+    private static final int POWER_BREEDTE = 35;
+    private static final int POWER_HOOGTE = 35;
+
+    public PowerBlock(Coordinate2D position, Size size, BlockConfig c) {
+        super(position, size, c.getResource());
+        this.breakOutGame = c.getBreakOutGame();
+        this.spelerBalk = c.getBalk();
     }
 
     @Override
@@ -43,6 +47,8 @@ public class PowerBlock extends Block {
                     break;
                 case 5:
                     // voeg de nieuwe power-down toe aan het spel
+                    InvertControls invertControls = new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
+                    invertControls.dropPower();
                     System.out.println("Power-down: Inverted controls");
                     break;
             }
@@ -57,6 +63,6 @@ public class PowerBlock extends Block {
 
         Random random = new Random();
         int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;
-        return random_number;
+        return 5;
     }
 }

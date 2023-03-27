@@ -22,7 +22,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   private double snelheid = 8;
   private final double LEFT = 270d;
   private final double RIGHT = 90;
-  private boolean inverted_controls = true;
+  private boolean inverted_controls = false;
   public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame) {
     super("sprites/ufobalk.png", location, new Size(800, 40));
     // verander de waardes in new Size() naar de variabelen erboven
