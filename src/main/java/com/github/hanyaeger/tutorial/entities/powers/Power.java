@@ -43,6 +43,7 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
             remove();
         } else {
             System.out.println("Power-Up/Down is wannabe mongool");
+            remove();
         }
     }
 }
