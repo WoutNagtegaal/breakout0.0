@@ -23,7 +23,7 @@ public class ExtraBal extends Power {
     }
 
     void doePowerActie() {
-        Bal extraBal = new Bal(breakOutGame, spelerBalk, getWidth() / 2, (getHeight() / 4) * 3);
+        Bal extraBal = new Bal(breakOutGame, level, spelerBalk, getWidth() / 2, (getHeight() / 4) * 3);
         level.addBal(extraBal);
     }
 

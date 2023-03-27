@@ -15,7 +15,7 @@ public class BreakOutGame extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Break-Out 0.0");
-        setSize(new Size(1600, 900));
+        setSize(new Size(1200, 750));
     }
 
     @Override

@@ -11,11 +11,13 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 //import com.github.hanyaeger.tutorial.entities.levels.Block;
 import com.github.hanyaeger.tutorial.entities.blocks.Block;
+import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
     private final BreakOutGame breakOutGame;
     private final int GROOTTE = 50;
     private final SpelerBalk spelerBalk;
+    private final GameLevel level;
     private boolean isVastgehouden;
     private final double SPEED = 5;
     private int levens;
@@ -32,7 +34,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     SoundClip death = new SoundClip("audio/death.mp3");
 
     @SuppressWarnings("LanguageDetectionInspection")
-    public Bal(BreakOutGame breakOutGame, SpelerBalk balk, double x, double y) {
+    public Bal(BreakOutGame breakOutGame, GameLevel level, SpelerBalk balk, double x, double y) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(x, y), new Size(50, 50));
 
@@ -42,6 +44,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         this.spelerBalk = balk;
         this.isVastgehouden = true;
         this.levens = 3;
+        this.level = level;
 
     }
 
@@ -64,13 +67,8 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 setAnchorLocationY(1);
             }
             case BOTTOM -> {
-                 resetBal();
-                 levens--;
-                 System.out.println(levens);
-                 if(levens <= 0) {
-                     death.play();
-                     breakOutGame.setActiveScene(2);
-                 }
+                level.verwijderBal();
+                remove();
             }
             case LEFT -> {
                 if(gaatNaarBoven()) {

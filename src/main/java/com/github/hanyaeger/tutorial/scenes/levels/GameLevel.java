@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
@@ -17,9 +18,12 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   private final BreakOutGame breakOutGame;
   SpelerBalk spelerBalk;
   int aantalBlokken;
+  int aantalBallen;
+  int levens;
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
+    this.levens = 3;
   }
 
   @Override
@@ -35,9 +39,25 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
             breakOutGame
     );
     addEntity(spelerBalk);
+    voegBalToe();
+  }
 
-    Bal bal = new Bal(breakOutGame, spelerBalk, getWidth() / 2, (getHeight() / 4) * 3);
+  public void voegBalToe() {
+    Bal bal = new Bal(breakOutGame, this, spelerBalk,getWidth() / 2, (getHeight() / 4) * 3);
     addEntity(bal);
+    aantalBallen++;
+  }
+
+  public void verwijderBal() {
+    aantalBallen--;
+    System.out.println(aantalBallen);
+    if(aantalBallen <= 0) {
+      levens--;
+      if(levens <= 0) {
+        breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
+      }
+      voegBalToe();
+    }
   }
 
   public int berekenAantalRuimteschepen() {
@@ -59,6 +79,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   public void addBal(Bal bal) {
     addEntity(bal);
+    aantalBallen++;
   }
 
   public void addInvertControls(InvertControls invertControls) {
