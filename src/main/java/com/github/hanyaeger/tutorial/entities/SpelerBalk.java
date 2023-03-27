@@ -22,6 +22,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   private double snelheid = 8;
   private final double LEFT = 270d;
   private final double RIGHT = 90;
+  private boolean inverted_controls = true;
   public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame) {
     super("sprites/ufobalk.png", location, new Size(800, 40));
     // verander de waardes in new Size() naar de variabelen erboven
@@ -33,9 +34,17 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   @Override
   public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
     if(pressedKeys.contains(KeyCode.LEFT) || pressedKeys.contains(KeyCode.A)) {
-      setMotion(snelheid, LEFT);
+      if (inverted_controls == false) {
+        setMotion(snelheid, LEFT);
+      } else if (inverted_controls) {
+        setMotion(snelheid, RIGHT);
+      }
     } else if (pressedKeys.contains(KeyCode.RIGHT) || pressedKeys.contains(KeyCode.D)) {
-      setMotion(snelheid, RIGHT);
+      if (inverted_controls == false) {
+        setMotion(snelheid, RIGHT);
+      } else if (inverted_controls) {
+        setMotion(snelheid, LEFT);
+      }
     } else {
       setSpeed(0);
     }
@@ -93,6 +102,10 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   public double getSnelheid() {
     return snelheid;
+  }
+
+  public void setInverted_controls() {
+    inverted_controls = !inverted_controls;
   }
 
 }
