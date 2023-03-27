@@ -29,6 +29,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public final static double SOUTH_WEST = 315;
     public double startDirection = SOUTH;
 
+    @SuppressWarnings("LanguageDetectionInspection")
     public Bal(BreakOutGame breakOutGame, SpelerBalk balk, double x, double y) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(x, y), new Size(50, 50));
