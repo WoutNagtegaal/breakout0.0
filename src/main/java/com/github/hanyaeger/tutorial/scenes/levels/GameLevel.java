@@ -1,6 +1,7 @@
 package com.github.hanyaeger.tutorial.scenes.levels;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
@@ -20,6 +21,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   int aantalBlokken;
   int aantalBallen;
   int levens;
+  SoundClip death = new SoundClip("audio/death.mp3");
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -56,6 +58,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     if(aantalBallen <= 0) {
       levens--;
       if(levens <= 0) {
+        death.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
       }
       voegBalToe();

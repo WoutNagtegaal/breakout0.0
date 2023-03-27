@@ -30,7 +30,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public final static double NORTH_WEST = 225;
     public final static double SOUTH_WEST = 315;
     public double startDirection = SOUTH;
-    SoundClip death = new SoundClip("audio/death.mp3");
 
     @SuppressWarnings("LanguageDetectionInspection")
     public Bal(BreakOutGame breakOutGame, GameLevel level, SpelerBalk balk, double x, double y) {
