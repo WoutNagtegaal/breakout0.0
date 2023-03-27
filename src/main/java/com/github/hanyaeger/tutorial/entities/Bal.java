@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 //import com.github.hanyaeger.tutorial.entities.levels.Block;
@@ -28,6 +29,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public final static double NORTH_WEST = 225;
     public final static double SOUTH_WEST = 315;
     public double startDirection = SOUTH;
+    SoundClip death = new SoundClip("audio/death.mp3");
 
     @SuppressWarnings("LanguageDetectionInspection")
     public Bal(BreakOutGame breakOutGame, SpelerBalk balk, double x, double y) {
@@ -66,7 +68,8 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                  levens--;
                  System.out.println(levens);
                  if(levens <= 0) {
-                     breakOutGame.setActiveScene(0);
+                     death.play();
+                     breakOutGame.setActiveScene(2);
                  }
             }
             case LEFT -> {

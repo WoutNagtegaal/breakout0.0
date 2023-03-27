@@ -2,7 +2,7 @@ package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.scenes.GameLevel;
+import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class HealthConfig extends BlockConfig {
     private int health;
