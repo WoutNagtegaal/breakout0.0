@@ -19,7 +19,7 @@ public class PowerBlock extends Block {
     private static final int POWER_HOOGTE = 35;
 
     public PowerBlock(Coordinate2D position, Size size, BlockConfig c) {
-        super(position, size, c.getResource());
+        super(position, size, c);
         this.breakOutGame = c.getBreakOutGame();
         this.spelerBalk = c.getBalk();
     }

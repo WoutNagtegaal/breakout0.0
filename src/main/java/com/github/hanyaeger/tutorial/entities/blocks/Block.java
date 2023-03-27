@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
-import com.github.hanyaeger.tutorial.scenes.GameLevel;
+import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class Block extends DynamicSpriteEntity implements Collided, Collider {
     private static final int BLOCK_WIDTH = 200;

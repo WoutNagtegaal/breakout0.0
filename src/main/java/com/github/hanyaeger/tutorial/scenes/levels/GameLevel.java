@@ -1,16 +1,13 @@
-package com.github.hanyaeger.tutorial.scenes;
+package com.github.hanyaeger.tutorial.scenes.levels;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.entities.levels.Level3;
-import javafx.scene.input.MouseButton;
 
-public class GameLevel extends DynamicScene implements TileMapContainer, MouseButtonPressedListener {
+public abstract class GameLevel extends DynamicScene implements TileMapContainer {
 
   private final BreakOutGame breakOutGame;
   SpelerBalk spelerBalk;
@@ -38,12 +35,6 @@ public class GameLevel extends DynamicScene implements TileMapContainer, MouseBu
     addEntity(bal);
   }
 
-  @Override
-  public void setupTileMaps() {
-    addTileMap(new Level3(this, breakOutGame, spelerBalk));
-    aantalBlokken = berekenAantalRuimteschepen();
-  }
-
   public int berekenAantalRuimteschepen() {
     int[][] t = getTileMaps().get(0).defineMap();
     int aantalRuimteschepen = 0;
@@ -64,9 +55,4 @@ public class GameLevel extends DynamicScene implements TileMapContainer, MouseBu
   public int getAantalBlokken() {
     return aantalBlokken;
   }
-
-  @Override
-  public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-    System.out.println(berekenAantalRuimteschepen());
-   }
 }
