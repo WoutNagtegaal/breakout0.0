@@ -1,16 +1,19 @@
 package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
+import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.blocks.BlockMap;
 import com.github.hanyaeger.tutorial.entities.levels.Level1;
 import com.github.hanyaeger.tutorial.entities.levels.Level2;
+import javafx.scene.input.MouseButton;
 
-public class GameLevel extends DynamicScene implements TileMapContainer {
+public class GameLevel extends DynamicScene implements TileMapContainer, MouseButtonPressedListener {
 
   private final BreakOutGame breakOutGame;
 
@@ -39,5 +42,11 @@ public class GameLevel extends DynamicScene implements TileMapContainer {
   @Override
   public void setupTileMaps() {
     addTileMap(new Level1());
+  }
+
+
+  @Override
+  public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+    getTileMaps();
   }
 }
