@@ -14,11 +14,14 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
 
     private static final int POWER_BREEDTE = 35;
     private static final int POWER_HOOGTE = 35;
-    private SoundClip powerGet = new SoundClip("audio/power_get.mp3");
+    private SoundClip powerUp = new SoundClip("audio/power_up.mp3");
+    private SoundClip powerDown = new SoundClip("audio/power_down.mp3");
 
     protected Power(Coordinate2D location, Size size, String resource) {
         super(resource, location, size);
     }
+
+    abstract void speelVerwijderSound(Collider collider);
 
     abstract void doePowerActie(Collider collider);
 
@@ -32,7 +35,7 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
     public void onCollision(Collider collider) {
         if (collider instanceof SpelerBalk) {
             doePowerActie(collider);
-            powerGet.play();
+            speelVerwijderSound(collider);
             remove();
         }
     }

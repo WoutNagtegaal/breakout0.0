@@ -3,6 +3,7 @@ package com.github.hanyaeger.tutorial.entities.powers;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
@@ -13,6 +14,7 @@ public class VersmalBal extends Power {
     private final SpelerBalk spelerBalk;
     private final int VERKLEINING = 10;
     private final GameLevel level;
+    private SoundClip soundEffect = new SoundClip("audio/power_down.mp3");
 
     public VersmalBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
         super(position, size, "sprites/versmal_bal.png");
@@ -39,5 +41,9 @@ public class VersmalBal extends Power {
             level.setBalGrootte(nieuwe_grootte);
             level.veranderBalGrootte(nieuwe_grootte);
         }
+    }
+
+    void speelVerwijderSound(Collider collider) {
+        soundEffect.play();
     }
 }
