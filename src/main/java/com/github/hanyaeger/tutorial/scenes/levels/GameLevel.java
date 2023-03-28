@@ -8,12 +8,7 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
-import com.github.hanyaeger.tutorial.entities.powers.InvertControls;
-import com.github.hanyaeger.tutorial.entities.powers.VerbreedBalk;
-import com.github.hanyaeger.tutorial.entities.powers.VersmalBalk;
-import com.github.hanyaeger.tutorial.entities.powers.VersnelBalk;
-import com.github.hanyaeger.tutorial.entities.powers.VergrootBal;
+import com.github.hanyaeger.tutorial.entities.powers.*;
 //import com.github.hanyaeger.tutorial.entities.powers.VerkleinBal;
 import com.github.hanyaeger.tutorial.entities.text.LevensText;
 
@@ -97,24 +92,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     aantalBallen++;
   }
 
-  public void addInvertControls(InvertControls invertControls) {
-    addEntity(invertControls);
-  }
-
-  public void addVerbreedBalk(VerbreedBalk verbreedBalk) {
-    addEntity(verbreedBalk);
-  }
-
-  public void addVersmalBalk(VersmalBalk versmalBalk) {
-    addEntity(versmalBalk);
-  }
-
-  public void addVersnelBalk(VersnelBalk versnelBalk) {
-    addEntity(versnelBalk);
-  }
-
-  public void addVergrootBal(VergrootBal vergrootBal) {
-    addEntity(vergrootBal);
+  public void addPower(Power power) {
+    addEntity(power);
   }
 
   public void verwijderBlock() {

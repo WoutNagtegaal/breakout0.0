@@ -32,35 +32,35 @@ public class PowerBlock extends Block {
             case 1:
                 // voeg de nieuwe power-up toe aan het spel
                 ExtraBal extraBal = new ExtraBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
-                level.addExtraBal(extraBal);
+                level.addPower(extraBal);
                 extraBal.dropPower();
                 System.out.println("Power-up: Extra bal");
                 break;
             case 2:
                 // voeg de nieuwe power-up toe aan het spel
                 VerbreedBalk verbreedBalk = new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
-                level.addVerbreedBalk(verbreedBalk);
+                level.addPower(verbreedBalk);
                 verbreedBalk.dropPower();
                 System.out.println("Power-up: Balk extra breed");
                 break;
             case 3:
                 // voeg de nieuwe power-down toe aan het spel
                 VersmalBalk versmalBalk = new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
-                level.addVersmalBalk(versmalBalk);
+                level.addPower(versmalBalk);
                 versmalBalk.dropPower();
                 System.out.println("Power-down: Balk extra smal");
                 break;
             case 4:
                 // voeg de nieuwe power-up toe aan het spel
                 VersnelBalk versnelBalk = new VersnelBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
-                level.addVersnelBalk(versnelBalk);
+                level.addPower(versnelBalk);
                 versnelBalk.dropPower();
                 System.out.println("Power-up: Balk extra snel");
                 break;
             case 5:
                 // voeg de nieuwe power-down toe aan het spel
                 InvertControls invertControls = new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
-                level.addInvertControls(invertControls);
+                level.addPower(invertControls);
                 invertControls.dropPower();
                 System.out.println("Power-down: Inverted controls");
                 break;
