@@ -2,6 +2,7 @@ package com.github.hanyaeger.tutorial.entities.buttons;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.Constants;
 import javafx.scene.input.MouseButton;
 
 public class GameOverButton extends Button {
@@ -12,6 +13,6 @@ public class GameOverButton extends Button {
 
   @Override
   public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-    breakOutGame.setActiveScene(0);
+    breakOutGame.setActiveScene(Constants.MAIN_MENU);
   }
 }

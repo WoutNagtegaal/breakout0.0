@@ -5,10 +5,10 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
 import javafx.scene.input.MouseButton;
 
-public class StartButton extends Button {
+public class KiesLevelButton extends Button {
 
-  public StartButton(Coordinate2D initialLocation, BreakOutGame breakOutGame) {
-    super(initialLocation, breakOutGame,"Play game");
+  public KiesLevelButton(Coordinate2D initialLocation, BreakOutGame breakOutGame) {
+    super(initialLocation, breakOutGame,"Kies volgend level");
   }
 
   @Override

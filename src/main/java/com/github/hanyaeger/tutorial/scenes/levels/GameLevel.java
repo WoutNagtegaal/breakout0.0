@@ -21,6 +21,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   int levens;
   LevensText text;
   SoundClip death = new SoundClip("audio/death.mp3");
+  SoundClip geslaagd = new SoundClip("audio/level_geslaagd.mp3");
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -108,6 +109,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   }
 
   public void levelKlaar() {
-    breakOutGame.setActiveScene(Constants.LEVEL_SELECT);
+    geslaagd.play();
+    breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
   }
 }
