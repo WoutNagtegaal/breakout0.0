@@ -12,8 +12,8 @@ import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 
 public abstract class Power extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collided, Collider {
 
-    private static final int POWER_BREEDTE = 35;
-    private static final int POWER_HOOGTE = 35;
+    private static final int POWER_BREEDTE = 50;
+    private static final int POWER_HOOGTE = 50;
     private SoundClip powerUp = new SoundClip("audio/power_up.mp3");
     private SoundClip powerDown = new SoundClip("audio/power_down.mp3");
 

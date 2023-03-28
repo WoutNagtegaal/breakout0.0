@@ -21,7 +21,6 @@ public class TitleScene extends StaticScene {
 
   @Override
   public void setupScene() {
-    //setBackgroundAudio("audio/ocean.mp3");
     setBackgroundAudio("audio/mainmenu.mp3");
     setBackgroundImage("backgrounds/main_menu_background.jpg");
   }

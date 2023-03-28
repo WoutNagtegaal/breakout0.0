@@ -21,7 +21,6 @@ public class LevelKlaarScene extends StaticScene {
 
   @Override
   public void setupScene() {
-    //setBackgroundAudio("audio/ocean.mp3");
     setBackgroundImage("backgrounds/level_geslaagd.jpg");
   }
 
