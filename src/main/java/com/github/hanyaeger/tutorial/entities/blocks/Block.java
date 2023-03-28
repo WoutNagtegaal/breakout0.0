@@ -24,6 +24,7 @@ public class Block extends DynamicSpriteEntity implements Collider {
         super(c.getResource(), position, size);
         this.level = c.getLevel();
         this.breakOutGame = c.getBreakOutGame();
+        explosion.setVolume(0.25);
     }
 
     public void doeHitActie() {
