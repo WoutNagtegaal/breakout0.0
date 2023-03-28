@@ -39,29 +39,31 @@ public class LevelSelect extends StaticScene {
     kiesEenLevel.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
     addEntity(kiesEenLevel);
 
-    Button buttonLevel1 = new Button(new Coordinate2D(getWidth() / 2, getHeight() / 2 - 100), breakOutGame, "Level 1") {
-      @Override
-      public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        breakOutGame.setActiveScene(Constants.LEVEL_1);
-      }
-    };
-    addEntity(buttonLevel1);
-
-    var buttonLevel2 = new Button(new Coordinate2D(getWidth() / 2, getHeight() / 2 - 50), breakOutGame, "Level 2") {
-      @Override
-      public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        breakOutGame.setActiveScene(Constants.LEVEL_2);
-      }
-    };
-    addEntity(buttonLevel2);
-
     testKnop();
+
+    voegLevelKnoppenToe();
 
     var quitbutton = new QuitButton(
       new Coordinate2D(getWidth() / 2, getHeight() / 2 + 200),
       this.breakOutGame
     );
     addEntity(quitbutton);
+  }
+
+  private void voegLevelKnoppenToe() {
+    double yPos = getHeight() / 2 - 100;
+    int levelNummer = 1;
+    for(int i : Constants.LEVELS) {
+      Button levelButton = new Button(new Coordinate2D(getWidth() / 2, yPos), breakOutGame, "Level " + levelNummer) {
+        @Override
+        public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+          breakOutGame.setActiveScene(i);
+        }
+      };
+      addEntity(levelButton);
+      yPos += 50;
+      levelNummer++;
+    }
   }
 
   private void testKnop() {
