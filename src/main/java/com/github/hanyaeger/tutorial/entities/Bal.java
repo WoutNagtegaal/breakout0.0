@@ -21,6 +21,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     private final boolean isVastgehouden;
     private final double SPEED = 5;
 
+    public static double huidigeStuiterRichting;
     public final static double NORTH = 180;
     public final static double SOUTH = 0;
     public final static double EAST = 90;
@@ -55,8 +56,10 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             case TOP -> {
                 if(gaatNaarRechts()) {
                     stuiter(SOUTH_EAST);
+                    huidigeStuiterRichting = SOUTH_EAST;
                 } else {
                     stuiter(SOUTH_WEST);
+                    huidigeStuiterRichting = SOUTH_WEST;
                 }
                 setAnchorLocationY(1);
             }
@@ -67,16 +70,20 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             case LEFT -> {
                 if(gaatNaarBoven()) {
                     stuiter(NORTH_EAST);
+                    huidigeStuiterRichting = NORTH_EAST;
                 } else {
                     stuiter(SOUTH_EAST);
+                    huidigeStuiterRichting = SOUTH_EAST;
                 }
                 setAnchorLocationX(1);
             }
             case RIGHT -> {
                 if(gaatNaarBoven()) {
                     stuiter(NORTH_WEST);
+                    huidigeStuiterRichting = NORTH_WEST;
                 } else {
                     stuiter(SOUTH_WEST);
+                    huidigeStuiterRichting = SOUTH_WEST;
                 }
                 setAnchorLocationX(getSceneWidth() - getWidth() - 1);
             }
@@ -103,8 +110,10 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
             spelerBalk = ((SpelerBalk) collider);
             if (getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
                 stuiter(NORTH_EAST);
+                huidigeStuiterRichting = NORTH_EAST;
             } else {
                 stuiter(NORTH_WEST);
+                huidigeStuiterRichting = NORTH_WEST;
             }
         }
         //Bij een blok moet de bal van de zijkant af stuiteren. Beetje rommelige manier, zal nog wel netter kunnen
@@ -129,29 +138,37 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         if(blockX + marge > getX() + getWidth()) {
             if(gaatNaarBoven()) {
                 stuiter(NORTH_WEST);
+                huidigeStuiterRichting = NORTH_WEST;
             } else {
                 stuiter(SOUTH_WEST);
+                huidigeStuiterRichting = SOUTH_WEST;
             }
             //de rechterkant van het blok
         } else if(blockX + blockWidth < getX() + marge) {
             if(gaatNaarBoven()) {
                 stuiter(NORTH_EAST);
+                huidigeStuiterRichting = NORTH_EAST;
             } else {
                 stuiter(SOUTH_EAST);
+                huidigeStuiterRichting = SOUTH_EAST;
             }
             //de bovenkant van het blok
         } else if(blockY + marge > getY() + getHeight()) {
             if(gaatNaarRechts()) {
                 stuiter(NORTH_EAST);
+                huidigeStuiterRichting = NORTH_EAST;
             } else {
                 stuiter(NORTH_WEST);
+                huidigeStuiterRichting = NORTH_WEST;
             }
             //de onderkant van het block
         } else if(blockY + blockHeight < getY() + marge) {
             if(gaatNaarRechts()) {
                 stuiter(SOUTH_EAST);
+                huidigeStuiterRichting = SOUTH_EAST;
             } else {
                 stuiter(SOUTH_WEST);
+                huidigeStuiterRichting = SOUTH_WEST;
             }
         }
     }
@@ -178,5 +195,9 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
     public int getMIN_GROOTTE() {
         return MIN_GROOTTE;
+    }
+
+    public double getHuidigeStuiterRichting() {
+        return huidigeStuiterRichting;
     }
 }

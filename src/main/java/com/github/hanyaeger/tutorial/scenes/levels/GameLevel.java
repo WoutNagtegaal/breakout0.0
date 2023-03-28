@@ -135,6 +135,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     bal.remove();
     bal = new Bal(breakOutGame, this, spelerBalk, xPositie, yPositie, balGrootte);
     addEntity(bal);
+    bal.stuiter(bal.getHuidigeStuiterRichting());
   }
 
   public void veranderBalkGrootte(double breedte) {
