@@ -27,6 +27,8 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public final static double SOUTH_EAST = 45;
     public final static double NORTH_WEST = 225;
     public final static double SOUTH_WEST = 315;
+    public final static double NORTH_NORTH_EAST = 157.5;
+    public final static double NORTH_NORTH_WEST = 202.5;
     public double startDirection = SOUTH;
 
     @SuppressWarnings("LanguageDetectionInspection")
