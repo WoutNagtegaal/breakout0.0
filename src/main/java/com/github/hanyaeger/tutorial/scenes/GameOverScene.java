@@ -12,7 +12,7 @@ import javafx.scene.text.FontWeight;
 
 public class GameOverScene extends StaticScene {
 
-  private BreakOutGame breakOutGame;
+  private final BreakOutGame breakOutGame;
 
   public GameOverScene(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;

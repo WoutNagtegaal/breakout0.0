@@ -6,10 +6,8 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
-import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.BreakOutGame;
-//import com.github.hanyaeger.tutorial.entities.levels.Block;
 import com.github.hanyaeger.tutorial.entities.blocks.Block;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
@@ -18,7 +16,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     private int grootte = 50;
     private final SpelerBalk spelerBalk;
     private final GameLevel level;
-    private boolean isVastgehouden;
+    private final boolean isVastgehouden;
     private final double SPEED = 5;
 
     public final static double NORTH = 180;
@@ -43,12 +41,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         this.isVastgehouden = true;
         this.level = level;
 
-    }
-
-    public void resetBal() {
-        setAnchorLocationX(getSceneWidth() / 2);
-        setAnchorLocationY(getSceneHeight() / 2);
-        setDirection(startDirection);
     }
 
     @Override

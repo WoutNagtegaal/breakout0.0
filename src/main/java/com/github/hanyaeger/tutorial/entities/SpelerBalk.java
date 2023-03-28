@@ -36,15 +36,15 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   @Override
   public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
     if(pressedKeys.contains(KeyCode.LEFT) || pressedKeys.contains(KeyCode.A)) {
-      if (inverted_controls == false) {
+      if (!inverted_controls) {
         setMotion(snelheid, LEFT);
-      } else if (inverted_controls) {
+      } else {
         setMotion(snelheid, RIGHT);
       }
     } else if (pressedKeys.contains(KeyCode.RIGHT) || pressedKeys.contains(KeyCode.D)) {
-      if (inverted_controls == false) {
+      if (!inverted_controls) {
         setMotion(snelheid, RIGHT);
-      } else if (inverted_controls) {
+      } else {
         setMotion(snelheid, LEFT);
       }
     } else {
@@ -71,10 +71,6 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   }
   public double getHeight() {
     return super.getHeight();
-  }
-
-  public Coordinate2D getYlocation() {
-    return getLocationInScene();
   }
 
   @Override

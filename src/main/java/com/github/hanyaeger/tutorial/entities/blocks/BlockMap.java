@@ -20,7 +20,7 @@ public abstract class BlockMap extends TileMap {
     @Override
     public void setupEntities() {
         addEntity(1, Block.class, new BlockConfig(level, breakOutGame, balk, "sprites/enemy_1.png"));
-        addEntity(2, GepantserdBlock.class, new HealthConfig(level, breakOutGame, balk, "sprites/enemy_2.png", 3));
+        addEntity(2, GepantserdBlock.class, new HealthConfig(level, breakOutGame, balk, "sprites/enemy_2.png", 2));
         addEntity(3, PowerBlock.class, new BlockConfig(level, breakOutGame, balk, "sprites/enemy_3.png"));
     }
 }

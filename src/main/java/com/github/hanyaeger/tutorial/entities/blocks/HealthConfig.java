@@ -5,7 +5,7 @@ import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class HealthConfig extends BlockConfig {
-    private int health;
+    private final int health;
 
     public HealthConfig(GameLevel level, BreakOutGame breakOutGame, SpelerBalk balk, String resource, int health) {
         super(level, breakOutGame, balk, resource);
