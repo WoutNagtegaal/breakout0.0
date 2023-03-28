@@ -22,8 +22,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   LevensText text;
   SoundClip death = new SoundClip("audio/death.mp3");
   SoundClip geslaagd = new SoundClip("audio/level_geslaagd.mp3");
-  private final int ORIGENELE_BALKBREEDTE = 200;
-  private int balkBreedte = ORIGENELE_BALKBREEDTE;
+  private final double ORIGINELE_BALKBREEDTE = 200;
+  private double balkBreedte = ORIGINELE_BALKBREEDTE;
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -114,22 +114,22 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
   }
 
-  public void veranderBalkGrootte(int breedte) {
-    double x = spelerBalk.getX();
-    double y = spelerBalk.getY();
+  public void veranderBalkGrootte(double breedte) {
+    double xPositie = spelerBalk.getX();
+    double yPositie = spelerBalk.getY();
     double oudeBreedte = spelerBalk.getBreedte();
-    x = (x + (oudeBreedte / 2.0)) - (breedte / 2.0);
+    xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
 
     spelerBalk.remove();
-    spelerBalk = new SpelerBalk(new Coordinate2D(x, y), breakOutGame, breedte);
+    spelerBalk = new SpelerBalk(new Coordinate2D(xPositie, yPositie), breakOutGame, breedte);
     addEntity(spelerBalk);
   }
 
-  public void versmalBalk(int versmalling) {
-    veranderBalkGrootte(balkBreedte - versmalling);
+  public double getBalkBreedte() {
+    return balkBreedte;
   }
 
-  public void verbreedBalk(int verbreding) {
-    veranderBalkGrootte(balkBreedte + verbreding);
+  public void setBalkBreedte(double balkBreedte) {
+    this.balkBreedte = balkBreedte;
   }
 }

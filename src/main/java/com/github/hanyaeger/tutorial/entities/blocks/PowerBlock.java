@@ -76,8 +76,8 @@ public class PowerBlock extends Block {
     }
 
     public int getRandomPower() {
-        final int MIN_VALUE = 1;
-        final int MAX_VALUE = 5;
+        final int MIN_VALUE = 2;
+        final int MAX_VALUE = 3;
 
         Random random = new Random();
         int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;

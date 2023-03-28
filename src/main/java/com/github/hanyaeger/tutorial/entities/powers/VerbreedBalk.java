@@ -22,15 +22,22 @@ public class VerbreedBalk extends Power {
     }
 
     void doePowerActie(Collider collider) {
-        level.verbreedBalk(VERGROTING);
-        System.out.println(spelerBalk.getBreedte());
+        double max_breedte = spelerBalk.getMAX_BREEDTE();
+        double min_breedte = spelerBalk.getMIN_BREEDTE();
+        double huidige_breedte = level.getBalkBreedte();
+        double nieuwe_breedte = huidige_breedte + VERGROTING;
 
-//        Coordinate2D location = spelerBalk.getYlocation();
-//        double breedte = spelerBalk.getBreedte();
-//        double hoogte = spelerBalk.getHoogte();
-//
-//        SpelerBalk nieuweSpelerBalk = new SpelerBalk(location, breakOutGame, breedte, hoogte);
-//        level.addSpelerBalk(nieuweSpelerBalk);
-//        spelerBalk.remove();
+        if (nieuwe_breedte > max_breedte) {
+            System.out.println("Maximale breedte bereikt");
+            level.veranderBalkGrootte(max_breedte);
+            level.setBalkBreedte(max_breedte);
+        } else if (nieuwe_breedte < min_breedte) {
+            System.out.println("Minimale breedte bereikt");
+            level.veranderBalkGrootte(min_breedte);
+            level.setBalkBreedte(min_breedte);
+        } else {
+            level.veranderBalkGrootte(nieuwe_breedte);
+            level.setBalkBreedte(nieuwe_breedte);
+        }
     }
 }

@@ -20,8 +20,8 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   private double snelheid = 8;
   public double breedte = 800;
   public double hoogte = 40;
-  private final double MAX_BREEDTE = 1000;
-  private final double MIN_BREEDTE = 500;
+  private final double MAX_BREEDTE = 400;
+  private final double MIN_BREEDTE = 50;
   private final double LEFT = 270d;
   private final double RIGHT = 90;
   private boolean inverted_controls = false;
@@ -88,6 +88,8 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   }
 
   public void setBreedte(double breedte) {
+    System.out.println("Huidige breedte: " + this.breedte);
+
     if (breedte > MAX_BREEDTE) {
       System.out.println("Maximale breedte bereikt");
       this.breedte = MAX_BREEDTE;
@@ -101,6 +103,14 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   public double getBreedte() {
     return breedte;
+  }
+
+  public double getMAX_BREEDTE() {
+    return MAX_BREEDTE;
+  }
+
+  public double getMIN_BREEDTE() {
+    return MIN_BREEDTE;
   }
 
   public void setHoogte(double hoogte) {

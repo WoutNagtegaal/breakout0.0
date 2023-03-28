@@ -67,7 +67,7 @@ public class LevelSelect extends StaticScene {
   }
 
   private void testKnop() {
-    var buttonTestLevel = new Button(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 150), breakOutGame, "Testlevel") {
+    var buttonTestLevel = new Button(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 150), breakOutGame, "Test") {
       @Override
       public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         breakOutGame.setActiveScene(Constants.TESTLEVEL);
