@@ -14,7 +14,7 @@ import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
     private final BreakOutGame breakOutGame;
     private int grootte = 50;
-    private final SpelerBalk spelerBalk;
+    private SpelerBalk spelerBalk;
     private final GameLevel level;
     private final boolean isVastgehouden;
     private final double SPEED = 5;
@@ -97,6 +97,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         //Bij de balk stuitert de bal naar linksboven wanneer de bal de balk links raakt en naar
         //rechts wanneer de bal de balk rechts raakt
         if(collider instanceof SpelerBalk) {
+            spelerBalk = ((SpelerBalk) collider);
             if (getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
                 stuiter(NORTH_EAST);
             } else {

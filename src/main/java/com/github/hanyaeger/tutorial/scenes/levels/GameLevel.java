@@ -115,10 +115,17 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
   }
 
+  public void veranderBalkGrootte(int breedte) {
+    double x = spelerBalk.getX();
+    double y = spelerBalk.getY();
+
+    spelerBalk.remove();
+    spelerBalk = new SpelerBalk(new Coordinate2D(x, y), breakOutGame, breedte);
+    addEntity(spelerBalk);
+  }
+
   @Override
   public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-    spelerBalk.remove();
-    spelerBalk = new SpelerBalk(new Coordinate2D(100, 100), breakOutGame, 2000);
-    addEntity(spelerBalk);
+    veranderBalkGrootte((int) (Math.random() * 500 + 100));
   }
 }
