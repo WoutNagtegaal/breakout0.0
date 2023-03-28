@@ -98,6 +98,9 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   public void verwijderBlock() {
     aantalBlokken--;
+    if(getAantalBlokken() <= 0) {
+      levelKlaar();
+    }
   }
 
   public int getAantalBlokken() {

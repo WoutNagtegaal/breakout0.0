@@ -34,9 +34,6 @@ public class Block extends DynamicSpriteEntity implements Collider {
         explosion.play();
         remove();
         level.verwijderBlock();
-        if(level.getAantalBlokken() <= 0) {
-            level.levelKlaar();
-        }
     }
 
     public double getX() {
