@@ -2,6 +2,7 @@ package com.github.hanyaeger.tutorial.entities.powers;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
@@ -20,7 +21,7 @@ public class VersmalBalk extends Power {
         this.level = level;
     }
 
-    void doePowerActie() {
+    void doePowerActie(Collider collider) {
         level.versmalBalk(VERKLEINING);
         System.out.println(spelerBalk.getBreedte());
 

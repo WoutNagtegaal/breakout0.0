@@ -2,14 +2,14 @@ package com.github.hanyaeger.tutorial.entities.powers;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.BreakOutGame;
-import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 
 public class VersnelBalk extends Power {
 
     private final BreakOutGame breakOutGame;
-    private final SpelerBalk spelerBalk;
+    private SpelerBalk spelerBalk;
     private final int VERSNELLING = 2;
 
     public VersnelBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
@@ -18,7 +18,10 @@ public class VersnelBalk extends Power {
         this.spelerBalk = spelerBalk;
     }
 
-    void doePowerActie() {
+    void doePowerActie(Collider collider) {
+        if(collider instanceof SpelerBalk) {
+            this.spelerBalk = (SpelerBalk) collider;
+        }
         final double HUIDIGE_SNELHEID = spelerBalk.getSnelheid();
         spelerBalk.setSnelheid(HUIDIGE_SNELHEID + VERSNELLING);
     }
