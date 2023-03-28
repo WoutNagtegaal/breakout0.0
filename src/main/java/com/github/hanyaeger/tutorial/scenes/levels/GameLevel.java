@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
+import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
@@ -11,8 +12,9 @@ import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.powers.*;
 //import com.github.hanyaeger.tutorial.entities.powers.VerkleinBal;
 import com.github.hanyaeger.tutorial.entities.text.LevensText;
+import javafx.scene.input.MouseButton;
 
-public abstract class GameLevel extends DynamicScene implements TileMapContainer {
+public abstract class GameLevel extends DynamicScene implements TileMapContainer, MouseButtonPressedListener {
 
   private final BreakOutGame breakOutGame;
   SpelerBalk spelerBalk;
@@ -111,5 +113,12 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public void levelKlaar() {
     geslaagd.play();
     breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
+  }
+
+  @Override
+  public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+    spelerBalk.remove();
+    spelerBalk = new SpelerBalk(new Coordinate2D(100, 100), breakOutGame, 2000);
+    addEntity(spelerBalk);
   }
 }

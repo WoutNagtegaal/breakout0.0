@@ -28,6 +28,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame, double breedte) {
     super("sprites/ufobalk.png", location, new Size(breedte, 40));
     // verander de waardes in new Size() naar de variabelen erboven
+    setPreserveAspectRatio(false);
 
     this.breakOutGame = breakOutGame;
 
