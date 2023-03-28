@@ -103,4 +103,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public int getAantalBlokken() {
     return aantalBlokken;
   }
+
+  public void levelKlaar() {
+    breakOutGame.setActiveScene(Constants.LEVEL_SELECT);
+  }
 }

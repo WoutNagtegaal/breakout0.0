@@ -7,8 +7,11 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.BreakOutGame;
+import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
+
+import java.lang.module.Configuration;
 
 public class Block extends DynamicSpriteEntity implements Collider {
     private static final int BLOCK_WIDTH = 200;
@@ -32,7 +35,7 @@ public class Block extends DynamicSpriteEntity implements Collider {
         remove();
         level.verwijderBlock();
         if(level.getAantalBlokken() <= 0) {
-            breakOutGame.setActiveScene(2);
+            level.levelKlaar();
         }
     }
 
