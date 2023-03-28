@@ -14,7 +14,7 @@ public class VersmalBalk extends Power {
     private final SpelerBalk spelerBalk;
     private final int VERKLEINING = 100;
     private final GameLevel level;
-    private SoundClip soundEffect = new SoundClip("audio/power_down.mp3");
+    private SoundClip soundEffect = new SoundClip("audio/power_down.mp4");
 
     public VersmalBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
         super(position, size, "sprites/versmal_balk.png");

@@ -18,6 +18,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   private final BreakOutGame breakOutGame;
   private double snelheid = 8;
+  private final double MAX_SNELHEID = 16;
   public double breedte = 800;
   public double hoogte = 40;
   private final double MAX_BREEDTE = 400;
@@ -127,6 +128,10 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   public double getSnelheid() {
     return snelheid;
+  }
+
+  public double getMAX_SNELHEID() {
+    return MAX_SNELHEID;
   }
 
   public void setInverted_controls() {

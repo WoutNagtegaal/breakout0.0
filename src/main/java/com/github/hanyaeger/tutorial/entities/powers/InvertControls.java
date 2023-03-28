@@ -11,7 +11,7 @@ public class InvertControls extends Power {
 
     private final BreakOutGame breakOutGame;
     private SpelerBalk spelerBalk;
-    private SoundClip soundEffect = new SoundClip("audio/power_down.mp3");
+    private SoundClip soundEffect = new SoundClip("audio/power_down.mp4");
 
     public InvertControls(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
         super(position, size, "sprites/invert_controls.png");

@@ -14,10 +14,10 @@ public class VersmalBal extends Power {
     private final SpelerBalk spelerBalk;
     private final int VERKLEINING = 10;
     private final GameLevel level;
-    private SoundClip soundEffect = new SoundClip("audio/power_down.mp3");
+    private SoundClip soundEffect = new SoundClip("audio/power_down.mp4");
 
     public VersmalBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
-        super(position, size, "sprites/versmal_bal.png");
+        super(position, size, "sprites/verklein_bal.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
         this.level = level;

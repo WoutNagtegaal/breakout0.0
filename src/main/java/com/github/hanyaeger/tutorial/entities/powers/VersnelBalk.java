@@ -24,8 +24,15 @@ public class VersnelBalk extends Power {
         if(collider instanceof SpelerBalk) {
             this.spelerBalk = (SpelerBalk) collider;
         }
-        final double HUIDIGE_SNELHEID = spelerBalk.getSnelheid();
-        spelerBalk.setSnelheid(HUIDIGE_SNELHEID + VERSNELLING);
+        double huidige_snelheid = spelerBalk.getSnelheid();
+        double nieuwe_snelheid = huidige_snelheid + VERSNELLING;
+        double max_snelheid = spelerBalk.getMAX_SNELHEID();
+
+        if (nieuwe_snelheid > max_snelheid) {
+            spelerBalk.setSnelheid(max_snelheid);
+        } else {
+            spelerBalk.setSnelheid(nieuwe_snelheid);
+        }
     }
 
     void speelVerwijderSound(Collider collider) {
