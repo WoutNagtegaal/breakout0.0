@@ -16,7 +16,7 @@ public class ExtraBal extends Power implements Collider{
     private final GameLevel level;
 
     public ExtraBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
-        super(position, size, "Sprites/extra_bal.png");
+        super(position, size, "sprites/extra_bal.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
         this.level = level;

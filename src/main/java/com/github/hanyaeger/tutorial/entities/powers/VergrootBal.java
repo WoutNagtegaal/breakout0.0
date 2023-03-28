@@ -15,7 +15,7 @@ public class VergrootBal extends Power {
     private final Bal bal;
 
     public VergrootBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level, Bal bal) {
-        super(position, size, "Sprites/vergroot_bal.png");
+        super(position, size, "sprites/vergroot_bal.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
         this.bal = bal;

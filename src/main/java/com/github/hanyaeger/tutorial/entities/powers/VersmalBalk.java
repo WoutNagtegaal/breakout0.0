@@ -15,7 +15,7 @@ public class VersmalBalk extends Power {
     private final GameLevel level;
 
     public VersmalBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
-        super(position, size, "Sprites/versmal_balk.png");
+        super(position, size, "sprites/versmal_balk.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
         this.level = level;

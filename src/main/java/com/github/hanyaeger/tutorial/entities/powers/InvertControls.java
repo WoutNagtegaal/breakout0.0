@@ -12,7 +12,7 @@ public class InvertControls extends Power {
     private final SpelerBalk spelerBalk;
 
     public InvertControls(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
-        super(position, size, "Sprites/invert_controls.png");
+        super(position, size, "sprites/invert_controls.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
     }

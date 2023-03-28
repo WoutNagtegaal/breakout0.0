@@ -14,7 +14,7 @@ public class VerbreedBalk extends Power {
     private final GameLevel level;
 
     public VerbreedBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
-        super(position, size, "Sprites/verbreed_balk.png");
+        super(position, size, "sprites/verbreed_balk.png");
         this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
         this.level = level;
