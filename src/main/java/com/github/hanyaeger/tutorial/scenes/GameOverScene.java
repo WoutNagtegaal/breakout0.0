@@ -20,7 +20,7 @@ public class GameOverScene extends StaticScene {
 
   @Override
   public void setupScene() {
-    setBackgroundImage("backgrounds/game_over_background.jpg");
+    setBackgroundImage("backgrounds/defeat.jpg");
   }
 
   @Override
@@ -30,7 +30,7 @@ public class GameOverScene extends StaticScene {
             "Game Over"
     );
     gameOver.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-    gameOver.setFill(Color.DARKBLUE);
+    gameOver.setFill(Color.ANTIQUEWHITE);
     gameOver.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
     addEntity(gameOver);
 
