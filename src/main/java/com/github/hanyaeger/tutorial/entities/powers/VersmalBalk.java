@@ -21,8 +21,7 @@ public class VersmalBalk extends Power {
     }
 
     void doePowerActie() {
-        double huidige_breedte = spelerBalk.getBreedte();
-        spelerBalk.setBreedte(huidige_breedte - VERKLEINING);
+        level.versmalBalk(VERKLEINING);
         System.out.println(spelerBalk.getBreedte());
 
 //        Coordinate2D location = spelerBalk.getYlocation();

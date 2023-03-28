@@ -21,8 +21,7 @@ public class VerbreedBalk extends Power {
     }
 
     void doePowerActie() {
-        double huidige_breedte = spelerBalk.getBreedte();
-        spelerBalk.setBreedte(huidige_breedte + VERGROTING);
+        level.verbreedBalk(VERGROTING);
         System.out.println(spelerBalk.getBreedte());
 
 //        Coordinate2D location = spelerBalk.getYlocation();
