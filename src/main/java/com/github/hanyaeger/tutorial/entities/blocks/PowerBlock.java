@@ -66,18 +66,25 @@ public class PowerBlock extends Block {
                 break;
             case 6:
                 // voeg de nieuwe power_up toe aan het spel
-//                VergrootBal vergrootBal = new VergrootBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level, bal);
-//                level.addVergrootBal(vergrootBal);
-//                vergrootBal.dropPower();
-//                System.out.println("Power-up: Vergroot bal");
-//                break;
+                VergrootBal vergrootBal = new VergrootBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+                level.addPower(vergrootBal);
+                vergrootBal.dropPower();
+                System.out.println("Power-up: Vergroot bal");
+                break;
+            case 7:
+                // voeg de nieuwe power-down toe aan het spel
+                VersmalBal versmalBal = new VersmalBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+                level.addPower(versmalBal);
+                versmalBal.dropPower();
+                System.out.println("Power-down: Versmal bal");
+                break;
         }
         ontplof();
     }
 
     public int getRandomPower() {
-        final int MIN_VALUE = 2;
-        final int MAX_VALUE = 3;
+        final int MIN_VALUE = 1;
+        final int MAX_VALUE = 7;
 
         Random random = new Random();
         int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;

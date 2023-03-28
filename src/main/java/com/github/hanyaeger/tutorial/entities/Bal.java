@@ -14,6 +14,8 @@ import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
     private final BreakOutGame breakOutGame;
     private int grootte = 50;
+    private final int MAX_GROOTTE = 70;
+    private final int MIN_GROOTTE = 20;
     private SpelerBalk spelerBalk;
     private final GameLevel level;
     private final boolean isVastgehouden;
@@ -32,9 +34,9 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public double startDirection = SOUTH;
 
     @SuppressWarnings("LanguageDetectionInspection")
-    public Bal(BreakOutGame breakOutGame, GameLevel level, SpelerBalk balk, double x, double y) {
+    public Bal(BreakOutGame breakOutGame, GameLevel level, SpelerBalk balk, double x, double y, int grootte) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
-        super("sprites/bal.png", new Coordinate2D(x, y), new Size(50, 50));
+        super("sprites/bal.png", new Coordinate2D(x, y), new Size(grootte, grootte));
 
         setMotion(SPEED, startDirection);
 
@@ -42,6 +44,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         this.spelerBalk = balk;
         this.isVastgehouden = true;
         this.level = level;
+        this.grootte = grootte;
 
     }
 
@@ -167,5 +170,13 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
     public void setGrootte(int grootte) {
         this.grootte = grootte;
+    }
+
+    public int getMAX_GROOTTE() {
+        return MAX_GROOTTE;
+    }
+
+    public int getMIN_GROOTTE() {
+        return MIN_GROOTTE;
     }
 }
