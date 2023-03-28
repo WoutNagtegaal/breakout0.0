@@ -10,7 +10,6 @@ import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.powers.*;
-//import com.github.hanyaeger.tutorial.entities.powers.VerkleinBal;
 import com.github.hanyaeger.tutorial.entities.text.LevensText;
 import javafx.scene.input.MouseButton;
 
@@ -118,6 +117,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public void veranderBalkGrootte(int breedte) {
     double x = spelerBalk.getX();
     double y = spelerBalk.getY();
+    double oudeBreedte = spelerBalk.getBreedte();
+    x = (x + (oudeBreedte / 2)) - (breedte / 2);
 
     spelerBalk.remove();
     spelerBalk = new SpelerBalk(new Coordinate2D(x, y), breakOutGame, breedte);
