@@ -11,7 +11,6 @@ import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
-import com.github.hanyaeger.tutorial.entities.text.LevensText;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -122,7 +121,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(power);
   }
 
-  public void verwijderBlock() {
+  public void removeBlock() {
     numberOfBlocks--;
     if(getNumberOfBlocks() <= 0) {
       levelDone();
@@ -133,9 +132,9 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     return numberOfBlocks;
   }
 
-  public void levelKlaar() {
+  public void levelDone() {
     completedSound.play();
-    breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
+    breakOutGame.setActiveScene(Constants.LEVEL_COMPLETED);
   }
 
   /*
@@ -151,10 +150,10 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
    */
 
-  public void veranderBalkGrootte(double breedte) {
+  public void changePlayerSize(double breedte) {
     double xPositie = player.getX();
     double yPositie = player.getY();
-    double oudeBreedte = player.getBreedte();
+    double oudeBreedte = player.getWidth();
     xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
 
     player.remove();
