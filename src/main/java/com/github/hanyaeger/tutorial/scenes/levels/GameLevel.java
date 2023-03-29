@@ -19,19 +19,15 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   private final BreakOutGame breakOutGame;
   protected Player player;
-  private Ball ball;
   private TextEntity livesText;
   protected int numberOfBlocks;
   private int numberOfBalls;
   private int lives;
-  private SoundClip deathSound = new SoundClip("audio/death.mp3");
-  private SoundClip completedSound = new SoundClip("audio/level_geslaagd.mp3");
+  private final SoundClip deathSound = new SoundClip("audio/death.mp3");
+  private final SoundClip completedSound = new SoundClip("audio/level_geslaagd.mp3");
   private final double ORIGINAL_PLAYERWIDTH = 200;
   private double playerWidth = ORIGINAL_PLAYERWIDTH;
-  private final int ORIGINAL_BALSIZE = 50;
-  private int balSize = ORIGINAL_BALSIZE;
-  private final int MAX_BAL_SIZE = 70;
-  private final int MIN_BAL_SIZE = 10;
+  private final int ORIGINAL_BALLSIZE = 50;
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -55,9 +51,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     playerWidth = ORIGINAL_PLAYERWIDTH;
     addEntity(player);
 
-    addMainBal(getWidth() / 2, (getHeight() / 4) * 3);
+    addNewBal(getWidth() / 2, (getHeight() / 4) * 3);
 
-//    text.setLevensText(levens);
     Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
     String levensTextString = "LEVENS: " + lives;
     livesText = new TextEntity(levensPositie, levensTextString);
@@ -78,15 +73,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(livesText);
   }
 
-  public void addMainBal(double x, double y) {
-    ball = new Ball(this, player, x, y, ORIGINAL_BALSIZE);
-    balSize = ORIGINAL_BALSIZE;
-    addEntity(ball);
-    numberOfBalls++;
-  }
-
   public void addNewBal(double x, double y) {
-    Ball newBall = new Ball(this, player,x, y, balSize);
+    Ball newBall = new Ball(this, player,x, y, ORIGINAL_BALLSIZE);
     addEntity(newBall);
     numberOfBalls++;
   }
@@ -156,19 +144,4 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     this.playerWidth = playerWidth;
   }
 
-  public int getBalSize() {
-    return balSize;
-  }
-
-  public void setBalSize(int balSize) {
-    this.balSize = balSize;
-  }
-
-  public int getMAX_BAL_SIZE() {
-    return MAX_BAL_SIZE;
-  }
-
-  public int getMIN_BAL_GROOTTE() {
-    return MIN_BAL_SIZE;
-  }
 }
