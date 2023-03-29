@@ -26,11 +26,9 @@ public class MakeBallSmaller extends Power {
         int nieuwe_grootte = huidige_grootte - VERKLEINING;
 
         if (nieuwe_grootte < min_grootte) {
-            System.out.println("Minimale grootte bereikt");
             level.setBalSize(min_grootte);
             //level.veranderBalGrootte(min_grootte);
         } else if (nieuwe_grootte > max_grootte) {
-            System.out.println("Maximale grootte bereikt");
             level.setBalSize(max_grootte);
             //level.veranderBalGrootte(max_grootte);
         } else {

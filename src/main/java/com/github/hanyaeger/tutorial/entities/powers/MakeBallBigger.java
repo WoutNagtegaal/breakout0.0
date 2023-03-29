@@ -25,17 +25,10 @@ public class MakeBallBigger extends Power {
         int huidige_grootte = level.getBalSize();
         int nieuwe_grootte = huidige_grootte + VERGROTING;
 
-//        System.out.println("Huidige grootte");
-//        System.out.println(huidige_grootte);
-//        System.out.println("Nieuwe_grootte");
-//        System.out.println(nieuwe_grootte);
-
         if (nieuwe_grootte > max_grootte) {
-            System.out.println("Maximale grootte bereikt");
             level.setBalSize(max_grootte);
             //level.veranderBalGrootte(max_grootte);
         } else if (nieuwe_grootte < min_grootte) {
-            System.out.println("Minimale grootte bereikt");
             level.setBalSize(min_grootte);
             //level.veranderBalGrootte(min_grootte);
         } else {
