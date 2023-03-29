@@ -29,6 +29,6 @@ public class BreakOutGame extends YaegerGame {
         addScene(Constants.TESTLEVEL, new TestLevel(this));
         addScene(Constants.LEVEL_SELECT, new LevelCompleted(this));
         addScene(Constants.DEATH_SCREEN, new GameOverScene(this));
-        addScene(Constants.LEVEL_COMPLETED, new LevelCompleted(this));
+        addScene(Constants.LEVEL_GESLAAGD, new LevelCompleted(this));
     }
 }

@@ -11,6 +11,7 @@ import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
+import com.github.hanyaeger.tutorial.entities.text.LevensText;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -57,7 +58,10 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
     addMainBal(getWidth() / 2, (getHeight() / 4) * 3);
 
-    livesText = new TextEntity(new Coordinate2D(getWidth() - 100, getHeight() - 10), "LEVENS: " + lives);
+//    text.setLevensText(levens);
+    Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
+    String levensTextString = "LEVENS: " + lives;
+    livesText = new TextEntity(levensPositie, levensTextString);
 
     livesText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
     livesText.setFill(Color.ANTIQUEWHITE);
@@ -118,7 +122,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(power);
   }
 
-  public void deleteBlock() {
+  public void verwijderBlock() {
     numberOfBlocks--;
     if(getNumberOfBlocks() <= 0) {
       levelDone();
@@ -129,9 +133,9 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     return numberOfBlocks;
   }
 
-  public void levelDone() {
+  public void levelKlaar() {
     completedSound.play();
-    breakOutGame.setActiveScene(Constants.LEVEL_DONE);
+    breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
   }
 
   /*
@@ -147,14 +151,14 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
    */
 
-  public void changePlayerSize(double width) {
+  public void veranderBalkGrootte(double breedte) {
     double xPositie = player.getX();
     double yPositie = player.getY();
-    double oldWidth = player.getWidth();
-    xPositie = (xPositie + (oldWidth / 2.0)) - (width / 2.0);
+    double oudeBreedte = player.getBreedte();
+    xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
 
     player.remove();
-    player = new Player(new Coordinate2D(xPositie, yPositie), width);
+    player = new Player(new Coordinate2D(xPositie, yPositie), breedte);
     addEntity(player);
   }
 

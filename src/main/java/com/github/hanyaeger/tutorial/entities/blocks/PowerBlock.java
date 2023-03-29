@@ -21,54 +21,54 @@ public class PowerBlock extends Block {
     public PowerBlock(Coordinate2D position, Size size, BlockConfig c) {
         super(position, size, c);
         this.breakOutGame = c.getBreakOutGame();
-        this.player = c.getBalk();
+        this.player = c.getPlayer();
         this.level = c.getLevel();
     }
 
-    public void doeHitActie() {
+    public void doCollisionAction() {
         /*
         int power = getRandomPower();
         switch (power) {
             case 1:
                 // voeg de nieuwe power-up toe aan het spel
-                ExtraBal extraBal = new ExtraBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
+                ExtraBal extraBal = new ExtraBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
                 level.addPower(extraBal);
                 extraBal.dropPower();
                 break;
             case 2:
                 // voeg de nieuwe power-up toe aan het spel
-                VerbreedBalk verbreedBalk = new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
+                VerbreedBalk verbreedBalk = new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
                 level.addPower(verbreedBalk);
                 verbreedBalk.dropPower();
                 break;
             case 3:
                 // voeg de nieuwe power-down toe aan het spel
-                VersmalBalk versmalBalk = new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
+                VersmalBalk versmalBalk = new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
                 level.addPower(versmalBalk);
                 versmalBalk.dropPower();
                 break;
             case 4:
                 // voeg de nieuwe power-up toe aan het spel
-                VersnelBalk versnelBalk = new VersnelBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player);
+                VersnelBalk versnelBalk = new VersnelBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
                 level.addPower(versnelBalk);
                 versnelBalk.dropPower();
                 break;
             case 5:
                 // voeg de nieuwe power-down toe aan het spel
-                InvertControls invertControls = new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player);
+                InvertControls invertControls = new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
                 level.addPower(invertControls);
                 invertControls.dropPower();
                 break;
 
             case 6:
                 // voeg de nieuwe power_up toe aan het spel
-                VergrootBal vergrootBal = new VergrootBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
+                VergrootBal vergrootBal = new VergrootBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
                 level.addPower(vergrootBal);
                 vergrootBal.dropPower();
                 break;
             case 7:
                 // voeg de nieuwe power-down toe aan het spel
-                VersmalBal versmalBal = new VersmalBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
+                VersmalBal versmalBal = new VersmalBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
                 level.addPower(versmalBal);
                 versmalBal.dropPower();
                 break;
@@ -81,7 +81,7 @@ public class PowerBlock extends Block {
         level.addPower(power);
         power.dropPower();
 
-        ontplof();
+        explode();
     }
 
     public int getRandomPowerOld() {
