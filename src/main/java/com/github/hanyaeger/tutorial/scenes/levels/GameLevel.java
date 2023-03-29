@@ -47,7 +47,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public void setupEntities() {
     spelerBalk = new SpelerBalk(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
-            breakOutGame, ORIGINELE_BALKBREEDTE
+            ORIGINELE_BALKBREEDTE
     );
     balkBreedte = ORIGINELE_BALKBREEDTE;
     addEntity(spelerBalk);
@@ -64,17 +64,19 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     balGrootte = ORIGINELE_BALGROOTTE;
     addEntity(bal);
     aantalBallen++;
+    System.out.println("hoofdbal: " + aantalBallen);
   }
 
   public void voegBalToe(double x, double y) {
     Bal nieuweBal = new Bal(breakOutGame, this, spelerBalk,x, y, balGrootte);
     addEntity(nieuweBal);
     aantalBallen++;
+    System.out.println("bal: " + aantalBallen);
   }
 
   public void verwijderBal() {
     aantalBallen--;
-    System.out.println(aantalBallen);
+    System.out.println("verwijder bal: " + aantalBallen);
     if(aantalBallen <= 0) {
       levens--;
       text.setLevensText(levens);
@@ -136,7 +138,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
 
     spelerBalk.remove();
-    spelerBalk = new SpelerBalk(new Coordinate2D(xPositie, yPositie), breakOutGame, breedte);
+    spelerBalk = new SpelerBalk(new Coordinate2D(xPositie, yPositie), breedte);
     addEntity(spelerBalk);
   }
 
