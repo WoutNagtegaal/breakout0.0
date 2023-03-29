@@ -190,5 +190,4 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public void setPlayerWidth(double playerWidth) {
     this.playerWidth = playerWidth;
   }
-
 }
