@@ -22,8 +22,8 @@ public class MakePlayerSmaller extends Power {
     }
 
     void doPowerAction(Collider collider) {
-        double maxWidth = player.getMAX_BREEDTE();
-        double minWidth = player.getMIN_BREEDTE();
+        double maxWidth = player.getMaxWidth();
+        double minWidth = player.getMinWidth();
         double currentWidth = level.getPlayerWidth();
         double newWidth = currentWidth - SIZE_CHANGE;
 

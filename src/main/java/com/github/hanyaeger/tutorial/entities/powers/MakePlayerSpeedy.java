@@ -22,9 +22,9 @@ public class MakePlayerSpeedy extends Power {
         if(collider instanceof Player) {
             this.player = (Player) collider;
         }
-        double currentSpeed = player.getSnelheid();
+        double currentSpeed = player.getSpeed();
         double newSpeed = currentSpeed + ACCELERATION;
-        double maxSpeed = player.getMAX_SNELHEID();
+        double maxSpeed = player.getMaxSpeed();
 
         if (newSpeed > maxSpeed) {
             player.setPlayerSpeed(maxSpeed);

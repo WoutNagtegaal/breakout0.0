@@ -11,13 +11,13 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.blocks.Block;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
-public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
+public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
 
     private Player player;
     private final GameLevel level;
     private final double SPEED = 5;
 
-    public static double huidigeStuiterRichting;
+    public static double currentBounce;
     public final static double NORTH = 180;
     public final static double SOUTH = 0;
     public final static double EAST = 90;
@@ -26,18 +26,17 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public final static double SOUTH_EAST = 45;
     public final static double NORTH_WEST = 225;
     public final static double SOUTH_WEST = 315;
-    public final static double NORTH_NORTH_EAST = 157.5;
-    public final static double NORTH_NORTH_WEST = 202.5;
+
     public double startDirection = SOUTH;
 
     @SuppressWarnings("LanguageDetectionInspection")
-    public Bal(BreakOutGame breakOutGame, GameLevel level, Player balk, double x, double y, int grootte) {
+    public Ball(BreakOutGame breakOutGame, GameLevel level, Player player, double x, double y, int size) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
-        super("sprites/bal.png", new Coordinate2D(x, y), new Size(grootte, grootte));
+        super("sprites/bal.png", new Coordinate2D(x, y), new Size(size, size));
 
         setMotion(SPEED, startDirection);
 
-        this.player = balk;
+        this.player = player;
         this.level = level;
     }
 
@@ -46,12 +45,12 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         //Controleerd tegen welke rand is gebotst en stuitert de bal
         switch (sceneBorder) {
             case TOP -> {
-                if(gaatNaarRechts()) {
-                    stuiter(SOUTH_EAST);
-                    huidigeStuiterRichting = SOUTH_EAST;
+                if(goingRight()) {
+                    bounce(SOUTH_EAST);
+                    currentBounce = SOUTH_EAST;
                 } else {
-                    stuiter(SOUTH_WEST);
-                    huidigeStuiterRichting = SOUTH_WEST;
+                    bounce(SOUTH_WEST);
+                    currentBounce = SOUTH_WEST;
                 }
                 setAnchorLocationY(1);
             }
@@ -60,37 +59,37 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 remove();
             }
             case LEFT -> {
-                if(gaatNaarBoven()) {
-                    stuiter(NORTH_EAST);
-                    huidigeStuiterRichting = NORTH_EAST;
+                if(goingUp()) {
+                    bounce(NORTH_EAST);
+                    currentBounce = NORTH_EAST;
                 } else {
-                    stuiter(SOUTH_EAST);
-                    huidigeStuiterRichting = SOUTH_EAST;
+                    bounce(SOUTH_EAST);
+                    currentBounce = SOUTH_EAST;
                 }
                 setAnchorLocationX(1);
             }
             case RIGHT -> {
-                if(gaatNaarBoven()) {
-                    stuiter(NORTH_WEST);
-                    huidigeStuiterRichting = NORTH_WEST;
+                if(goingUp()) {
+                    bounce(NORTH_WEST);
+                    currentBounce = NORTH_WEST;
                 } else {
-                    stuiter(SOUTH_WEST);
-                    huidigeStuiterRichting = SOUTH_WEST;
+                    bounce(SOUTH_WEST);
+                    currentBounce = SOUTH_WEST;
                 }
                 setAnchorLocationX(getSceneWidth() - getWidth() - 1);
             }
         }
     }
 
-    boolean gaatNaarRechts() {
+    boolean goingRight() {
         return getDirection() > SOUTH && getDirection() < NORTH;
     }
 
-    boolean gaatNaarBoven() {
+    boolean goingUp() {
         return getDirection() > EAST && getDirection() < WEST;
     }
 
-    public void stuiter(double hoek) {
+    public void bounce(double hoek) {
         setDirection(hoek);
     }
 
@@ -101,21 +100,21 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         if(collider instanceof Player) {
             player = ((Player) collider);
             if (getX() + (getWidth() / 2) > player.getX() + (player.getWidth() / 2)) {
-                stuiter(NORTH_EAST);
-                huidigeStuiterRichting = NORTH_EAST;
+                bounce(NORTH_EAST);
+                currentBounce = NORTH_EAST;
             } else {
-                stuiter(NORTH_WEST);
-                huidigeStuiterRichting = NORTH_WEST;
+                bounce(NORTH_WEST);
+                currentBounce = NORTH_WEST;
             }
         }
         //Bij een blok moet de bal van de zijkant af stuiteren. Beetje rommelige manier, zal nog wel netter kunnen
         else if(collider instanceof Block) {
-            bepaalStuiterRichting(((Block) collider));
+            decideBounceDirection(((Block) collider));
             ((Block)collider).doCollisionAction();
         }
     }
 
-    private void bepaalStuiterRichting(Block block) {
+    private void decideBounceDirection(Block block) {
         double marge = 6; //snelheid van bal + 1 deze is nodig omdat de bal 5 pixels in een seconde beweegt en
         //zonder deze marge kan niet altijd bepaald worden aan welke kant de bal naar binnen is gegaan omdat de bal
         //al te ver het blok in is gegaan
@@ -128,39 +127,39 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
         //de linkerkant van het blok
         if(blockX + marge > getX() + getWidth()) {
-            if(gaatNaarBoven()) {
-                stuiter(NORTH_WEST);
-                huidigeStuiterRichting = NORTH_WEST;
+            if(goingUp()) {
+                bounce(NORTH_WEST);
+                currentBounce = NORTH_WEST;
             } else {
-                stuiter(SOUTH_WEST);
-                huidigeStuiterRichting = SOUTH_WEST;
+                bounce(SOUTH_WEST);
+                currentBounce = SOUTH_WEST;
             }
             //de rechterkant van het blok
         } else if(blockX + blockWidth < getX() + marge) {
-            if(gaatNaarBoven()) {
-                stuiter(NORTH_EAST);
-                huidigeStuiterRichting = NORTH_EAST;
+            if(goingUp()) {
+                bounce(NORTH_EAST);
+                currentBounce = NORTH_EAST;
             } else {
-                stuiter(SOUTH_EAST);
-                huidigeStuiterRichting = SOUTH_EAST;
+                bounce(SOUTH_EAST);
+                currentBounce = SOUTH_EAST;
             }
             //de bovenkant van het blok
         } else if(blockY + marge > getY() + getHeight()) {
-            if(gaatNaarRechts()) {
-                stuiter(NORTH_EAST);
-                huidigeStuiterRichting = NORTH_EAST;
+            if(goingRight()) {
+                bounce(NORTH_EAST);
+                currentBounce = NORTH_EAST;
             } else {
-                stuiter(NORTH_WEST);
-                huidigeStuiterRichting = NORTH_WEST;
+                bounce(NORTH_WEST);
+                currentBounce = NORTH_WEST;
             }
             //de onderkant van het block
         } else if(blockY + blockHeight < getY() + marge) {
-            if(gaatNaarRechts()) {
-                stuiter(SOUTH_EAST);
-                huidigeStuiterRichting = SOUTH_EAST;
+            if(goingRight()) {
+                bounce(SOUTH_EAST);
+                currentBounce = SOUTH_EAST;
             } else {
-                stuiter(SOUTH_WEST);
-                huidigeStuiterRichting = SOUTH_WEST;
+                bounce(SOUTH_WEST);
+                currentBounce = SOUTH_WEST;
             }
         }
     }
@@ -173,7 +172,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         return getAnchorLocation().getY();
     }
 
-    public double getHuidigeStuiterRichting() {
-        return huidigeStuiterRichting;
+    public double getCurrentBounce() {
+        return currentBounce;
     }
 }

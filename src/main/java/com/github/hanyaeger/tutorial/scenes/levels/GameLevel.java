@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
-import com.github.hanyaeger.tutorial.entities.Bal;
+import com.github.hanyaeger.tutorial.entities.Ball;
 import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
 import javafx.scene.paint.Color;
@@ -19,7 +19,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   private final BreakOutGame breakOutGame;
   Player player;
-  Bal bal;
+  Ball ball;
   TextEntity livesText;
   int numberOfBlocks;
   int numberOfBalls;
@@ -79,15 +79,15 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   }
 
   public void addMainBal(double x, double y) {
-    bal = new Bal(breakOutGame, this, player, x, y, ORIGINAL_BALSIZE);
+    ball = new Ball(breakOutGame, this, player, x, y, ORIGINAL_BALSIZE);
     balSize = ORIGINAL_BALSIZE;
-    addEntity(bal);
+    addEntity(ball);
     numberOfBalls++;
   }
 
   public void addNewBal(double x, double y) {
-    Bal newBal = new Bal(breakOutGame, this, player,x, y, balSize);
-    addEntity(newBal);
+    Ball newBall = new Ball(breakOutGame, this, player,x, y, balSize);
+    addEntity(newBall);
     numberOfBalls++;
   }
 
