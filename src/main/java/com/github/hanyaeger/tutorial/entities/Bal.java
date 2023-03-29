@@ -111,7 +111,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
         //Bij een blok moet de bal van de zijkant af stuiteren. Beetje rommelige manier, zal nog wel netter kunnen
         else if(collider instanceof Block) {
             bepaalStuiterRichting(((Block) collider));
-            ((Block)collider).doeHitActie();
+            ((Block)collider).doCollisionAction();
         }
     }
 

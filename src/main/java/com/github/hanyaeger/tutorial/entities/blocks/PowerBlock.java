@@ -2,7 +2,6 @@ package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.powers.*;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
@@ -26,7 +25,7 @@ public class PowerBlock extends Block {
         this.level = c.getLevel();
     }
 
-    public void doeHitActie() {
+    public void doCollisionAction() {
         /*
         int power = getRandomPower();
         switch (power) {
@@ -82,7 +81,7 @@ public class PowerBlock extends Block {
         level.addPower(power);
         power.dropPower();
 
-        ontplof();
+        explode();
     }
 
     public int getRandomPowerOld() {

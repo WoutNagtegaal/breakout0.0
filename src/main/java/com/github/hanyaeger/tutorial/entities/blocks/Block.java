@@ -20,14 +20,14 @@ public class Block extends DynamicSpriteEntity implements Collider {
         explosion.setVolume(0.25);
     }
 
-    public void doeHitActie() {
-        ontplof();
+    public void doCollisionAction() {
+        explode();
     }
 
-    protected void ontplof() {
+    protected void explode() {
         explosion.play();
         remove();
-        level.verwijderBlock();
+        level.removeBlock();
     }
 
     public double getX() {

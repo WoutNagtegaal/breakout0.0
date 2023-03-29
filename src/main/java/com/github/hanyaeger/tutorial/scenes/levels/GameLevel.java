@@ -10,12 +10,10 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
-import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 
 public abstract class GameLevel extends DynamicScene implements TileMapContainer {
 
@@ -128,7 +126,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(power);
   }
 
-  public void verwijderBlock() {
+  public void removeBlock() {
     aantalBlokken--;
     if(getAantalBlokken() <= 0) {
       levelKlaar();

@@ -2,8 +2,6 @@ package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.tutorial.entities.Bal;
 
 public class GepantserdBlock extends Block {
     private int health;
@@ -13,10 +11,10 @@ public class GepantserdBlock extends Block {
     }
 
     @Override
-    public void doeHitActie() {
+    public void doCollisionAction() {
         health--;
         if (health <= 0) {
-            ontplof();
+            explode();
         }
     }
 }
