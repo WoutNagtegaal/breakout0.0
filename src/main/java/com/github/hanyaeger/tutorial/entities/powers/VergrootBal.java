@@ -33,14 +33,14 @@ public class VergrootBal extends Power {
         if (nieuwe_grootte > max_grootte) {
             System.out.println("Maximale grootte bereikt");
             level.setBalGrootte(max_grootte);
-            level.veranderBalGrootte(max_grootte);
+            //level.veranderBalGrootte(max_grootte);
         } else if (nieuwe_grootte < min_grootte) {
             System.out.println("Minimale grootte bereikt");
             level.setBalGrootte(min_grootte);
-            level.veranderBalGrootte(min_grootte);
+            //level.veranderBalGrootte(min_grootte);
         } else {
             level.setBalGrootte(nieuwe_grootte);
-            level.veranderBalGrootte(nieuwe_grootte);
+            //level.veranderBalGrootte(nieuwe_grootte);
         }
     }
 

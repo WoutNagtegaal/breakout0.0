@@ -59,6 +59,7 @@ public class PowerBlock extends Block {
                 level.addPower(invertControls);
                 invertControls.dropPower();
                 break;
+                /*
             case 6:
                 // voeg de nieuwe power_up toe aan het spel
                 VergrootBal vergrootBal = new VergrootBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
@@ -71,13 +72,15 @@ public class PowerBlock extends Block {
                 level.addPower(versmalBal);
                 versmalBal.dropPower();
                 break;
+
+                 */
         }
         ontplof();
     }
 
     public int getRandomPower() {
         final int MIN_VALUE = 1;
-        final int MAX_VALUE = 7;
+        final int MAX_VALUE = 5;
 
         Random random = new Random();
         int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;
