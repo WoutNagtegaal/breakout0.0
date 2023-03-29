@@ -2,18 +2,16 @@ package com.github.hanyaeger.tutorial.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.tutorial.BreakOutGame;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
-public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collider {
+public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collider {
 
   private double snelheid = 8;
   private final double MAX_SNELHEID = 16;
@@ -23,7 +21,7 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
   private final double LEFT = 270d;
   private final double RIGHT = 90;
   private boolean inverted_controls = false;
-  public SpelerBalk(Coordinate2D location, double breedte) {
+  public Player(Coordinate2D location, double breedte) {
     super("sprites/ufobalk.png", location, new Size(breedte, 40));
     // verander de waardes in new Size() naar de variabelen erboven
     setPreserveAspectRatio(false);

@@ -13,7 +13,7 @@ import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
 
-    private SpelerBalk spelerBalk;
+    private Player player;
     private final GameLevel level;
     private final double SPEED = 5;
 
@@ -31,13 +31,13 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public double startDirection = SOUTH;
 
     @SuppressWarnings("LanguageDetectionInspection")
-    public Bal(BreakOutGame breakOutGame, GameLevel level, SpelerBalk balk, double x, double y, int grootte) {
+    public Bal(BreakOutGame breakOutGame, GameLevel level, Player balk, double x, double y, int grootte) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(x, y), new Size(grootte, grootte));
 
         setMotion(SPEED, startDirection);
 
-        this.spelerBalk = balk;
+        this.player = balk;
         this.level = level;
     }
 
@@ -98,9 +98,9 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
     public void onCollision(Collider collider) {
         //Bij de balk stuitert de bal naar linksboven wanneer de bal de balk links raakt en naar
         //rechts wanneer de bal de balk rechts raakt
-        if(collider instanceof SpelerBalk) {
-            spelerBalk = ((SpelerBalk) collider);
-            if (getX() + (getWidth() / 2) > spelerBalk.getX() + (spelerBalk.getWidth() / 2)) {
+        if(collider instanceof Player) {
+            player = ((Player) collider);
+            if (getX() + (getWidth() / 2) > player.getX() + (player.getWidth() / 2)) {
                 stuiter(NORTH_EAST);
                 huidigeStuiterRichting = NORTH_EAST;
             } else {

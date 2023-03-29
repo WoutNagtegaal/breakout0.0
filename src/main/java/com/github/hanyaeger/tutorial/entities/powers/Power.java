@@ -6,9 +6,8 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
-import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.entities.Player;
 
 public abstract class Power extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collided, Collider {
 
@@ -28,7 +27,7 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
 
     @Override
     public void onCollision(Collider collider) {
-        if (collider instanceof SpelerBalk) {
+        if (collider instanceof Player) {
             doePowerActie(collider);
             speelVerwijderSound();
             remove();

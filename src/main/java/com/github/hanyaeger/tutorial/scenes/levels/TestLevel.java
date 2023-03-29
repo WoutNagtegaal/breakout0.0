@@ -1,7 +1,6 @@
 package com.github.hanyaeger.tutorial.scenes.levels;
 
 import com.github.hanyaeger.tutorial.BreakOutGame;
-import com.github.hanyaeger.tutorial.entities.levels.LevelMap2;
 import com.github.hanyaeger.tutorial.entities.levels.TestLevelMap;
 
 public class TestLevel extends GameLevel{
@@ -14,7 +13,7 @@ public class TestLevel extends GameLevel{
 
     @Override
     public void setupTileMaps() {
-        addTileMap(new TestLevelMap(this, breakOutGame, spelerBalk));
-        aantalBlokken = berekenAantalRuimteschepen();
+        addTileMap(new TestLevelMap(this, breakOutGame, player));
+        numberOfBlocks = berekenAantalRuimteschepen();
     }
 }

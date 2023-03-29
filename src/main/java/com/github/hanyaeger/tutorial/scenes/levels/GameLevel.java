@@ -9,8 +9,9 @@ import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
-import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
+import com.github.hanyaeger.tutorial.entities.text.LevensText;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -18,20 +19,20 @@ import javafx.scene.text.FontWeight;
 public abstract class GameLevel extends DynamicScene implements TileMapContainer {
 
   private final BreakOutGame breakOutGame;
-  SpelerBalk spelerBalk;
+  Player player;
   Bal bal;
-  TextEntity levensText;
-  int aantalBlokken;
-  int aantalBallen;
-  int levens;
-  SoundClip death = new SoundClip("audio/death.mp3");
-  SoundClip geslaagd = new SoundClip("audio/level_geslaagd.mp3");
-  private final double ORIGINELE_BALKBREEDTE = 200;
-  private double balkBreedte = ORIGINELE_BALKBREEDTE;
-  private final int ORIGINELE_BALGROOTTE = 50;
-  private int balGrootte = ORIGINELE_BALGROOTTE;
-  private final int MAX_BAL_GROOTTE = 70;
-  private final int MIN_BAL_GROOTTE = 10;
+  TextEntity livesText;
+  int numberOfBlocks;
+  int numberOfBalls;
+  int lives;
+  SoundClip deathSound = new SoundClip("audio/death.mp3");
+  SoundClip completedSound = new SoundClip("audio/level_geslaagd.mp3");
+  private final double ORIGINAL_PLAYERWIDTH = 200;
+  private double playerWidth = ORIGINAL_PLAYERWIDTH;
+  private final int ORIGINAL_BALSIZE = 50;
+  private int balSize = ORIGINAL_BALSIZE;
+  private final int MAX_BAL_SIZE = 70;
+  private final int MIN_BAL_SIZE = 10;
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -42,67 +43,69 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 //    setBackgroundAudio("audio/gamemusic.mp3");
     setBackgroundImage("backgrounds/game_background.jpg");
 
-    this.levens = 3;
-    this.aantalBallen = 0;
+    this.lives = 3;
+    this.numberOfBalls = 0;
   }
 
   @Override
   public void setupEntities() {
-    spelerBalk = new SpelerBalk(
+    player = new Player(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
-            ORIGINELE_BALKBREEDTE
+            ORIGINAL_PLAYERWIDTH
     );
-    balkBreedte = ORIGINELE_BALKBREEDTE;
-    addEntity(spelerBalk);
+    playerWidth = ORIGINAL_PLAYERWIDTH;
+    addEntity(player);
 
     voegHoofdBalToe(getWidth() / 2, (getHeight() / 4) * 3);
 
+    text = new LevensText(new Coordinate2D(100, getWidth() - 100));
+    addEntity(text);
 //    text.setLevensText(levens);
     Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
-    String levensTextString = "LEVENS: " + levens;
-    levensText = new TextEntity(levensPositie, levensTextString);
+    String levensTextString = "LEVENS: " + lives;
+    livesText = new TextEntity(levensPositie, levensTextString);
 
-    levensText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
-    levensText.setFill(Color.ANTIQUEWHITE);
-    levensText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
-    addEntity(levensText);
+    livesText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
+    livesText.setFill(Color.ANTIQUEWHITE);
+    livesText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+    addEntity(livesText);
   }
 
   public void veranderLevensText() {
-    levensText.remove();
+    livesText.remove();
     Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
-    String levensTextString = "LEVENS: " + levens;
-    levensText = new TextEntity(levensPositie, levensTextString);
+    String levensTextString = "LEVENS: " + lives;
+    livesText = new TextEntity(levensPositie, levensTextString);
 
-    levensText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
-    levensText.setFill(Color.ANTIQUEWHITE);
-    levensText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
-    addEntity(levensText);
+    livesText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
+    livesText.setFill(Color.ANTIQUEWHITE);
+    livesText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+    addEntity(livesText);
   }
 
   public void voegHoofdBalToe(double x, double y) {
-    bal = new Bal(breakOutGame, this, spelerBalk, x, y, ORIGINELE_BALGROOTTE);
-    balGrootte = ORIGINELE_BALGROOTTE;
+    bal = new Bal(breakOutGame, this, player, x, y, ORIGINAL_BALSIZE);
+    balSize = ORIGINAL_BALSIZE;
     addEntity(bal);
-    aantalBallen++;
-    System.out.println("hoofdbal: " + aantalBallen);
+    numberOfBalls++;
+    System.out.println("hoofdbal: " + numberOfBalls);
   }
 
   public void voegBalToe(double x, double y) {
-    Bal nieuweBal = new Bal(breakOutGame, this, spelerBalk,x, y, balGrootte);
+    Bal nieuweBal = new Bal(breakOutGame, this, player,x, y, balSize);
     addEntity(nieuweBal);
-    aantalBallen++;
-    System.out.println("bal: " + aantalBallen);
+    numberOfBalls++;
+    System.out.println("bal: " + numberOfBalls);
   }
 
   public void verwijderBal() {
-    aantalBallen--;
-    System.out.println("verwijder bal: " + aantalBallen);
-    if(aantalBallen <= 0) {
-      levens--;
+    numberOfBalls--;
+    System.out.println("verwijder bal: " + numberOfBalls);
+    if(numberOfBalls <= 0) {
+      lives--;
       veranderLevensText();
-      if(levens <= 0) {
-        death.play();
+      if(lives <= 0) {
+        deathSound.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
       }
       voegBalToe(getWidth() / 2, (getHeight() / 4) * 3);
@@ -126,19 +129,19 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(power);
   }
 
-  public void removeBlock() {
-    aantalBlokken--;
-    if(getAantalBlokken() <= 0) {
+  public void verwijderBlock() {
+    numberOfBlocks--;
+    if(getNumberOfBlocks() <= 0) {
       levelKlaar();
     }
   }
 
-  public int getAantalBlokken() {
-    return aantalBlokken;
+  public int getNumberOfBlocks() {
+    return numberOfBlocks;
   }
 
   public void levelKlaar() {
-    geslaagd.play();
+    completedSound.play();
     breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
   }
 
@@ -156,37 +159,37 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
    */
 
   public void veranderBalkGrootte(double breedte) {
-    double xPositie = spelerBalk.getX();
-    double yPositie = spelerBalk.getY();
-    double oudeBreedte = spelerBalk.getBreedte();
+    double xPositie = player.getX();
+    double yPositie = player.getY();
+    double oudeBreedte = player.getBreedte();
     xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
 
-    spelerBalk.remove();
-    spelerBalk = new SpelerBalk(new Coordinate2D(xPositie, yPositie), breedte);
-    addEntity(spelerBalk);
+    player.remove();
+    player = new player(new Coordinate2D(xPositie, yPositie), breedte);
+    addEntity(player);
   }
 
-  public double getBalkBreedte() {
-    return balkBreedte;
+  public double getPlayerWidth() {
+    return playerWidth;
   }
 
-  public void setBalkBreedte(double balkBreedte) {
-    this.balkBreedte = balkBreedte;
+  public void setPlayerWidth(double playerWidth) {
+    this.playerWidth = playerWidth;
   }
 
-  public int getBalGrootte() {
-    return balGrootte;
+  public int getBalSize() {
+    return balSize;
   }
 
-  public void setBalGrootte(int balGrootte) {
-    this.balGrootte = balGrootte;
+  public void setBalSize(int balSize) {
+    this.balSize = balSize;
   }
 
-  public int getMAX_BAL_GROOTTE() {
-    return MAX_BAL_GROOTTE;
+  public int getMAX_BAL_SIZE() {
+    return MAX_BAL_SIZE;
   }
 
   public int getMIN_BAL_GROOTTE() {
-    return MIN_BAL_GROOTTE;
+    return MIN_BAL_SIZE;
   }
 }

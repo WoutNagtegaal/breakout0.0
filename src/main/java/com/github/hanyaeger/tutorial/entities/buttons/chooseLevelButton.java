@@ -5,9 +5,9 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
 import javafx.scene.input.MouseButton;
 
-public class KiesLevelButton extends Button {
+public class chooseLevelButton extends Button {
 
-  public KiesLevelButton(Coordinate2D initialLocation, BreakOutGame breakOutGame) {
+  public chooseLevelButton(Coordinate2D initialLocation, BreakOutGame breakOutGame) {
     super(initialLocation, breakOutGame,"Kies volgend level");
   }
 
