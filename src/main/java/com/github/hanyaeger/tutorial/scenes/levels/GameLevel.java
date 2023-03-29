@@ -47,7 +47,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public void setupEntities() {
     spelerBalk = new SpelerBalk(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
-            breakOutGame, balkBreedte
+            balkBreedte
     );
     addEntity(spelerBalk);
 
@@ -76,6 +76,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     if(aantalBallen <= 0) {
       levens--;
       text.setLevensText(levens);
+      System.out.println("fuckfuckfuck");
       if(levens <= 0) {
         death.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
@@ -136,7 +137,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
 
     spelerBalk.remove();
-    spelerBalk = new SpelerBalk(new Coordinate2D(xPositie, yPositie), breakOutGame, breedte);
+    spelerBalk = new SpelerBalk(new Coordinate2D(xPositie, yPositie), breedte);
     addEntity(spelerBalk);
   }
 

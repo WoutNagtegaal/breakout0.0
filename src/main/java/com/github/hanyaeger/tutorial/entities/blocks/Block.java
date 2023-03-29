@@ -9,8 +9,6 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class Block extends DynamicSpriteEntity implements Collider {
-    private static final int BLOCK_WIDTH = 200;
-    private static final int BLOCK_HEIGHT = 100;
     SoundClip explosion = new SoundClip("audio/explosion.mp3");
     GameLevel level;
     BreakOutGame breakOutGame;

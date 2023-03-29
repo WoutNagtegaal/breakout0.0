@@ -12,13 +12,9 @@ import com.github.hanyaeger.tutorial.entities.blocks.Block;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider, Collided {
-    private final BreakOutGame breakOutGame;
-    private int grootte = 50;
-    private final int MAX_GROOTTE = 70;
-    private final int MIN_GROOTTE = 20;
+
     private SpelerBalk spelerBalk;
     private final GameLevel level;
-    private final boolean isVastgehouden;
     private final double SPEED = 5;
 
     public static double huidigeStuiterRichting;
@@ -41,12 +37,8 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
         setMotion(SPEED, startDirection);
 
-        this.breakOutGame = breakOutGame;
         this.spelerBalk = balk;
-        this.isVastgehouden = true;
         this.level = level;
-        this.grootte = grootte;
-
     }
 
     @Override
@@ -179,22 +171,6 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
 
     public double getY() {
         return getAnchorLocation().getY();
-    }
-
-    public int getGrootte() {
-        return grootte;
-    }
-
-    public void setGrootte(int grootte) {
-        this.grootte = grootte;
-    }
-
-    public int getMAX_GROOTTE() {
-        return MAX_GROOTTE;
-    }
-
-    public int getMIN_GROOTTE() {
-        return MIN_GROOTTE;
     }
 
     public double getHuidigeStuiterRichting() {
