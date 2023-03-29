@@ -2,9 +2,9 @@ package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.entities.powers.*;
 import com.github.hanyaeger.tutorial.BreakOutGame;
-import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 import java.util.Random;
@@ -12,7 +12,7 @@ import java.util.Random;
 public class PowerBlock extends Block {
 
     private final BreakOutGame breakOutGame;
-    private final SpelerBalk spelerBalk;
+    private final Player spelerBalk;
     private final GameLevel level;
 
     private static final int POWER_BREEDTE = 35;

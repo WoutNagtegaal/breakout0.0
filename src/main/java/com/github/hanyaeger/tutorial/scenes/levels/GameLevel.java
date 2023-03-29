@@ -11,7 +11,6 @@ import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
-import com.github.hanyaeger.tutorial.entities.text.LevensText;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -58,8 +57,6 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
     voegHoofdBalToe(getWidth() / 2, (getHeight() / 4) * 3);
 
-    text = new LevensText(new Coordinate2D(100, getWidth() - 100));
-    addEntity(text);
 //    text.setLevensText(levens);
     Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
     String levensTextString = "LEVENS: " + lives;
@@ -129,7 +126,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(power);
   }
 
-  public void verwijderBlock() {
+  public void removeBlock() {
     numberOfBlocks--;
     if(getNumberOfBlocks() <= 0) {
       levelKlaar();
@@ -165,7 +162,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
 
     player.remove();
-    player = new player(new Coordinate2D(xPositie, yPositie), breedte);
+    player = new Player(new Coordinate2D(xPositie, yPositie), breedte);
     addEntity(player);
   }
 
