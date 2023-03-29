@@ -79,14 +79,14 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   }
 
   public void addMainBal(double x, double y) {
-    ball = new Ball(breakOutGame, this, player, x, y, ORIGINAL_BALSIZE);
+    ball = new Ball(this, player, x, y, ORIGINAL_BALSIZE);
     balSize = ORIGINAL_BALSIZE;
     addEntity(ball);
     numberOfBalls++;
   }
 
   public void addNewBal(double x, double y) {
-    Ball newBall = new Ball(breakOutGame, this, player,x, y, balSize);
+    Ball newBall = new Ball(this, player,x, y, balSize);
     addEntity(newBall);
     numberOfBalls++;
   }
@@ -136,19 +136,6 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     completedSound.play();
     breakOutGame.setActiveScene(Constants.LEVEL_COMPLETED);
   }
-
-  /*
-  public void veranderBalGrootte(int grootte) {
-    double xPositie = bal.getX();
-    double yPositie = bal.getY();
-
-    bal.remove();
-    bal = new Bal(breakOutGame, this, spelerBalk, xPositie, yPositie, balGrootte);
-    addEntity(bal);
-    bal.stuiter(bal.getHuidigeStuiterRichting());
-  }
-
-   */
 
   public void changePlayerSize(double breedte) {
     double xPositie = player.getX();
