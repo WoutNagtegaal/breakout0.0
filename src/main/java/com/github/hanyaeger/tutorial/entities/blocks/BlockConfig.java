@@ -25,7 +25,7 @@ public class BlockConfig {
         return breakOutGame;
     }
 
-    public Player getBalk() {
+    public Player getPlayer() {
         return balk;
     }
 

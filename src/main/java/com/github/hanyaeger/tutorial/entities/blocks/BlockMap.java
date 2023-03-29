@@ -9,18 +9,18 @@ public abstract class BlockMap extends TileMap {
 
     GameLevel level;
     BreakOutGame breakOutGame;
-    Player balk;
+    Player player;
 
-    public BlockMap(GameLevel level, BreakOutGame breakOutGame, Player balk) {
+    public BlockMap(GameLevel level, BreakOutGame breakOutGame, Player player) {
         this.level = level;
         this.breakOutGame = breakOutGame;
-        this.balk = balk;
+        this.player = player;
     }
 
     @Override
     public void setupEntities() {
-        addEntity(1, Block.class, new BlockConfig(level, breakOutGame, balk, "sprites/enemy_1.png"));
-        addEntity(2, GepantserdBlock.class, new HealthConfig(level, breakOutGame, balk, "sprites/enemy_2.png", 2));
-        addEntity(3, PowerBlock.class, new BlockConfig(level, breakOutGame, balk, "sprites/enemy_3.png"));
+        addEntity(1, Block.class, new BlockConfig(level, breakOutGame, player, "sprites/enemy_1.png"));
+        addEntity(2, HealthBlock.class, new HealthConfig(level, breakOutGame, player, "sprites/enemy_2.png", 2));
+        addEntity(3, PowerBlock.class, new BlockConfig(level, breakOutGame, player, "sprites/enemy_3.png"));
     }
 }
