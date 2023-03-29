@@ -1,6 +1,8 @@
 package com.github.hanyaeger.tutorial.scenes.levels;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
@@ -11,12 +13,17 @@ import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
 import com.github.hanyaeger.tutorial.entities.text.LevensText;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public abstract class GameLevel extends DynamicScene implements TileMapContainer {
 
   private final BreakOutGame breakOutGame;
   SpelerBalk spelerBalk;
   Bal bal;
+  TextEntity levensText;
   int aantalBlokken;
   int aantalBallen;
   int levens;
@@ -56,7 +63,27 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
     text = new LevensText(new Coordinate2D(100, getWidth() - 100));
     addEntity(text);
-    text.setLevensText(levens);
+//    text.setLevensText(levens);
+    Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
+    String levensTextString = "LEVENS: " + levens;
+    levensText = new TextEntity(levensPositie, levensTextString);
+
+    levensText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
+    levensText.setFill(Color.ANTIQUEWHITE);
+    levensText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+    addEntity(levensText);
+  }
+
+  public void veranderLevensText() {
+    levensText.remove();
+    Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
+    String levensTextString = "LEVENS: " + levens;
+    levensText = new TextEntity(levensPositie, levensTextString);
+
+    levensText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
+    levensText.setFill(Color.ANTIQUEWHITE);
+    levensText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+    addEntity(levensText);
   }
 
   public void voegHoofdBalToe(double x, double y) {
@@ -77,7 +104,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     System.out.println(aantalBallen);
     if(aantalBallen <= 0) {
       levens--;
-      text.setLevensText(levens);
+      veranderLevensText();
       if(levens <= 0) {
         death.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);

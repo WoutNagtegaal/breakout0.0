@@ -12,9 +12,11 @@ public class LevensText extends TextEntity {
 
         setFont(Font.font("Roboto", FontWeight.NORMAL, 30));
         setFill(Color.WHITE);
+        System.out.println("LevensText");
     }
 
     public void setLevensText(int levensText) {
         setText("Health: " + levensText);
+        System.out.println("setLevensText");
     }
 }
