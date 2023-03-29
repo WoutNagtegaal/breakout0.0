@@ -14,6 +14,6 @@ public class Level4 extends GameLevel{
     @Override
     public void setupTileMaps() {
         addTileMap(new LevelMap4(this, breakOutGame, player));
-        numberOfBlocks = berekenAantalRuimteschepen();
+        numberOfBlocks = calculateNumberOfEnemys();
     }
 }

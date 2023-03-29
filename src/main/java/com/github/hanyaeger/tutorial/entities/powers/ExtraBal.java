@@ -19,7 +19,7 @@ public class ExtraBal extends Power {
     }
 
     void doePowerActie(Collider collider) {
-        level.voegBalToe(getWidth() / 2, (getHeight() / 4) * 2);
+        level.addNewBal(getWidth() / 2, (getHeight() / 4) * 2);
     }
 
     void speelVerwijderSound() {

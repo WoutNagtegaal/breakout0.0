@@ -11,7 +11,6 @@ import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
-import com.github.hanyaeger.tutorial.entities.text.LevensText;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -56,14 +55,9 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     playerWidth = ORIGINAL_PLAYERWIDTH;
     addEntity(player);
 
-    voegHoofdBalToe(getWidth() / 2, (getHeight() / 4) * 3);
+    addMainBal(getWidth() / 2, (getHeight() / 4) * 3);
 
-    text = new LevensText(new Coordinate2D(100, getWidth() - 100));
-    addEntity(text);
-//    text.setLevensText(levens);
-    Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
-    String levensTextString = "LEVENS: " + lives;
-    livesText = new TextEntity(levensPositie, levensTextString);
+    livesText = new TextEntity(new Coordinate2D(getWidth() - 100, getHeight() - 10), "LEVENS: " + lives);
 
     livesText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
     livesText.setFill(Color.ANTIQUEWHITE);
@@ -71,11 +65,9 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(livesText);
   }
 
-  public void veranderLevensText() {
+  public void changeLivesText() {
     livesText.remove();
-    Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
-    String levensTextString = "LEVENS: " + lives;
-    livesText = new TextEntity(levensPositie, levensTextString);
+    livesText = new TextEntity(new Coordinate2D(getWidth() - 100, getHeight() - 10), "LEVENS: " + lives);
 
     livesText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
     livesText.setFill(Color.ANTIQUEWHITE);
@@ -83,56 +75,53 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(livesText);
   }
 
-  public void voegHoofdBalToe(double x, double y) {
+  public void addMainBal(double x, double y) {
     bal = new Bal(breakOutGame, this, player, x, y, ORIGINAL_BALSIZE);
     balSize = ORIGINAL_BALSIZE;
     addEntity(bal);
     numberOfBalls++;
-    System.out.println("hoofdbal: " + numberOfBalls);
   }
 
-  public void voegBalToe(double x, double y) {
-    Bal nieuweBal = new Bal(breakOutGame, this, player,x, y, balSize);
-    addEntity(nieuweBal);
+  public void addNewBal(double x, double y) {
+    Bal newBal = new Bal(breakOutGame, this, player,x, y, balSize);
+    addEntity(newBal);
     numberOfBalls++;
-    System.out.println("bal: " + numberOfBalls);
   }
 
-  public void verwijderBal() {
+  public void deleteBal() {
     numberOfBalls--;
-    System.out.println("verwijder bal: " + numberOfBalls);
     if(numberOfBalls <= 0) {
       lives--;
-      veranderLevensText();
+      changeLivesText();
       if(lives <= 0) {
         deathSound.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
       }
-      voegBalToe(getWidth() / 2, (getHeight() / 4) * 3);
+      addNewBal(getWidth() / 2, (getHeight() / 4) * 3);
     }
   }
 
-  public int berekenAantalRuimteschepen() {
+  public int calculateNumberOfEnemys() {
     int[][] t = getTileMaps().get(0).defineMap();
-    int aantalRuimteschepen = 0;
+    int numberOfEnemys = 0;
     for(int[] rij: t) {
       for(int kolom : rij) {
         if(kolom > 0) {
-          aantalRuimteschepen++;
+          numberOfEnemys++;
         }
       }
     }
-    return aantalRuimteschepen;
+    return numberOfEnemys;
   }
 
   public void addPower(Power power) {
     addEntity(power);
   }
 
-  public void verwijderBlock() {
+  public void deleteBlock() {
     numberOfBlocks--;
     if(getNumberOfBlocks() <= 0) {
-      levelKlaar();
+      levelDone();
     }
   }
 
@@ -140,9 +129,9 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     return numberOfBlocks;
   }
 
-  public void levelKlaar() {
+  public void levelDone() {
     completedSound.play();
-    breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
+    breakOutGame.setActiveScene(Constants.LEVEL_DONE);
   }
 
   /*
@@ -158,14 +147,14 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
    */
 
-  public void veranderBalkGrootte(double breedte) {
+  public void changePlayerSize(double width) {
     double xPositie = player.getX();
     double yPositie = player.getY();
-    double oudeBreedte = player.getBreedte();
-    xPositie = (xPositie + (oudeBreedte / 2.0)) - (breedte / 2.0);
+    double oldWidth = player.getWidth();
+    xPositie = (xPositie + (oldWidth / 2.0)) - (width / 2.0);
 
     player.remove();
-    player = new player(new Coordinate2D(xPositie, yPositie), breedte);
+    player = new Player(new Coordinate2D(xPositie, yPositie), width);
     addEntity(player);
   }
 

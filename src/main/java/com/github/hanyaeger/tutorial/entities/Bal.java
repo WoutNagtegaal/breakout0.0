@@ -56,7 +56,7 @@ public class Bal extends DynamicSpriteEntity implements SceneBorderTouchingWatch
                 setAnchorLocationY(1);
             }
             case BOTTOM -> {
-                level.verwijderBal();
+                level.deleteBal();
                 remove();
             }
             case LEFT -> {

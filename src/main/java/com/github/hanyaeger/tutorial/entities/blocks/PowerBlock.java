@@ -101,19 +101,19 @@ public class PowerBlock extends Block {
         int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;
         switch (random_number) {
             case 1 -> {
-                return new ExtraBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+                return new ExtraBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
             }
             case 2 -> {
-                return new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+                return new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
             }
             case 3 -> {
-                return new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+                return new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player, level);
             }
             case 4 -> {
-                return new VersnelBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
+                return new VersnelBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player);
             }
             default -> {
-                return new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
+                return new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, player);
             }
         }
     }

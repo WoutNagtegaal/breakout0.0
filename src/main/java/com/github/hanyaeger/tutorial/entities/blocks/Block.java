@@ -27,7 +27,7 @@ public class Block extends DynamicSpriteEntity implements Collider {
     protected void ontplof() {
         explosion.play();
         remove();
-        level.verwijderBlock();
+        level.deleteBlock();
     }
 
     public double getX() {

@@ -76,7 +76,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     return getAnchorLocation().getY();
   }
 
-  public double getBreedte() {
+  public double getWidth() {
     return breedte;
   }
 

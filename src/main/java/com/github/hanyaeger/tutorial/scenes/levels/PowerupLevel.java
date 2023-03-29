@@ -14,6 +14,6 @@ public class PowerupLevel extends GameLevel{
     @Override
     public void setupTileMaps() {
         addTileMap(new PowerupLevelMap(this, breakOutGame, player));
-        numberOfBlocks = berekenAantalRuimteschepen();
+        numberOfBlocks = calculateNumberOfEnemys();
     }
 }

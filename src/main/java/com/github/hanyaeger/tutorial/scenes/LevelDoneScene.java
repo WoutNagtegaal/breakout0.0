@@ -10,11 +10,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class LevelKlaarScene extends StaticScene {
+public class LevelDoneScene extends StaticScene {
 
   private final BreakOutGame breakOutGame;
 
-  public LevelKlaarScene(BreakOutGame breakOutGame) {
+  public LevelDoneScene(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
   }
 

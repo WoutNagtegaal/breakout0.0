@@ -29,14 +29,14 @@ public class VerbreedBalk extends Power {
 
         if (nieuwe_breedte > max_breedte) {
             System.out.println("Maximale breedte bereikt");
-            level.veranderBalkGrootte(max_breedte);
+            level.changePlayerSize(max_breedte);
             level.setPlayerWidth(max_breedte);
         } else if (nieuwe_breedte < min_breedte) {
             System.out.println("Minimale breedte bereikt");
-            level.veranderBalkGrootte(min_breedte);
+            level.changePlayerSize(min_breedte);
             level.setPlayerWidth(min_breedte);
         } else {
-            level.veranderBalkGrootte(nieuwe_breedte);
+            level.changePlayerSize(nieuwe_breedte);
             level.setPlayerWidth(nieuwe_breedte);
         }
     }
