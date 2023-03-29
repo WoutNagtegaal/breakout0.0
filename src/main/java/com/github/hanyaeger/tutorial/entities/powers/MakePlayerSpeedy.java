@@ -10,7 +10,7 @@ import com.github.hanyaeger.tutorial.entities.Player;
 public class MakePlayerSpeedy extends Power {
 
     private Player player;
-    private final int VERSNELLING = 2;
+    private final int ACCELERATION = 2;
     private SoundClip soundEffect = new SoundClip("audio/power_up.mp3");
 
     public MakePlayerSpeedy(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player) {
@@ -23,7 +23,7 @@ public class MakePlayerSpeedy extends Power {
             this.player = (Player) collider;
         }
         double currentSpeed = player.getSnelheid();
-        double newSpeed = currentSpeed + VERSNELLING;
+        double newSpeed = currentSpeed + ACCELERATION;
         double maxSpeed = player.getMAX_SNELHEID();
 
         if (newSpeed > maxSpeed) {

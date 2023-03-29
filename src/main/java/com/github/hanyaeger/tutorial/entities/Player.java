@@ -100,7 +100,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     return MAX_SNELHEID;
   }
 
-  public void setInverted_controls() {
+  public void setInvertedControls() {
     inverted_controls = !inverted_controls;
   }
 

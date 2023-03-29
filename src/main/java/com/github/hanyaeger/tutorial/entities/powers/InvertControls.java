@@ -21,7 +21,7 @@ public class InvertControls extends Power {
         if(collider instanceof Player) {
             this.player = (Player) collider;
         }
-        player.setInverted_controls();
+        player.setInvertedControls();
     }
 
     void playRemovalNoise() {

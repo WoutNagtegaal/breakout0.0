@@ -11,7 +11,7 @@ import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 public class MakePlayerSmaller extends Power {
 
     private final Player player;
-    private final int VERKLEINING = 100;
+    private final int SIZE_CHANGE = 100;
     private final GameLevel level;
     private SoundClip soundEffect = new SoundClip("audio/power_down.mp4");
 
@@ -22,22 +22,20 @@ public class MakePlayerSmaller extends Power {
     }
 
     void doPowerAction(Collider collider) {
-        double max_breedte = player.getMAX_BREEDTE();
-        double min_breedte = player.getMIN_BREEDTE();
-        double huidige_breedte = level.getPlayerWidth();
-        double nieuwe_breedte = huidige_breedte - VERKLEINING;
+        double maxWidth = player.getMAX_BREEDTE();
+        double minWidth = player.getMIN_BREEDTE();
+        double currentWidth = level.getPlayerWidth();
+        double newWidth = currentWidth - SIZE_CHANGE;
 
-        if (nieuwe_breedte < min_breedte) {
-            System.out.println("Minimale breedte bereikt");
-            level.changePlayerSize(min_breedte);
-            level.setPlayerWidth(min_breedte);
-        } else if (nieuwe_breedte > max_breedte) {
-            System.out.println("Maximale breedte bereikt");
-            level.changePlayerSize(max_breedte);
-            level.setPlayerWidth(max_breedte);
+        if (newWidth < minWidth) {
+            level.changePlayerSize(minWidth);
+            level.setPlayerWidth(minWidth);
+        } else if (newWidth > maxWidth) {
+            level.changePlayerSize(maxWidth);
+            level.setPlayerWidth(maxWidth);
         } else {
-            level.changePlayerSize(nieuwe_breedte);
-            level.setPlayerWidth(nieuwe_breedte);
+            level.changePlayerSize(newWidth);
+            level.setPlayerWidth(newWidth);
         }
     }
 
