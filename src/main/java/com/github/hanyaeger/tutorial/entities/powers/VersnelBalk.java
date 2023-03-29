@@ -9,14 +9,12 @@ import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 
 public class VersnelBalk extends Power {
 
-    private final BreakOutGame breakOutGame;
     private SpelerBalk spelerBalk;
     private final int VERSNELLING = 2;
     private SoundClip soundEffect = new SoundClip("audio/power_up.mp3");
 
     public VersnelBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
         super(position, size, "sprites/versnel_balk.png");
-        this.breakOutGame = breakOutGame;
         this.spelerBalk = spelerBalk;
     }
 
@@ -35,7 +33,7 @@ public class VersnelBalk extends Power {
         }
     }
 
-    void speelVerwijderSound(Collider collider) {
+    void speelVerwijderSound() {
         soundEffect.play();
     }
 }

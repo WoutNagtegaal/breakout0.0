@@ -16,7 +16,7 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
         super(resource, location, size);
     }
 
-    abstract void speelVerwijderSound(Collider collider);
+    abstract void speelVerwijderSound();
 
     abstract void doePowerActie(Collider collider);
 
@@ -30,7 +30,7 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
     public void onCollision(Collider collider) {
         if (collider instanceof SpelerBalk) {
             doePowerActie(collider);
-            speelVerwijderSound(collider);
+            speelVerwijderSound();
             remove();
         }
     }
