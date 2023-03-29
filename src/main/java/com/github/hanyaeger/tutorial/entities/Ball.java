@@ -7,7 +7,6 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.blocks.Block;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
@@ -17,7 +16,6 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     private final GameLevel level;
     private final double SPEED = 5;
 
-    public static double currentBounce;
     public final static double NORTH = 180;
     public final static double SOUTH = 0;
     public final static double EAST = 90;
@@ -29,7 +27,7 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     public double startDirection = SOUTH;
 
-    public Ball(BreakOutGame breakOutGame, GameLevel level, Player player, double x, double y, int size) {
+    public Ball(GameLevel level, Player player, double x, double y, int size) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(x, y), new Size(size, size));
 
@@ -46,10 +44,8 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
             case TOP -> {
                 if(goingRight()) {
                     bounce(SOUTH_EAST);
-                    currentBounce = SOUTH_EAST;
                 } else {
                     bounce(SOUTH_WEST);
-                    currentBounce = SOUTH_WEST;
                 }
                 setAnchorLocationY(1);
             }
@@ -60,20 +56,16 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
             case LEFT -> {
                 if(goingUp()) {
                     bounce(NORTH_EAST);
-                    currentBounce = NORTH_EAST;
                 } else {
                     bounce(SOUTH_EAST);
-                    currentBounce = SOUTH_EAST;
                 }
                 setAnchorLocationX(1);
             }
             case RIGHT -> {
                 if(goingUp()) {
                     bounce(NORTH_WEST);
-                    currentBounce = NORTH_WEST;
                 } else {
                     bounce(SOUTH_WEST);
-                    currentBounce = SOUTH_WEST;
                 }
                 setAnchorLocationX(getSceneWidth() - getWidth() - 1);
             }
@@ -100,10 +92,8 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
             player = ((Player) collider);
             if (getX() + (getWidth() / 2) > player.getX() + (player.getWidth() / 2)) {
                 bounce(NORTH_EAST);
-                currentBounce = NORTH_EAST;
             } else {
                 bounce(NORTH_WEST);
-                currentBounce = NORTH_WEST;
             }
         }
         //Bij een blok moet de bal van de zijkant af stuiteren. Beetje rommelige manier, zal nog wel netter kunnen
@@ -128,37 +118,29 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         if(blockX + marge > getX() + getWidth()) {
             if(goingUp()) {
                 bounce(NORTH_WEST);
-                currentBounce = NORTH_WEST;
             } else {
                 bounce(SOUTH_WEST);
-                currentBounce = SOUTH_WEST;
             }
             //de rechterkant van het blok
         } else if(blockX + blockWidth < getX() + marge) {
             if(goingUp()) {
                 bounce(NORTH_EAST);
-                currentBounce = NORTH_EAST;
             } else {
                 bounce(SOUTH_EAST);
-                currentBounce = SOUTH_EAST;
             }
             //de bovenkant van het blok
         } else if(blockY + marge > getY() + getHeight()) {
             if(goingRight()) {
                 bounce(NORTH_EAST);
-                currentBounce = NORTH_EAST;
             } else {
                 bounce(NORTH_WEST);
-                currentBounce = NORTH_WEST;
             }
             //de onderkant van het block
         } else if(blockY + blockHeight < getY() + marge) {
             if(goingRight()) {
                 bounce(SOUTH_EAST);
-                currentBounce = SOUTH_EAST;
             } else {
                 bounce(SOUTH_WEST);
-                currentBounce = SOUTH_WEST;
             }
         }
     }
@@ -169,9 +151,5 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     public double getY() {
         return getAnchorLocation().getY();
-    }
-
-    public double getCurrentBounce() {
-        return currentBounce;
     }
 }
