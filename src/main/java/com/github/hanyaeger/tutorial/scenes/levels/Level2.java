@@ -5,7 +5,7 @@ import com.github.hanyaeger.tutorial.entities.levels.LevelMap2;
 
 public class Level2 extends GameLevel{
 
-    BreakOutGame breakOutGame;
+    private BreakOutGame breakOutGame;
 
     public Level2(BreakOutGame breakOutGame) {
         super(breakOutGame);

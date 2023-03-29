@@ -5,7 +5,7 @@ import com.github.hanyaeger.tutorial.entities.levels.PowerupLevelMap;
 
 public class PowerupLevel extends GameLevel{
 
-    BreakOutGame breakOutGame;
+    private BreakOutGame breakOutGame;
 
     public PowerupLevel(BreakOutGame breakOutGame) {
         super(breakOutGame);

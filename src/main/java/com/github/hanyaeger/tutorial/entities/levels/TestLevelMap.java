@@ -37,6 +37,6 @@ public class TestLevelMap extends BlockMap {
 
     @Override
     public int[][] defineMap() {
-        return emptyMap();
+        return powerMap();
     }
 }

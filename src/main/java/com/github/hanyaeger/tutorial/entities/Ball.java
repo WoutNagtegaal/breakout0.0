@@ -29,7 +29,6 @@ public class Ball extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     public double startDirection = SOUTH;
 
-    @SuppressWarnings("LanguageDetectionInspection")
     public Ball(BreakOutGame breakOutGame, GameLevel level, Player player, double x, double y, int size) {
         //super("sprites/ufobalk.png", location, new Size(800, 40));
         super("sprites/bal.png", new Coordinate2D(x, y), new Size(size, size));

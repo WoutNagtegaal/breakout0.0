@@ -18,14 +18,14 @@ import javafx.scene.text.FontWeight;
 public abstract class GameLevel extends DynamicScene implements TileMapContainer {
 
   private final BreakOutGame breakOutGame;
-  Player player;
-  Ball ball;
-  TextEntity livesText;
-  int numberOfBlocks;
-  int numberOfBalls;
-  int lives;
-  SoundClip deathSound = new SoundClip("audio/death.mp3");
-  SoundClip completedSound = new SoundClip("audio/level_geslaagd.mp3");
+  protected Player player;
+  private Ball ball;
+  private TextEntity livesText;
+  protected int numberOfBlocks;
+  private int numberOfBalls;
+  private int lives;
+  private SoundClip deathSound = new SoundClip("audio/death.mp3");
+  private SoundClip completedSound = new SoundClip("audio/level_geslaagd.mp3");
   private final double ORIGINAL_PLAYERWIDTH = 200;
   private double playerWidth = ORIGINAL_PLAYERWIDTH;
   private final int ORIGINAL_BALSIZE = 50;
@@ -39,7 +39,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   @Override
   public void setupScene() {
-//    setBackgroundAudio("audio/gamemusic.mp3");
+    setBackgroundAudio("audio/gamemusic.mp3");
     setBackgroundImage("backgrounds/game_background.jpg");
 
     this.lives = 3;
