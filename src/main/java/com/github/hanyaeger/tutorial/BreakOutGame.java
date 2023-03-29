@@ -2,7 +2,8 @@ package com.github.hanyaeger.tutorial;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import com.github.hanyaeger.tutorial.scenes.LevelCompleted;
+import com.github.hanyaeger.tutorial.scenes.LevelDoneScene;
+import com.github.hanyaeger.tutorial.scenes.LevelSelect;
 import com.github.hanyaeger.tutorial.scenes.levels.*;
 import com.github.hanyaeger.tutorial.scenes.GameOverScene;
 import com.github.hanyaeger.tutorial.scenes.TitleScene;
@@ -27,8 +28,8 @@ public class BreakOutGame extends YaegerGame {
         addScene(Constants.LEVELS[3], new Level4(this));
         addScene(Constants.LEVELS[4], new Level5(this));
         addScene(Constants.TESTLEVEL, new TestLevel(this));
-        addScene(Constants.LEVEL_SELECT, new LevelCompleted(this));
+        addScene(Constants.LEVEL_SELECT, new LevelSelect(this));
         addScene(Constants.DEATH_SCREEN, new GameOverScene(this));
-        addScene(Constants.LEVEL_COMPLETED, new LevelCompleted(this));
+        addScene(Constants.LEVEL_COMPLETED, new LevelDoneScene(this));
     }
 }

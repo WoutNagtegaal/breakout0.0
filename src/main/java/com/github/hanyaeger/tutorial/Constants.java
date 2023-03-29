@@ -7,5 +7,4 @@ public class Constants {
     public final static int TESTLEVEL = 11;
     public final static int DEATH_SCREEN = 10;
     public final static int LEVEL_COMPLETED = 12;
-    public final static int LEVEL_DONE = 13;
 }
