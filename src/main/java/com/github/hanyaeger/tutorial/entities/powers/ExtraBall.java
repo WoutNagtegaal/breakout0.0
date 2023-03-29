@@ -8,21 +8,21 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
-public class ExtraBal extends Power {
+public class ExtraBall extends Power {
 
     private final GameLevel level;
     private SoundClip soundEffect = new SoundClip("audio/power_up.mp3");
 
-    public ExtraBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player, GameLevel level) {
+    public ExtraBall(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player, GameLevel level) {
         super(position, size, "sprites/extra_bal.png");
         this.level = level;
     }
 
-    void doePowerActie(Collider collider) {
+    void doPowerAction(Collider collider) {
         level.addNewBal(getWidth() / 2, (getHeight() / 4) * 2);
     }
 
-    void speelVerwijderSound() {
+    void playRemovalNoise() {
         soundEffect.play();
     }
 

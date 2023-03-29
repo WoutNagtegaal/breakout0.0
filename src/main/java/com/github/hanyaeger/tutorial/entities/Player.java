@@ -88,7 +88,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     return MIN_BREEDTE;
   }
 
-  public void setSnelheid(double snelheid) {
+  public void setPlayerSpeed(double snelheid) {
     this.snelheid = snelheid;
   }
 

@@ -17,14 +17,14 @@ public class InvertControls extends Power {
         this.player = player;
     }
 
-    void doePowerActie(Collider collider) {
+    void doPowerAction(Collider collider) {
         if(collider instanceof Player) {
             this.player = (Player) collider;
         }
         player.setInverted_controls();
     }
 
-    void speelVerwijderSound() {
+    void playRemovalNoise() {
         soundEffect.play();
     }
 }

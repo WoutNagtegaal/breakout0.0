@@ -7,33 +7,33 @@ import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Player;
 
-public class VersnelBalk extends Power {
+public class MakePlayerSpeedy extends Power {
 
     private Player player;
     private final int VERSNELLING = 2;
     private SoundClip soundEffect = new SoundClip("audio/power_up.mp3");
 
-    public VersnelBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player) {
+    public MakePlayerSpeedy(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player) {
         super(position, size, "sprites/versnel_balk.png");
         this.player = player;
     }
 
-    void doePowerActie(Collider collider) {
+    void doPowerAction(Collider collider) {
         if(collider instanceof Player) {
             this.player = (Player) collider;
         }
-        double huidige_snelheid = player.getSnelheid();
-        double nieuwe_snelheid = huidige_snelheid + VERSNELLING;
-        double max_snelheid = player.getMAX_SNELHEID();
+        double currentSpeed = player.getSnelheid();
+        double newSpeed = currentSpeed + VERSNELLING;
+        double maxSpeed = player.getMAX_SNELHEID();
 
-        if (nieuwe_snelheid > max_snelheid) {
-            player.setSnelheid(max_snelheid);
+        if (newSpeed > maxSpeed) {
+            player.setPlayerSpeed(maxSpeed);
         } else {
-            player.setSnelheid(nieuwe_snelheid);
+            player.setPlayerSpeed(newSpeed);
         }
     }
 
-    void speelVerwijderSound() {
+    void playRemovalNoise() {
         soundEffect.play();
     }
 }

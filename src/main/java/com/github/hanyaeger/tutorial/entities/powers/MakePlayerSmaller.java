@@ -8,40 +8,40 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
-public class VerbreedBalk extends Power {
+public class MakePlayerSmaller extends Power {
 
     private final Player player;
-    private final int VERGROTING = 100;
+    private final int VERKLEINING = 100;
     private final GameLevel level;
-    private SoundClip soundEffect = new SoundClip("audio/power_up.mp3");
+    private SoundClip soundEffect = new SoundClip("audio/power_down.mp4");
 
-    public VerbreedBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player, GameLevel level) {
-        super(position, size, "sprites/verbreed_balk.png");
+    public MakePlayerSmaller(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player, GameLevel level) {
+        super(position, size, "sprites/versmal_balk.png");
         this.player = player;
         this.level = level;
     }
 
-    void doePowerActie(Collider collider) {
+    void doPowerAction(Collider collider) {
         double max_breedte = player.getMAX_BREEDTE();
         double min_breedte = player.getMIN_BREEDTE();
         double huidige_breedte = level.getPlayerWidth();
-        double nieuwe_breedte = huidige_breedte + VERGROTING;
+        double nieuwe_breedte = huidige_breedte - VERKLEINING;
 
-        if (nieuwe_breedte > max_breedte) {
-            System.out.println("Maximale breedte bereikt");
-            level.changePlayerSize(max_breedte);
-            level.setPlayerWidth(max_breedte);
-        } else if (nieuwe_breedte < min_breedte) {
+        if (nieuwe_breedte < min_breedte) {
             System.out.println("Minimale breedte bereikt");
             level.changePlayerSize(min_breedte);
             level.setPlayerWidth(min_breedte);
+        } else if (nieuwe_breedte > max_breedte) {
+            System.out.println("Maximale breedte bereikt");
+            level.changePlayerSize(max_breedte);
+            level.setPlayerWidth(max_breedte);
         } else {
             level.changePlayerSize(nieuwe_breedte);
             level.setPlayerWidth(nieuwe_breedte);
         }
     }
 
-    void speelVerwijderSound() {
+    void playRemovalNoise() {
         soundEffect.play();
     }
 }

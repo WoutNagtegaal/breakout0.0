@@ -15,9 +15,9 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
         super(resource, location, size);
     }
 
-    abstract void speelVerwijderSound();
+    abstract void playRemovalNoise();
 
-    abstract void doePowerActie(Collider collider);
+    abstract void doPowerAction(Collider collider);
 
     public void dropPower() {
         final int SPEED = 8;
@@ -28,8 +28,8 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
     @Override
     public void onCollision(Collider collider) {
         if (collider instanceof Player) {
-            doePowerActie(collider);
-            speelVerwijderSound();
+            doPowerAction(collider);
+            playRemovalNoise();
             remove();
         }
     }
