@@ -20,6 +20,11 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   private final BreakOutGame breakOutGame;
   protected Player player;
   private TextEntity livesText;
+  private TextEntity enemysText;
+  private TextEntity scoreText;
+  protected static int score;
+  protected static int increasement = 1;
+  protected int STARTER_INCREASEMENT = 1;
   protected int numberOfBlocks;
   private int numberOfBalls;
   private int lives;
@@ -53,14 +58,41 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
     addNewBal(getWidth() / 2, (getHeight() / 4) * 3);
 
-    Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
-    String levensTextString = "LEVENS: " + lives;
-    livesText = new TextEntity(levensPositie, levensTextString);
+    livesText = new TextEntity(new Coordinate2D(getWidth() - 100, getHeight() - 10), "LEVENS: " + lives);
 
     livesText.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
     livesText.setFill(Color.ANTIQUEWHITE);
     livesText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
     addEntity(livesText);
+
+    enemysText = new TextEntity(new Coordinate2D(100, getHeight() - 10), "VIJANDEN: " + numberOfBlocks);
+
+    scoreText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() - 10), "SCORE: " + score);
+
+    scoreText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
+    scoreText.setFill(Color.ANTIQUEWHITE);
+    scoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+    addEntity(scoreText);
+  }
+
+  public void changeEnemysText() {
+    enemysText.remove();
+    enemysText = new TextEntity(new Coordinate2D(100, getHeight() - 10), "VIJANDEN: " + numberOfBlocks);
+
+    enemysText.setAnchorPoint(AnchorPoint.BOTTOM_LEFT);
+    enemysText.setFill(Color.ANTIQUEWHITE);
+    enemysText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+    addEntity(enemysText);
+  }
+
+  public void changeScoreText() {
+    scoreText.remove();
+    scoreText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() - 10), "SCORE: " + score);
+
+    scoreText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
+    scoreText.setFill(Color.ANTIQUEWHITE);
+    scoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+    addEntity(scoreText);
   }
 
   public void changeLivesText() {
@@ -87,6 +119,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
       if(lives <= 0) {
         deathSound.play();
         breakOutGame.setActiveScene(Constants.DEATH_SCREEN);
+        resetScore();
       }
       addNewBal(getWidth() / 2, (getHeight() / 4) * 3);
     }
@@ -105,12 +138,25 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     return numberOfEnemys;
   }
 
+  public void increaseScore() {
+    int verhoging = 10;
+    score = score + (verhoging * increasement);
+    changeScoreText();
+  }
+
+  public void resetScore() {
+    score = 0;
+    increasement = STARTER_INCREASEMENT;
+  }
+
   public void addPower(Power power) {
     addEntity(power);
   }
 
   public void removeBlock() {
     numberOfBlocks--;
+    increaseScore();
+    changeEnemysText();
     if(getNumberOfBlocks() <= 0) {
       levelDone();
     }
@@ -122,6 +168,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   public void levelDone() {
     completedSound.play();
+    increasement++;
     breakOutGame.setActiveScene(Constants.LEVEL_COMPLETED);
   }
 
