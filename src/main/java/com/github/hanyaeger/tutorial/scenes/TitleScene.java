@@ -27,14 +27,14 @@ public class TitleScene extends StaticScene {
 
   @Override
   public void setupEntities() {
-    var waterworldText = new TextEntity(
+    var breakOutText = new TextEntity(
       new Coordinate2D(getWidth() / 2, getHeight() / 2 - 50),
       "Break Out 0.0"
     );
-    waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-    waterworldText.setFill(Color.WHITE);
-    waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-    addEntity(waterworldText);
+    breakOutText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+    breakOutText.setFill(Color.WHITE);
+    breakOutText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+    addEntity(breakOutText);
     var startButton = new StartButton(
       new Coordinate2D(getWidth() / 2, getHeight() / 2 + 50),
       this.breakOutGame

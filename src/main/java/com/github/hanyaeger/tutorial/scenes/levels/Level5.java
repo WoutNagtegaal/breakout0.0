@@ -13,7 +13,7 @@ public class Level5 extends GameLevel{
 
     @Override
     public void setupTileMaps() {
-        addTileMap(new LevelMap5(this, breakOutGame, spelerBalk));
-        aantalBlokken = berekenAantalRuimteschepen();
+        addTileMap(new LevelMap5(this, breakOutGame, player));
+        numberOfBlocks = berekenAantalRuimteschepen();
     }
 }

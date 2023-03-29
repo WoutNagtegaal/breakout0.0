@@ -8,17 +8,16 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.Constants;
 import com.github.hanyaeger.tutorial.entities.buttons.Button;
 import com.github.hanyaeger.tutorial.entities.buttons.QuitButton;
-import com.github.hanyaeger.tutorial.entities.buttons.StartButton;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class LevelSelect extends StaticScene {
+public class LevelCompleted extends StaticScene {
 
   private final BreakOutGame breakOutGame;
 
-  public LevelSelect(BreakOutGame breakOutGame) {
+  public LevelCompleted(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
   }
 
@@ -30,18 +29,18 @@ public class LevelSelect extends StaticScene {
 
   @Override
   public void setupEntities() {
-    var kiesEenLevel = new TextEntity(
+    var chooseALevel = new TextEntity(
       new Coordinate2D(getWidth() / 2, getHeight() / 2 - 200),
       "Kies een level"
     );
-    kiesEenLevel.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-    kiesEenLevel.setFill(Color.WHITE);
-    kiesEenLevel.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-    addEntity(kiesEenLevel);
+    chooseALevel.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+    chooseALevel.setFill(Color.WHITE);
+    chooseALevel.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+    addEntity(chooseALevel);
 
     testKnop();
 
-    voegLevelKnoppenToe();
+    addLevelButtons();
 
     var quitbutton = new QuitButton(
       new Coordinate2D(getWidth() / 2, getHeight() / 2 + 200),
@@ -50,11 +49,11 @@ public class LevelSelect extends StaticScene {
     addEntity(quitbutton);
   }
 
-  private void voegLevelKnoppenToe() {
+  private void addLevelButtons() {
     double yPos = getHeight() / 2 - 100;
-    int levelNummer = 1;
+    int levelNumber = 1;
     for(int i : Constants.LEVELS) {
-      Button levelButton = new Button(new Coordinate2D(getWidth() / 2, yPos), breakOutGame, "Level " + levelNummer) {
+      Button levelButton = new Button(new Coordinate2D(getWidth() / 2, yPos), breakOutGame, "Level " + levelNumber) {
         @Override
         public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
           breakOutGame.setActiveScene(i);
@@ -62,7 +61,7 @@ public class LevelSelect extends StaticScene {
       };
       addEntity(levelButton);
       yPos += 50;
-      levelNummer++;
+      levelNumber++;
     }
   }
 

@@ -5,31 +5,31 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.BreakOutGame;
-import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.entities.Player;
 
 public class VersnelBalk extends Power {
 
-    private SpelerBalk spelerBalk;
+    private Player player;
     private final int VERSNELLING = 2;
     private SoundClip soundEffect = new SoundClip("audio/power_up.mp3");
 
-    public VersnelBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk) {
+    public VersnelBalk(Coordinate2D position, Size size, BreakOutGame breakOutGame, Player player) {
         super(position, size, "sprites/versnel_balk.png");
-        this.spelerBalk = spelerBalk;
+        this.player = player;
     }
 
     void doePowerActie(Collider collider) {
-        if(collider instanceof SpelerBalk) {
-            this.spelerBalk = (SpelerBalk) collider;
+        if(collider instanceof Player) {
+            this.player = (Player) collider;
         }
-        double huidige_snelheid = spelerBalk.getSnelheid();
+        double huidige_snelheid = player.getSnelheid();
         double nieuwe_snelheid = huidige_snelheid + VERSNELLING;
-        double max_snelheid = spelerBalk.getMAX_SNELHEID();
+        double max_snelheid = player.getMAX_SNELHEID();
 
         if (nieuwe_snelheid > max_snelheid) {
-            spelerBalk.setSnelheid(max_snelheid);
+            player.setSnelheid(max_snelheid);
         } else {
-            spelerBalk.setSnelheid(nieuwe_snelheid);
+            player.setSnelheid(nieuwe_snelheid);
         }
     }
 

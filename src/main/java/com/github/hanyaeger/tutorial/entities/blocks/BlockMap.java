@@ -2,16 +2,16 @@ package com.github.hanyaeger.tutorial.entities.blocks;
 
 import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.hanyaeger.tutorial.BreakOutGame;
-import com.github.hanyaeger.tutorial.entities.SpelerBalk;
+import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public abstract class BlockMap extends TileMap {
 
     GameLevel level;
     BreakOutGame breakOutGame;
-    SpelerBalk balk;
+    Player balk;
 
-    public BlockMap(GameLevel level, BreakOutGame breakOutGame, SpelerBalk balk) {
+    public BlockMap(GameLevel level, BreakOutGame breakOutGame, Player balk) {
         this.level = level;
         this.breakOutGame = breakOutGame;
         this.balk = balk;
