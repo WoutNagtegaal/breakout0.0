@@ -7,9 +7,9 @@ import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public abstract class BlockMap extends TileMap {
 
-    GameLevel level;
-    BreakOutGame breakOutGame;
-    Player player;
+    protected GameLevel level;
+    protected BreakOutGame breakOutGame;
+    protected Player player;
 
     public BlockMap(GameLevel level, BreakOutGame breakOutGame, Player player) {
         this.level = level;

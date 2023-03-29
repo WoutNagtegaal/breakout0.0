@@ -9,9 +9,9 @@ import com.github.hanyaeger.tutorial.BreakOutGame;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class Block extends DynamicSpriteEntity implements Collider {
-    SoundClip explosion = new SoundClip("audio/explosion.mp3");
-    GameLevel level;
-    BreakOutGame breakOutGame;
+    private SoundClip explosion = new SoundClip("audio/explosion.mp3");
+    protected GameLevel level;
+    protected BreakOutGame breakOutGame;
 
     public Block(Coordinate2D position, Size size, BlockConfig c) {
         super(c.getResource(), position, size);

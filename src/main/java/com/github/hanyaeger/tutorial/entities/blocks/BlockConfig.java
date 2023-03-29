@@ -5,10 +5,10 @@ import com.github.hanyaeger.tutorial.entities.Player;
 import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class BlockConfig {
-    GameLevel level;
-    BreakOutGame breakOutGame;
-    Player balk;
-    String resource;
+    private GameLevel level;
+    private BreakOutGame breakOutGame;
+    private Player balk;
+    private String resource;
 
     public BlockConfig(GameLevel level, BreakOutGame breakOutGame, Player balk, String resource) {
         this.level = level;
