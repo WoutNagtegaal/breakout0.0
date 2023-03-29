@@ -39,7 +39,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
   @Override
   public void setupScene() {
-//    setBackgroundAudio("audio/gamemusic.mp3");
+    setBackgroundAudio("audio/gamemusic.mp3");
     setBackgroundImage("backgrounds/game_background.jpg");
 
     this.lives = 3;
