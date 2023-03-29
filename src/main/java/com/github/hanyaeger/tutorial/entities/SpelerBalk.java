@@ -13,26 +13,21 @@ import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
-public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher,
-  Collided, Collider {
+public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collider {
 
-  private final BreakOutGame breakOutGame;
   private double snelheid = 8;
   private final double MAX_SNELHEID = 16;
   public double breedte = 800;
-  public double hoogte = 40;
   private final double MAX_BREEDTE = 400;
   private final double MIN_BREEDTE = 50;
   private final double LEFT = 270d;
   private final double RIGHT = 90;
   private boolean inverted_controls = false;
-  public SpelerBalk(Coordinate2D location, BreakOutGame breakOutGame, double breedte) {
+  public SpelerBalk(Coordinate2D location, double breedte) {
     super("sprites/ufobalk.png", location, new Size(breedte, 40));
     // verander de waardes in new Size() naar de variabelen erboven
     setPreserveAspectRatio(false);
     this.breedte = breedte;
-    this.breakOutGame = breakOutGame;
-
   }
 
   @Override
@@ -75,31 +70,12 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
     return super.getHeight();
   }
 
-  @Override
-  public void onCollision(Collider collider) {
-
-  }
-
   public double getX() {
     return getAnchorLocation().getX();
   }
 
   public double getY() {
     return getAnchorLocation().getY();
-  }
-
-  public void setBreedte(double breedte) {
-    System.out.println("Huidige breedte: " + this.breedte);
-
-    if (breedte > MAX_BREEDTE) {
-      System.out.println("Maximale breedte bereikt");
-      this.breedte = MAX_BREEDTE;
-    } else if (breedte < MIN_BREEDTE) {
-      System.out.println("Minimale breedte bereikt");
-      this.breedte = MIN_BREEDTE;
-    } else {
-      this.breedte = breedte;
-    }
   }
 
   public double getBreedte() {
@@ -112,14 +88,6 @@ public class SpelerBalk extends DynamicSpriteEntity implements KeyListener, Scen
 
   public double getMIN_BREEDTE() {
     return MIN_BREEDTE;
-  }
-
-  public void setHoogte(double hoogte) {
-    this.hoogte = hoogte;
-  }
-
-  public double getHoogte() {
-    return hoogte;
   }
 
   public void setSnelheid(double snelheid) {
