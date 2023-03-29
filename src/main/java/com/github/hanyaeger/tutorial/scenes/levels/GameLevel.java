@@ -97,15 +97,6 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     return aantalRuimteschepen;
   }
 
-  public void addExtraBal(ExtraBal extraBal) {
-    addEntity(extraBal);
-  }
-
-  public void addBal(Bal bal) {
-    addEntity(bal);
-    aantalBallen++;
-  }
-
   public void addPower(Power power) {
     addEntity(power);
   }

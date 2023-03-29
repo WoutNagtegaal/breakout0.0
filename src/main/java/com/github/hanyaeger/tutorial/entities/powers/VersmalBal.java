@@ -10,16 +10,12 @@ import com.github.hanyaeger.tutorial.scenes.levels.GameLevel;
 
 public class VersmalBal extends Power {
 
-    private final BreakOutGame breakOutGame;
-    private final SpelerBalk spelerBalk;
     private final int VERKLEINING = 10;
     private final GameLevel level;
     private SoundClip soundEffect = new SoundClip("audio/power_down.mp4");
 
     public VersmalBal(Coordinate2D position, Size size, BreakOutGame breakOutGame, SpelerBalk spelerBalk, GameLevel level) {
         super(position, size, "sprites/verklein_bal.png");
-        this.breakOutGame = breakOutGame;
-        this.spelerBalk = spelerBalk;
         this.level = level;
     }
 
@@ -43,7 +39,7 @@ public class VersmalBal extends Power {
         }
     }
 
-    void speelVerwijderSound(Collider collider) {
+    void speelVerwijderSound() {
         soundEffect.play();
     }
 }
