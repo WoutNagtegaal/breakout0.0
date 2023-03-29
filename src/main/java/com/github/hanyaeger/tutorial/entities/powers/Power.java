@@ -12,11 +12,6 @@ import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 
 public abstract class Power extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collided, Collider {
 
-    private static final int POWER_BREEDTE = 50;
-    private static final int POWER_HOOGTE = 50;
-    private SoundClip powerUp = new SoundClip("audio/power_up.mp3");
-    private SoundClip powerDown = new SoundClip("audio/power_down.mp3");
-
     protected Power(Coordinate2D location, Size size, String resource) {
         super(resource, location, size);
     }
@@ -42,11 +37,6 @@ public abstract class Power extends DynamicSpriteEntity implements SceneBorderTo
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-        if (border == SceneBorder.BOTTOM) {
-            remove();
-        } else {
-            System.out.println("Power-Up/Down is wannabe mongool");
-            remove();
-        }
+        remove();
     }
 }

@@ -28,7 +28,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   private final int ORIGINELE_BALGROOTTE = 50;
   private int balGrootte = ORIGINELE_BALGROOTTE;
   private final int MAX_BAL_GROOTTE = 70;
-  private final int MIN_BAL_GROOTTE = 30;
+  private final int MIN_BAL_GROOTTE = 10;
 
   public GameLevel(BreakOutGame breakOutGame) {
     this.breakOutGame = breakOutGame;
@@ -47,8 +47,9 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public void setupEntities() {
     spelerBalk = new SpelerBalk(
       new Coordinate2D(getWidth() / 2, getHeight() - 100),
-            breakOutGame, balkBreedte
+            breakOutGame, ORIGINELE_BALKBREEDTE
     );
+    balkBreedte = ORIGINELE_BALKBREEDTE;
     addEntity(spelerBalk);
 
     voegHoofdBalToe(getWidth() / 2, (getHeight() / 4) * 3);
@@ -59,7 +60,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   }
 
   public void voegHoofdBalToe(double x, double y) {
-    bal = new Bal(breakOutGame, this, spelerBalk, x, y, balGrootte);
+    bal = new Bal(breakOutGame, this, spelerBalk, x, y, ORIGINELE_BALGROOTTE);
+    balGrootte = ORIGINELE_BALGROOTTE;
     addEntity(bal);
     aantalBallen++;
   }
@@ -129,8 +131,6 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   public void veranderBalGrootte(int grootte) {
     double xPositie = bal.getX();
     double yPositie = bal.getY();
-
-    System.out.println(balGrootte);
 
     bal.remove();
     bal = new Bal(breakOutGame, this, spelerBalk, xPositie, yPositie, balGrootte);
