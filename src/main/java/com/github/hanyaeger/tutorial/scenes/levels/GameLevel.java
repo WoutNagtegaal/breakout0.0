@@ -148,6 +148,7 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     breakOutGame.setActiveScene(Constants.LEVEL_GESLAAGD);
   }
 
+  /*
   public void veranderBalGrootte(int grootte) {
     double xPositie = bal.getX();
     double yPositie = bal.getY();
@@ -157,6 +158,8 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
     addEntity(bal);
     bal.stuiter(bal.getHuidigeStuiterRichting());
   }
+
+   */
 
   public void veranderBalkGrootte(double breedte) {
     double xPositie = spelerBalk.getX();
