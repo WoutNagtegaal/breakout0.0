@@ -12,7 +12,6 @@ import com.github.hanyaeger.tutorial.entities.Bal;
 import com.github.hanyaeger.tutorial.entities.SpelerBalk;
 import com.github.hanyaeger.tutorial.entities.powers.ExtraBal;
 import com.github.hanyaeger.tutorial.entities.powers.Power;
-import com.github.hanyaeger.tutorial.entities.text.LevensText;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -27,7 +26,6 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
   int aantalBlokken;
   int aantalBallen;
   int levens;
-  LevensText text;
   SoundClip death = new SoundClip("audio/death.mp3");
   SoundClip geslaagd = new SoundClip("audio/level_geslaagd.mp3");
   private final double ORIGINELE_BALKBREEDTE = 200;
@@ -61,8 +59,6 @@ public abstract class GameLevel extends DynamicScene implements TileMapContainer
 
     voegHoofdBalToe(getWidth() / 2, (getHeight() / 4) * 3);
 
-    text = new LevensText(new Coordinate2D(100, getWidth() - 100));
-    addEntity(text);
 //    text.setLevensText(levens);
     Coordinate2D levensPositie = new Coordinate2D(getWidth() - 100, getHeight() - 10);
     String levensTextString = "LEVENS: " + levens;

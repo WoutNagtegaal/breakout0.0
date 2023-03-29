@@ -27,6 +27,7 @@ public class PowerBlock extends Block {
     }
 
     public void doeHitActie() {
+        /*
         int power = getRandomPower();
         switch (power) {
             case 1:
@@ -59,7 +60,7 @@ public class PowerBlock extends Block {
                 level.addPower(invertControls);
                 invertControls.dropPower();
                 break;
-                /*
+
             case 6:
                 // voeg de nieuwe power_up toe aan het spel
                 VergrootBal vergrootBal = new VergrootBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
@@ -73,17 +74,48 @@ public class PowerBlock extends Block {
                 versmalBal.dropPower();
                 break;
 
-                 */
+
         }
+
+         */
+        Power power = getRandomPower();
+        level.addPower(power);
+        power.dropPower();
+
         ontplof();
     }
 
-    public int getRandomPower() {
+    public int getRandomPowerOld() {
         final int MIN_VALUE = 1;
         final int MAX_VALUE = 5;
 
         Random random = new Random();
         int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;
         return random_number;
+    }
+
+    public Power getRandomPower() {
+        final int MIN_VALUE = 1;
+        final int MAX_VALUE = 5;
+
+        Random random = new Random();
+        int random_number = random.nextInt(MAX_VALUE - MIN_VALUE + 1) + MIN_VALUE;
+        switch (random_number) {
+            case 1 -> {
+                return new ExtraBal(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+            }
+            case 2 -> {
+                return new VerbreedBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+            }
+            case 3 -> {
+                return new VersmalBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk, level);
+            }
+            case 4 -> {
+                return new VersnelBalk(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
+            }
+            default -> {
+                return new InvertControls(new Coordinate2D(getX(), getY()), new Size(POWER_BREEDTE, POWER_HOOGTE), breakOutGame, spelerBalk);
+            }
+        }
     }
 }
